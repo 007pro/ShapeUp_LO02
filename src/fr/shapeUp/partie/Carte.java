@@ -1,6 +1,6 @@
 package fr.shapeUp.partie;
 
-//Ceci est une carte
+//Ceci est une carte !
 public class Carte {
 
 }
