@@ -4,4 +4,5 @@ package fr.shapeUp.partie;
 public class test {
 	private int i; 
 	public int test4;
+	int test;
 }
