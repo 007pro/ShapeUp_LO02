@@ -1,4 +1,9 @@
 package fr.shapeUp.joueur;
+
+import java.util.Random;
+
+
+
 /**
  * La classe joueur qui va être la classe d'origine des classes joueurVirtuel et JoueurPhysique
  * Elle est défini en classe abstraite car on n'est pas sensé pouvoir l'instancier.
@@ -39,6 +44,18 @@ public abstract class Joueur {
 		//et avec un enum de cartes on pourra dire qu'il utilse à pioché cette carte 
 		this.carte = (int) (Math.random() * ( 14 - 0 ));
 		
+	}
+	
+	public enum LesCartes {
+		Carré,
+		Rond,
+		Triangle
+
+	}
+
+	private static LesCartes randomCarte() {
+	    int pick = new Random().nextInt(LesCartes.values().length);
+	    return LesCartes.values()[pick];
 	}
 	
 	public static void main(String[] args) {
