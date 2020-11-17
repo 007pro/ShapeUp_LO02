@@ -2,7 +2,7 @@ package fr.shapeUp.joueur;
 
 import java.util.Random;
 
-
+import fr.shapeUp.partie.*;
 
 /**
  * La classe joueur qui va être la classe d'origine des classes joueurVirtuel et JoueurPhysique
@@ -46,17 +46,7 @@ public abstract class Joueur {
 		
 	}
 	
-	public enum LesCartes {
-		Carré,
-		Rond,
-		Triangle
-
-	}
-
-	private static LesCartes randomCarte() {
-	    int pick = new Random().nextInt(LesCartes.values().length);
-	    return LesCartes.values()[pick];
-	}
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
