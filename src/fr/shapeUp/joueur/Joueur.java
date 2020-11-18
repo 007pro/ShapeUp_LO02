@@ -5,10 +5,11 @@ import java.util.Random;
 import fr.shapeUp.partie.*;
 
 /**
- * La classe joueur qui va être la classe d'origine des classes joueurVirtuel et JoueurPhysique
- * Elle est défini en classe abstraite car on n'est pas sensé pouvoir l'instancier.
+ * La classe joueur qui va être la classe d'origine des classes joueurVirtuel et
+ * JoueurPhysique Elle est défini en classe abstraite car on n'est pas sensé
+ * pouvoir l'instancier.
  * 
- * @author Adrien Warnet, Vincent Diop 
+ * @author Adrien Warnet, Vincent Diop
  * @version 1.0
  * 
  */
@@ -18,40 +19,53 @@ public abstract class Joueur {
 	 * score, vas représenter le score du joueur
 	 */
 	private int score = 0;
-	
-	private Carte carteVictoire = new Carte();
-	
-	private int carte; //la carte qu'il à dans la main et qu'il vas jouer simuler en int pour l'instant
-	
+
+	/**
+	 * représente la carte victoire du joueur
+	 */
+	private Carte carteVictoire;
+
+	/**
+	 * représente la carte que le joueur vas jouer chaque tour
+	 */
+	private Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
+
+	/**
+	 * construteur de Joueur, attribut au joueur sa carte victoire
+	 */
 	public Joueur() {
 		this.score = 0;
-		this.carteVictoire = "carte victoire aléatoire"; 
-		this.carte = 0;
-		
+		this.carteVictoire = carteVictoire.randomCarte();
+		this.carteCourante = null;
+
 	}
-	
+
+	/**
+	 * Appelé quand le joueur va jouer son tour
+	 */
 	public abstract void jouerTour();
-	
-	public void poserCarte (String carte, int position) {
-		
-	}
-	
-	public void deplacerCarte(String carte, int newPosition) {
-		
-	}
-	
+
+	/**
+	 * Le joueur pioche une carte au hazard
+	 */
 	public void piocher() {
-		//et avec un enum de cartes on pourra dire qu'il utilse à pioché cette carte 
-		this.carte = (int) (Math.random() * ( 14 - 0 ));
+
+		this.carteCourante = carteCourante.randomCarte();
+
+	}
+
+	/**
+	 * Le joueur pose la carte qu'il vient de piocher
+	 * @param position l'endroit ou le joueur veut poser sa carte
+	 */
+	public void poserCarte(int position) {
+		
 		
 	}
-	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("xesh");
-		//faut push
+
+	public void deplacerCarte(Carte carteChoisie, int newPosition) {
 		
 	}
+
+	
 }
