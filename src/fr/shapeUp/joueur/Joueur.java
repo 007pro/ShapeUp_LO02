@@ -63,6 +63,11 @@ public abstract class Joueur {
 		
 	}
 
+	/**
+	 * Le joueur peut déplacer une carte qui est sur le plateau
+	 * @param carteChoisie La carte qu'il veut déplacer
+	 * @param newPosition La nouvelle position de la carte
+	 */
 	public void deplacerCarte(Carte carteChoisie, int newPosition) {
 		
 	}
