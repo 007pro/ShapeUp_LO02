@@ -83,12 +83,16 @@ public class Deck {
 		 return null;
 	 }
 	      
+	 
 	 	public static void main (String[] args){
 			Deck deck = new Deck();
 			
 		System.out.println(deck.getNombreDeCartes());
 		Carte main = deck.piocher();
-		
+		main.afficherCarte();
+		System.out.println(deck.getNombreDeCartes());
+		main = deck.piocher();
+		main.afficherCarte();
 
 		// Affichage à l'aide d'une boucle forEach
 		/*for(Carte elem: main)
