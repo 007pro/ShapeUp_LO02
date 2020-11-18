@@ -10,16 +10,24 @@ public class Plateau {
 		this.largeur = largeur;
 	}
 	
-	public void placerCarte(int ligne, int colonne, Carte carte) {
-		cases[ligne][colonne] = carte;
+	public boolean placerCarte(int ligne, int colonne, Carte carte) {
+		if(0 <= ligne && ligne < largeur && 0 <= colonne && colonne < hauteur ) {
+			if(cases[ligne][colonne] == null) {
+				cases[ligne][colonne] = carte;
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public Carte retirerCarte(int ligne, int colonne) {
-		if(cases[ligne][colonne] != null) {
-			Carte carteRetiree = new Carte();
-			carteRetiree = cases[ligne][colonne];
-			cases[ligne][colonne] = null;
-			return carteRetiree;
+		if(0 <= ligne && ligne < largeur && 0 <= colonne && colonne < hauteur ) {
+			if(cases[ligne][colonne] != null) {
+				Carte carteRetiree = new Carte();
+				carteRetiree = cases[ligne][colonne];
+				cases[ligne][colonne] = null;
+				return carteRetiree;
+			}
 		}
 		return null;
 	}
