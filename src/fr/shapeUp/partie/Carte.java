@@ -7,9 +7,10 @@ import java.util.Random;
 //Ceci est une carte !
 public class Carte {
 	
-	private boolean remplie;
+	private contenu contenant;
 	private formeCarte forme;
 	private couleurCarte couleur;
+	private boolean remplie;
 	
 	public enum formeCarte {
 		Carré,
@@ -17,29 +18,39 @@ public class Carte {
 		Triangle
 
 	}
-	
+	public enum contenu{
+		Plein,
+		Vide
+		
+	}
 	public enum couleurCarte {
 		Rouge,
 		Vert,
 		Bleu
 	}
 	
-	public Carte(formeCarte forme, couleurCarte couleur, boolean remplie){
+	public Carte(formeCarte forme, couleurCarte couleur, contenu contenant){
 		this.forme = forme;
 		this.couleur = couleur;
-		this.remplie = remplie;	
+		this.contenant = contenant;	
 	}
 	
 	public Carte(){
 		
 	}
+	//construteur avant les modif
+	/*public Carte(formeCarte forme, couleurCarte couleur, boolean remplie){
+		this.forme = forme;
+		this.couleur = couleur;
+		this.remplie = remplie;	
+	}*/
 
-	public Carte randomCarte() {
+	/*public Carte randomCarte() {
 		int pick = new Random().nextInt(couleurCarte.values().length);
 		int pick2 = new Random().nextInt(formeCarte.values().length);
 	    Carte carteRandom = new Carte(formeCarte.values()[pick2],couleurCarte.values()[pick],new Random().nextBoolean());
 	    return carteRandom;
-	}
+	}*/
 
 //	public static void main (String[] args){
 //		Carte carte1 = new Carte().randomCarte();

@@ -35,7 +35,7 @@ public abstract class Joueur {
 	 */
 	public Joueur() {
 		this.score = 0;
-		this.carteVictoire = carteVictoire.randomCarte();
+		//this.carteVictoire = carteVictoire.randomCarte();
 		this.carteCourante = null;
 
 	}
@@ -50,7 +50,7 @@ public abstract class Joueur {
 	 */
 	public void piocher() {
 
-		this.carteCourante = carteCourante.randomCarte();
+	//	this.carteCourante = carteCourante.randomCarte();
 
 	}
 
