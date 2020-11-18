@@ -38,6 +38,12 @@ public class Carte {
 	public Carte(){
 		
 	}
+	
+	public void afficherCarte() {
+		System.out.print (this.couleur + " ");
+		System.out.print (this.forme + " ");
+		System.out.println (this.contenant);
+	}
 	//construteur avant les modif
 	/*public Carte(formeCarte forme, couleurCarte couleur, boolean remplie){
 		this.forme = forme;

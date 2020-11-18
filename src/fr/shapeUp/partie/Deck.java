@@ -18,19 +18,18 @@ public class Deck {
 	
 	public Deck() {
 		   // Initialisation des cartes du paquet.
-	      this.cartes = new Carte[formeCarte.values().length * couleurCarte.values().length * contenu.values().length];
+	      this.cartes = new Carte[18];
 	      for(int i = 0; i < couleurCarte.values().length; i++)
 	      {
 	         for(int j = 0; j < formeCarte.values().length; j++)
 	         {
 	        	 for (int e = 0 ; e < contenu.values().length; e++) {
 	        		 
-	        		 this.cartes[i * formeCarte.values().length + j] = new Carte(formeCarte.values()[j], couleurCarte.values()[i],contenu.values()[e]);
+	        		 this.cartes[e + 2*j + 6*i] = new Carte(formeCarte.values()[j], couleurCarte.values()[i],contenu.values()[e]);
 	        	 }
 	           
 	         }
 	      }
-
 	      // Mélange le jeu de cartes.
 	         melanger();
 	}
@@ -77,13 +76,14 @@ public class Deck {
 			
 		System.out.println(deck.getNombreDeCartes());
 		Carte[] main = deck.piocher(5);
-		System.out.println(main);
+//		System.out.println(main);
 		// Affichage à l'aide d'une boucle forEach
-	       for(Carte elem: main)
-	       {
-	       	 System.out.println (elem);
-	       }
+		for(Carte elem: main)
+		{
+			elem.afficherCarte();
 		}
+		System.out.println(deck.getNombreDeCartes());
+	}
 
 
 }
