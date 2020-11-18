@@ -14,6 +14,7 @@ public class Deck {
 	private int nbrCartes = 18;
 	private Carte[] cartes;
 	private int NB_ITERATIONS = 4;
+	public Carte carteCourante;
 	
 	
 	public Deck() {
@@ -59,30 +60,44 @@ public class Deck {
 	      return this.cartes.length;
 	   }
 	 
-	 public Carte[] piocher(int n)
+	 public Carte[] piocher(int n) // problème!! dans l'affichage il manque une carte c'est bizarre mais osef on peut dégager cette methode en vrai
 	   {
 		
 	      if(n <= this.cartes.length)
 	      {
 	         Carte [] main = Arrays.copyOfRange(this.cartes, 0, n - 1);
-	         this.cartes = Arrays.copyOfRange(this.cartes, n, this.cartes.length - 1);
+	         this.cartes = Arrays.copyOfRange(this.cartes, n, this.cartes.length);
 	         return main;
 	      }
 	     return null;
 	   }
+	 
+	 public Carte piocher() {
+		 
+		 if (1<=this.cartes.length) {
+			Carte[] carte1= this.cartes ;
+			carteCourante = carte1[0];
+			this.cartes = Arrays.copyOfRange(this.cartes, 1, this.cartes.length);
+			return carteCourante;
+		 }
+		 return null;
+	 }
 	      
 	 	public static void main (String[] args){
 			Deck deck = new Deck();
 			
-		System.out.println(deck.getNombreDeCartes());
-		Carte[] main = deck.piocher(5);
-//		System.out.println(main);
+			System.out.println(deck.getNombreDeCartes());
+			
+			
+
 		// Affichage à l'aide d'une boucle forEach
-		for(Carte elem: main)
+		/*for(Carte elem: main)
 		{
 			elem.afficherCarte();
 		}
-		System.out.println(deck.getNombreDeCartes());
+		System.out.println(deck.getNombreDeCartes());*/
+		
+		
 	}
 
 
