@@ -24,13 +24,13 @@ public class Carte {
 		Bleu
 	}
 	
-	Carte(formeCarte forme, couleurCarte couleur, boolean remplie){
+	public Carte(formeCarte forme, couleurCarte couleur, boolean remplie){
 		this.forme = forme;
 		this.couleur = couleur;
 		this.remplie = remplie;	
 	}
 	
-	Carte(){
+	public Carte(){
 		
 	}
 
