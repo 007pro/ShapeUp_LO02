@@ -5,7 +5,11 @@ import fr.shapeUp.partie.Carte;
 
 public class Partie {
 	
-	public Deck deck = new Deck();
+	public Deck deck;
+	
+	Partie(){
+		this.deck = new Deck();
+	}
 
 
 }
