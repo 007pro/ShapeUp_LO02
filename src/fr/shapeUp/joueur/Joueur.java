@@ -19,8 +19,8 @@ public abstract class Joueur {
 	 */
 	private int score = 0;
 	
-	//private Carte carteVictoire = new carte();
-	private String carteVictoire ; // en attandant la création de la classe carte je fais un string pour simuler
+	private Carte carteVictoire = new Carte();
+	
 	private int carte; //la carte qu'il à dans la main et qu'il vas jouer simuler en int pour l'instant
 	
 	public Joueur() {
