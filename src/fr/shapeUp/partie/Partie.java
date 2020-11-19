@@ -1,6 +1,8 @@
 package fr.shapeUp.partie;
 
 import fr.shapeUp.partie.Deck;
+import fr.shapeUp.joueur.Joueur;
+import fr.shapeUp.joueur.JoueurPhysique;
 import fr.shapeUp.partie.Carte;
 
 public class Partie {
@@ -16,6 +18,7 @@ public class Partie {
 	}
 	
 	public void lancerPartie(){
+		Joueur joueur1 = new JoueurPhysique(this);
 		while(this.numTour != 5) {
 			nouveauTour();
 			int i = 0;
@@ -36,10 +39,10 @@ public class Partie {
 		System.out.println("Un nouveau tour est lancé");
 	}
 
-	public static Partie partie = new Partie(3,1);
+//	public static Partie partie = new Partie(3,1);
 	// Exemple de partie ou les joueurs piochent et posent
 	public static void main (String[] args){
-		//Partie partie = new Partie(3,1);
+		Partie partie = new Partie(3,1);
 		partie.lancerPartie();
 	}
 }

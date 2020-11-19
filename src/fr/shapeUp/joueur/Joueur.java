@@ -22,6 +22,7 @@ public abstract class Joueur {
 
 	
 	private Carte carteVictoire;
+	private Partie partie;
 
 	
 	private Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
@@ -31,9 +32,10 @@ public abstract class Joueur {
 	
 	
 	
-	public Joueur() {
+	public Joueur(Partie partie) {
 		this.score = 0;
-		this.carteVictoire = Partie.partie.deck.piocher();
+		this.partie = partie;
+		this.carteVictoire = partie.deck.piocher();
 		this.carteCourante = null;
 		this.carteVictoire.afficherCarte();
 	}

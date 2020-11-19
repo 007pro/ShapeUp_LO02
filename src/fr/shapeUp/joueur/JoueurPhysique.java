@@ -1,5 +1,7 @@
 package fr.shapeUp.joueur;
 
+import fr.shapeUp.partie.Partie;
+
 /**
  * La classe joueur physique va permettre a l'utilisateur de jouer une partie 
  * 
@@ -7,6 +9,15 @@ package fr.shapeUp.joueur;
  * @version 1.0
  *
  */
-public class JoueurPhysique {
+public class JoueurPhysique extends Joueur {
+
+	public JoueurPhysique(Partie partie) {
+		super(partie);
+	}
+
+	@Override
+	public void jouerTour() {
+		
+	}
 
 }
