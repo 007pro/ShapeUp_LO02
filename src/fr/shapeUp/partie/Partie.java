@@ -36,9 +36,10 @@ public class Partie {
 		System.out.println("Un nouveau tour est lancé");
 	}
 
+	public static Partie partie = new Partie(3,1);
 	// Exemple de partie ou les joueurs piochent et posent
 	public static void main (String[] args){
-		Partie partie = new Partie(3,1);
+		//Partie partie = new Partie(3,1);
 		partie.lancerPartie();
 	}
 }
