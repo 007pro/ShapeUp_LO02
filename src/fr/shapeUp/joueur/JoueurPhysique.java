@@ -25,7 +25,7 @@ public class JoueurPhysique extends Joueur {
 		int ligne = saisiUseur.nextInt();
 		System.out.println(ligne + "Quelle colonne ? ");
 		int colonne = saisiUseur.nextInt();
-		super.poserCarte(ligne, colonne);
+		super.poserCarte(ligne - 1, colonne - 1);
 		System.out.println("Déplacer une carte ? Y/N ");
 		String ouiOuNon = saisiUseur.next();
 		if(ouiOuNon == "Y" || ouiOuNon == "y" ) {
@@ -45,4 +45,5 @@ public class JoueurPhysique extends Joueur {
 
 	}
 
+	
 }
