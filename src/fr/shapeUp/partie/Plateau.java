@@ -42,6 +42,21 @@ public class Plateau {
 		return null;
 	}
 	
+	public void afficherPlateau(){
+		Carte carte;
+		System.out.println("Voici le plateau :");
+		System.out.print("\n\n");
+		for(int i = 0; i < this.hauteur ; i++) {
+			for(int j = 0; j < this.largeur; j++) {
+				carte = this.cases[j][i];
+				if(carte!=null) carte.afficherCarte();
+				else System.out.print("     Rien            ");
+			}
+			System.out.print("\n");
+		}
+		System.out.print("\n\n");
+	}
+	
 	public boolean rempli() {
 		if(this.casesLibres == 0) {
 			return true;

@@ -26,6 +26,7 @@ public class Partie {
 				System.out.println("Un joueur joue son tour");
 				//this.plateau.placerCarte(i, 0, this.deck.piocher());
 				joueur1.jouerTour();
+				this.plateau.afficherPlateau();
 				i++;
 			}
 		}
