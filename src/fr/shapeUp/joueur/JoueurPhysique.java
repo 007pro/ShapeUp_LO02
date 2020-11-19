@@ -23,7 +23,7 @@ public class JoueurPhysique extends Joueur {
 		super.piocher();
 		System.out.println("Poser la carte sur quelle ligne ? ");
 		int ligne = saisiUseur.nextInt();
-		System.out.println("Quelle colonne ? ");
+		System.out.println(ligne + "Quelle colonne ? ");
 		int colonne = saisiUseur.nextInt();
 		super.poserCarte(ligne, colonne);
 		System.out.println("Déplacer une carte ? Y/N ");
