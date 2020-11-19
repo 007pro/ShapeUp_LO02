@@ -1,7 +1,6 @@
 package fr.shapeUp.joueur;
 
 import java.util.Random;
-
 import fr.shapeUp.partie.*;
 import fr.shapeUp.partie.Partie.*;
 
@@ -21,6 +20,7 @@ public abstract class Joueur {
 	private Partie partie;
 	private Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
 	private boolean carteEnMain = false;
+	public boolean tourFini;
 
 	public Joueur(Partie partie) {
 		this.score = 0;
@@ -66,6 +66,14 @@ public abstract class Joueur {
 			System.out.println("il n'y a pas de carte ici");
 		}
 
+	}
+	
+	public void finTour() {
+		carteCourante = null;
+		carteEnMain = false;
+		tourFini = true;
+		System.out.println("Votre tour est terminé, au joueur suivant ! ");
+		
 	}
 
 }
