@@ -37,7 +37,7 @@ public class JoueurPhysique extends Joueur {
 			int newLigne = saisiUseur.nextInt();
 			System.out.println("Quelle colonne ? ");
 			int newColonne = saisiUseur.nextInt();
-			super.deplacerCarte(ligneCarteADeplacer, colonneCarteADeplacer, newLigne, newColonne);
+			super.deplacerCarte(ligneCarteADeplacer, colonneCarteADeplacer, newLigne - 1, newColonne - 1);
 		}
 		else {
 			super.finTour();

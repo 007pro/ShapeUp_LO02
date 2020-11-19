@@ -19,7 +19,7 @@ public class Plateau {
 	}
 	
 	public boolean placerCarte(int ligne, int colonne, Carte carte) {
-		if(0 <= ligne && ligne < largeur && 0 <= colonne && colonne < hauteur ) {
+		if(0 <= ligne && ligne < this.largeur && 0 <= colonne && colonne < this.hauteur ) {
 			if(this.cases[ligne][colonne] == null) {
 				this.cases[ligne][colonne] = carte;
 				this.casesLibres--;
