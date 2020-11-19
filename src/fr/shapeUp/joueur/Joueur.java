@@ -26,14 +26,16 @@ public abstract class Joueur {
 	
 	private Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
 	
+	private boolean carteEnMain = false ;
+	
 	
 	
 	
 	public Joueur() {
 		this.score = 0;
-		this.carteVictoire = ;
+		this.carteVictoire = Partie.partie.deck.piocher();
 		this.carteCourante = null;
-
+		this.carteVictoire.afficherCarte();
 	}
 	
 
@@ -42,7 +44,10 @@ public abstract class Joueur {
 	
 	public void piocher() {
 
-	//	this.carteCourante = carteCourante.randomCarte();
+	this.carteCourante = Partie.partie.deck.piocher() ;
+	this.carteCourante.afficherCarte();
+	carteEnMain
+	
 
 	}
 
