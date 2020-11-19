@@ -8,7 +8,7 @@ import fr.shapeUp.partie.Carte;
 public class Partie {
 	
 	public Deck deck;
-	private Plateau plateau;
+	public Plateau plateau;
 	private int numTour;
 	
 	Partie(int largeurP, int hauteurP){
