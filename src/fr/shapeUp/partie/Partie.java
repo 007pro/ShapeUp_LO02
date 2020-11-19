@@ -5,7 +5,7 @@ import fr.shapeUp.partie.Carte;
 
 public class Partie {
 	
-	private Deck deck;
+	public Deck deck;
 	private Plateau plateau;
 	private int numTour;
 	
