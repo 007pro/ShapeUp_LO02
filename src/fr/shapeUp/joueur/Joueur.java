@@ -2,8 +2,9 @@ package fr.shapeUp.joueur;
 
 import java.util.Random;
 
+
 import fr.shapeUp.partie.*;
-import fr.shapeUp.partie.Partie;
+import fr.shapeUp.partie.Partie.*;
 
 /**
  * La classe joueur qui va être la classe d'origine des classes joueurVirtuel et
@@ -30,7 +31,7 @@ public abstract class Joueur {
 	
 	public Joueur() {
 		this.score = 0;
-		this.carteVictoire = Partie.deck;
+		this.carteVictoire = ;
 		this.carteCourante = null;
 
 	}
