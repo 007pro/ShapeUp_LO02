@@ -45,10 +45,10 @@ public abstract class Joueur {
 
 	public void poserCarte(int ligne, int colonne) {
 		boolean cartePlacé = partie.plateau.placerCarte(ligne, colonne, this.carteCourante);
-		if (cartePlacé == true) { 
+		if (cartePlacé) { 
 			System.out.println("Vous avez posé votre carte sur la ligne n°" + ligne +"et sur la colonne n°" + colonne);
 		}
-		else {
+		else if(cartePlacé == false) {
 			System.out.println("il y a déja une carte ici");
 		}
 			

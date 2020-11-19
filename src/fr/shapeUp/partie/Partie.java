@@ -24,7 +24,8 @@ public class Partie {
 			int i = 0;
 			while(this.deck.getNombreDeCartes() != 0 && !this.plateau.rempli()) {
 				System.out.println("Un joueur joue son tour");
-				this.plateau.placerCarte(i, 0, this.deck.piocher());
+				//this.plateau.placerCarte(i, 0, this.deck.piocher());
+				joueur1.jouerTour();
 				i++;
 			}
 		}
@@ -35,7 +36,7 @@ public class Partie {
 		this.numTour++;
 		this.deck = new Deck();
 		this.plateau.resetPlateau();
-		deck.piocher();
+		//deck.piocher();
 		System.out.println("Un nouveau tour est lancé");
 	}
 
