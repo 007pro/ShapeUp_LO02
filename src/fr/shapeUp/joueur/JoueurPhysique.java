@@ -17,20 +17,22 @@ public class JoueurPhysique extends Joueur {
 	public JoueurPhysique(Partie partie) {
 		super(partie);
 	}
-
+	
 	@Override
 	public void jouerTour() {
 		super.piocher();
 		System.out.print("\n");
 		System.out.println("Poser la carte sur quelle colonne ? ");
 		int ligne = saisiUseur.nextInt();
-		System.out.println(ligne + "Quelle ligne ? ");
+		System.out.println("Quelle ligne ? ");
 		int colonne = saisiUseur.nextInt();
 		super.poserCarte(ligne - 1, colonne - 1);
 		System.out.print("\n");
-		System.out.println("Déplacer une carte ? Y/N ");
-		String ouiOuNon = saisiUseur.next();
-		if(ouiOuNon == "Y" || ouiOuNon == "y" ) {
+		System.out.println("Déplacer une carte ? 1=oui/2=non ");
+		/*String ouiOuNon = saisiUseur.next();
+		System.out.println(ouiOuNon);*/
+		int ouiOuNon = saisiUseur.nextInt();
+		if(ouiOuNon == 1) {
 			System.out.println("La carte est sur quelle colonne ? ");
 			int ligneCarteADeplacer = saisiUseur.nextInt();
 			System.out.println("La carte est sur quelle ligne ? ");
@@ -41,10 +43,10 @@ public class JoueurPhysique extends Joueur {
 			int newColonne = saisiUseur.nextInt();
 			super.deplacerCarte(ligneCarteADeplacer, colonneCarteADeplacer, newLigne - 1, newColonne - 1);
 		}
-		else {
+		else if (ouiOuNon == 2) {
 			super.finTour();
 		}
-
+		super.finTour();
 	}
 
 	

@@ -27,9 +27,12 @@ public abstract class Joueur {
 		this.partie = partie;
 		this.carteVictoire = partie.deck.piocher();
 		this.carteCourante = null;
-		this.carteVictoire.afficherCarte();
+		
 		System.out.print("\n");
 		System.out.println("Un joueur viens d'être ajouté à la partie");
+		System.out.print("Sa carte victoire est : ");
+		this.carteVictoire.afficherCarte();
+		System.out.print("\n");
 	}
 
 	public abstract void jouerTour();
@@ -46,12 +49,16 @@ public abstract class Joueur {
 
 	public void poserCarte(int ligne, int colonne) {
 		boolean cartePlacé = partie.plateau.placerCarte(ligne, colonne, this.carteCourante);
+		
 		if (cartePlacé == true) { 
-			System.out.println("Vous avez posé votre carte sur la ligne n°" + ligne+1 +"et sur la colonne n°" + colonne+1);
+			System.out.println("Vous avez posé votre carte sur la ligne " + ligne+1 +" et sur la colonne " + colonne+1);
+			
 		}
 		else if(cartePlacé == false) {
 			System.out.println("il y a déja une carte ici");
+			
 		}
+		
 			
 		
 	} 
