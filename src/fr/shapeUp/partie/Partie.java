@@ -10,7 +10,7 @@ public class Partie {
 	public Deck deck;
 	public Plateau plateau;
 	private int numTour;
-	private int nbJoueurs = 2;
+	//private int nbJoueurs = 2;
 	private Joueur[] joueurs;
 	
 	Partie(int largeurP, int hauteurP){
@@ -19,9 +19,9 @@ public class Partie {
 		this.numTour = 0;
 	}
 	
-	public void lancerPartie(){
+	public void lancerPartie(int nbJoueurs){
 		this.joueurs = new Joueur[nbJoueurs];
-		for(int i = 0; i < this.nbJoueurs; i++) {
+		for(int i = 0; i < nbJoueurs; i++) {
 			this.joueurs[i] = new JoueurPhysique(this);
 		}
 		while(this.numTour != 5) {
@@ -50,8 +50,8 @@ public class Partie {
 
 //	public static Partie partie = new Partie(3,1);
 	// Exemple de partie ou les joueurs piochent et posent
-	public static void main (String[] args){
+	/*public static void main (String[] args){
 		Partie partie = new Partie(3,1);
 		partie.lancerPartie();
-	}
+	}*/
 }
