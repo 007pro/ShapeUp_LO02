@@ -29,8 +29,7 @@ public class JoueurPhysique extends Joueur {
 		super.poserCarte(ligne - 1, colonne - 1);
 		System.out.print("\n");
 		System.out.println("Déplacer une carte ? 1=oui/2=non ");
-		/*String ouiOuNon = saisiUseur.next();
-		System.out.println(ouiOuNon);*/
+		
 		int ouiOuNon = saisiUseur.nextInt();
 		if(ouiOuNon == 1) {
 			System.out.println("La carte est sur quelle colonne ? ");
@@ -41,7 +40,7 @@ public class JoueurPhysique extends Joueur {
 			int newLigne = saisiUseur.nextInt();
 			System.out.println("Quelle ligne ? ");
 			int newColonne = saisiUseur.nextInt();
-			super.deplacerCarte(ligneCarteADeplacer, colonneCarteADeplacer, newLigne - 1, newColonne - 1);
+			super.deplacerCarte(ligneCarteADeplacer -1, colonneCarteADeplacer-1, newLigne - 1, newColonne - 1);
 		}
 		else if (ouiOuNon == 2) {
 			super.finTour();
