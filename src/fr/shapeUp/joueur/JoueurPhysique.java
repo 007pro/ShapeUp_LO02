@@ -27,9 +27,9 @@ public class JoueurPhysique extends Joueur {
 		System.out.print("\n");
 		do {
 		System.out.println("Poser la carte sur quelle colonne ? ");
-		int ligne = saisiUseur.nextInt();
+		int  colonne = saisiUseur.nextInt();
 		System.out.println("Quelle ligne ? ");
-		int colonne = saisiUseur.nextInt();
+		int ligne= saisiUseur.nextInt();
 		pose = super.poserCarte(ligne, colonne);
 		}
 		while(pose == false);
