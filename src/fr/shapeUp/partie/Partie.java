@@ -22,7 +22,7 @@ public class Partie {
 	public void lancerPartie(int nbJoueurs){
 		this.joueurs = new Joueur[nbJoueurs];
 		for(int i = 0; i < nbJoueurs; i++) {
-			this.joueurs[i] = new JoueurPhysique(this);
+			this.joueurs[i] = new JoueurPhysique(this,i);
 		}
 		while(this.numTour != 5) {
 			nouveauTour();

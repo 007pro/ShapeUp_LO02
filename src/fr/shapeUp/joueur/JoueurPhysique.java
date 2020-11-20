@@ -14,8 +14,8 @@ public class JoueurPhysique extends Joueur {
 	
 	Scanner saisiUseur = new Scanner(System.in);
 
-	public JoueurPhysique(Partie partie) {
-		super(partie);
+	public JoueurPhysique(Partie partie,int numJoueur) {
+		super(partie,numJoueur);
 	}
 	
 	@Override

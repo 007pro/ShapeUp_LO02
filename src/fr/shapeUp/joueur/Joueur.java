@@ -22,14 +22,14 @@ public abstract class Joueur {
 	private boolean carteEnMain = false;
 	public boolean tourFini;
 
-	public Joueur(Partie partie) {
+	public Joueur(Partie partie, int numJoueur) {
 		this.score = 0;
 		this.partie = partie;
 		this.carteVictoire = partie.deck.piocher();
 		this.carteCourante = null;
 		
 		System.out.print("\n");
-		System.out.println("Un joueur viens d'être ajouté à la partie");
+		System.out.println("Le joueur" + (numJoueur+1) + " viens d'être ajouté à la partie");
 		System.out.print("Sa carte victoire est : ");
 		this.carteVictoire.afficherCarte();
 		System.out.print("\n");
@@ -83,5 +83,7 @@ public abstract class Joueur {
 		System.out.println("Votre tour est terminé, au joueur suivant ! ");
 		
 	}
+	
+	
 
 }
