@@ -47,33 +47,34 @@ public abstract class Joueur {
 
 	}
 
-	public void poserCarte(int ligne, int colonne) {
+	public boolean poserCarte(int ligne, int colonne) {
 		boolean cartePlacé = partie.plateau.placerCarte(ligne, colonne, this.carteCourante);
 		
 		if (cartePlacé == true) { 
 			System.out.println("Vous avez posé votre carte sur la ligne " + (ligne+1) +" et sur la colonne " + (colonne+1));
-			
+			return true;
 		}
-		else if(cartePlacé == false) {
+		else {
 			System.out.println("il y a déja une carte ici");
-			
+			return false;
 		}
 		
-			
 		
 	} 
 
-	public void deplacerCarte(int ligneCarteADeplacer, int colonneCarteADeplacer, int newLigne, int newColonne ) {
+	public boolean deplacerCarte(int ligneCarteADeplacer, int colonneCarteADeplacer, int newLigne, int newColonne ) {
 		System.out.println("vous allez déplacer une carte");
 		Carte carteRetiré = partie.plateau.retirerCarte(ligneCarteADeplacer, colonneCarteADeplacer);
 		
 		if (carteRetiré != null) {
 			poserCarte(newLigne, newColonne);
+			return true;
 		}
 		else {
 			System.out.println("il n'y a pas de carte ici");
+			return false;
 		}
-
+	
 	}
 	
 	public void finTour() {
