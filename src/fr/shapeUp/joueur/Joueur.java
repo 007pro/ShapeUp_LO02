@@ -15,11 +15,11 @@ import fr.shapeUp.partie.Partie.*;
  */
 public abstract class Joueur {
 
-	private int score = 0;
-	private Carte carteVictoire;
+	protected int score = 0;
+	protected Carte carteVictoire;
 	private Partie partie;
-	private Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
-	private boolean carteEnMain = false;
+	protected Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
+	protected boolean carteEnMain = false;
 	public boolean tourFini;
 
 	public Joueur(Partie partie, int numJoueur) {
@@ -84,6 +84,28 @@ public abstract class Joueur {
 		
 	}
 	
-	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public Carte getCarteVictoire() {
+		return carteVictoire;
+	}
+
+	public Carte getCarteCourante() {
+		return carteCourante;
+	}
+
+	public boolean isCarteEnMain() {
+		return carteEnMain;
+	}
+
+	public boolean isTourFini() {
+		return tourFini;
+	}
 
 }

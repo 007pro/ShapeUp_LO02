@@ -1,5 +1,6 @@
 package fr.shapeUp.joueur;
 
+import fr.shapeUp.partie.Carte;
 import fr.shapeUp.partie.Partie;
 import java.util.Scanner;
 
@@ -46,6 +47,30 @@ public class JoueurPhysique extends Joueur {
 			super.finTour();
 		}
 		super.finTour();
+	}
+	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public Carte getCarteVictoire() {
+		return carteVictoire;
+	}
+
+	public Carte getCarteCourante() {
+		return carteCourante;
+	}
+
+	public boolean isCarteEnMain() {
+		return carteEnMain;
+	}
+
+	public boolean isTourFini() {
+		return tourFini;
 	}
 
 	
