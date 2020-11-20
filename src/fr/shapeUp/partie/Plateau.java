@@ -1,6 +1,6 @@
 package fr.shapeUp.partie;
 
-public class Plateau {
+public class Plateau implements VComptage{
 	private int hauteur;
 	private int largeur;
 	private Carte[][] cases;
@@ -62,5 +62,9 @@ public class Plateau {
 			return true;
 		}
 		return false;
+	}
+	
+	public void accept(CVisitor visitor) {
+		visitor.visit(this);
 	}
 }

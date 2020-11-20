@@ -10,6 +10,8 @@ public class Partie {
 	public Deck deck;
 	public Plateau plateau;
 	private int numTour;
+	private int nbJoueurs = 2;
+	private Joueur[] joueurs;
 	
 	Partie(int largeurP, int hauteurP){
 		this.deck = new Deck();
@@ -18,18 +20,23 @@ public class Partie {
 	}
 	
 	public void lancerPartie(){
-		Joueur joueur1 = new JoueurPhysique(this);
+		this.joueurs = new Joueur[nbJoueurs];
+		for(int i = 0; i < this.nbJoueurs; i++) {
+			this.joueurs[i] = new JoueurPhysique(this);
+		}
 		while(this.numTour != 5) {
 			nouveauTour();
 			int i = 0;
 			while(this.deck.getNombreDeCartes() != 0 && !this.plateau.rempli()) {
-				System.out.println("Un joueur joue son tour");
+				System.out.println("Le joueur " + (i+1) +" joue son tour");
 				//this.plateau.placerCarte(i, 0, this.deck.piocher());
-				joueur1.jouerTour();
+				this.joueurs[i].jouerTour();
 				this.plateau.afficherPlateau();
-				i++;
+				i = (i + 1) % nbJoueurs;
 			}
 		}
+		System.out.println("Comptage des scores");
+		this.plateau.accept(new Comptage());
 		System.out.println("La partie se termine");
 	}
 	
