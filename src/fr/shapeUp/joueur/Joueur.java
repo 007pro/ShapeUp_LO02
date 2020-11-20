@@ -51,7 +51,7 @@ public abstract class Joueur {
 		boolean cartePlacé = partie.plateau.placerCarte(ligne, colonne, this.carteCourante);
 		
 		if (cartePlacé == true) { 
-			System.out.println("Vous avez posé votre carte sur la ligne " + ligne+1 +" et sur la colonne " + colonne+1);
+			System.out.println("Vous avez posé votre carte sur la ligne " + (ligne+1) +" et sur la colonne " + (colonne+1));
 			
 		}
 		else if(cartePlacé == false) {

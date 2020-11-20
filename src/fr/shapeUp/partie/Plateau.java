@@ -5,6 +5,7 @@ public class Plateau implements VComptage{
 	private int largeur;
 	private Carte[][] cases;
 	private int casesLibres;
+	private boolean premCarte = true;
 	
 	Plateau(int largeur, int hauteur){
 		this.hauteur = hauteur;
@@ -16,14 +17,30 @@ public class Plateau implements VComptage{
 	public void resetPlateau(){
 		this.cases = new Carte[this.largeur][this.hauteur];
 		this.casesLibres = this.hauteur*this.largeur;
+		this.premCarte = true;
 	}
 	
 	public boolean placerCarte(int ligne, int colonne, Carte carte) {
 		if(0 <= ligne && ligne < this.largeur && 0 <= colonne && colonne < this.hauteur ) {
 			if(this.cases[ligne][colonne] == null) {
-				this.cases[ligne][colonne] = carte;
-				this.casesLibres--;
-				return true;
+				int ligneMax;
+				int colonneMax;
+				int ligneMin;
+				int colonneMin;
+				if((ligne+1) == this.largeur) {ligneMax = ligne - 1;}
+				else {ligneMax = ligne;}
+				if((colonne+1) == this.hauteur) {colonneMax = colonne - 1;}
+				else {colonneMax = colonne;}
+				if(ligne == 0) {ligneMin = ligne + 1;}
+				else {ligneMin = ligne;}
+				if(colonne == 0) {colonneMin = colonne + 1;}
+				else {colonneMin = colonne;}
+				if(cases[ligneMin-1][colonne] != null || cases[ligne][colonneMin-1] != null || cases[ligneMax + 1][colonne] != null || cases[ligne][colonneMax + 1] != null || premCarte == true) {
+					this.cases[ligne][colonne] = carte;
+					this.casesLibres--;
+					this.premCarte = false;
+					return true;
+				}
 			}
 		}
 		return false;
