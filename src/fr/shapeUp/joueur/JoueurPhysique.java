@@ -27,11 +27,10 @@ public class JoueurPhysique extends Joueur {
 		super.piocher();
 		System.out.print("\n");
 		do {
-			System.out.println("Poser la carte sur quelle ligne ? "); // ligne et colonne sont inversé
-			setColonne(saisiUseur.nextInt());
-			System.out.println("Quelle colonne ? ");
-			setLigne(saisiUseur.nextInt());
-			pose = super.poserCarte(getLigne(), getColonne());
+			System.out.println("Poser la carte à quelle position? ");
+			String position = saisiUseur.nextLine();
+			setPosition(position);
+			pose = super.poserCarte(position);
 		} while (pose == false);
 		System.out.print("\n");
 		System.out.println("Déplacer une carte ? 1=oui/2=non ");
@@ -39,15 +38,11 @@ public class JoueurPhysique extends Joueur {
 		int ouiOuNon = saisiUseur.nextInt();
 		if (ouiOuNon == 1) {
 			do {
-				System.out.println("La carte est sur quelle ligne ? ");
-				int colonneCarteADeplacer = saisiUseur.nextInt();
-				System.out.println("La carte est sur quelle colonne ? ");
-				int ligneCarteADeplacer = saisiUseur.nextInt();
-				System.out.println("Poser la carte sur quelle ligne ? ");
-				int newColonne = saisiUseur.nextInt();
-				System.out.println("Quelle colonne ? ");
-				int newLigne = saisiUseur.nextInt();
-				deplace = super.deplacerCarte(ligneCarteADeplacer, colonneCarteADeplacer, newLigne, newColonne);
+				System.out.println("La carte est à quelle position ? ");
+				String positionCarteADeplacer = saisiUseur.nextLine();
+				System.out.println("Poser la carte à quelle position ? ");
+				String newPosition = saisiUseur.nextLine();
+				deplace = super.deplacerCarte(positionCarteADeplacer, newPosition);
 			} while (deplace == false);
 		} else {
 			super.finTour();

@@ -21,9 +21,8 @@ public abstract class Joueur {
 	protected Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
 	protected boolean carteEnMain = false;
 	protected boolean tourFini;
-	private int colonne;
-	private int ligne;
-
+	private String position;
+	
 	public Joueur(Partie partie, int numJoueur) {
 		this.score = 0;
 		this.partie = partie;
@@ -49,11 +48,11 @@ public abstract class Joueur {
 
 	}
 
-	public boolean poserCarte(int ligne, int colonne) {
-		boolean cartePlacé = partie.plateau.placerCarte(ligne-1, colonne-1, this.carteCourante);
+	public boolean poserCarte(String position) {
+		boolean cartePlacé = partie.plateau.placerCarte(position, this.carteCourante);
 		
 		if (cartePlacé == true) { 
-			System.out.println("Vous avez posé votre carte sur la ligne " + ligne +" et sur la colonne " + colonne);
+			System.out.println("Vous avez posé votre carte en " + position);
 			return true;
 		}
 		else if(cartePlacé == false) {
@@ -65,12 +64,12 @@ public abstract class Joueur {
 		
 	} 
 
-	public boolean deplacerCarte(int ligneCarteADeplacer, int colonneCarteADeplacer, int newLigne, int newColonne ) {
+	public boolean deplacerCarte(String positionCarteADeplacer, String nouvellePosition ) {
 		System.out.println("vous allez déplacer une carte");
-		Carte carteRetiré = partie.plateau.retirerCarte((ligneCarteADeplacer-1), (colonneCarteADeplacer-1));
+		Carte carteRetiré = partie.plateau.retirerCarte(positionCarteADeplacer);
 		
 		if (carteRetiré != null) {			
-			boolean carteHere = poserCarte(newLigne, newColonne);
+			boolean carteHere = poserCarte(nouvellePosition);
 			if(carteHere ==false) {
 				return false;
 			}
@@ -116,22 +115,14 @@ public abstract class Joueur {
 	public boolean isTourFini() {
 		return tourFini;
 	}
-	public int getColonne() {
-		return colonne;
+
+	public String getPosition() {
+		return position;
 	}
 
-	public void setColonne(int colonne) {
-		this.colonne = colonne;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
-	public int getLigne() {
-		return ligne;
-	}
-
-	public void setLigne(int ligne) {
-		this.ligne = ligne;
-	}
-
-	
 
 }

@@ -25,17 +25,17 @@ public class JoueurVirutel extends Joueur {
 	@Override
 	public void jouerTour() {
 
-		tourAutreJoueurFini = isTourFini();
-		if (tourAutreJoueurFini == true) {
-			System.out.println("Joueur Virtuel joue");
-			ligne = getLigne()+1;
-			
-			if (ligne <5) {ligne = ligne-2;}
-			
-			boolean pose = poserCarte(ligne, colonne);
-			
-
-		}
+//		tourAutreJoueurFini = isTourFini();
+//		if (tourAutreJoueurFini == true) {
+//			System.out.println("Joueur Virtuel joue");
+//			ligne = getLigne()+1;
+//			
+//			if (ligne <5) {ligne = ligne-2;}
+//			
+//			boolean pose = poserCarte(ligne, colonne);
+//			
+//
+//		}
 
 	}
 
