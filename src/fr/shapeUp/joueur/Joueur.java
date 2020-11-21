@@ -21,6 +21,8 @@ public abstract class Joueur {
 	protected Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
 	protected boolean carteEnMain = false;
 	protected boolean tourFini;
+	private int colonne;
+	private int ligne;
 
 	public Joueur(Partie partie, int numJoueur) {
 		this.score = 0;
@@ -114,5 +116,22 @@ public abstract class Joueur {
 	public boolean isTourFini() {
 		return tourFini;
 	}
+	public int getColonne() {
+		return colonne;
+	}
+
+	public void setColonne(int colonne) {
+		this.colonne = colonne;
+	}
+
+	public int getLigne() {
+		return ligne;
+	}
+
+	public void setLigne(int ligne) {
+		this.ligne = ligne;
+	}
+
+	
 
 }
