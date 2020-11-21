@@ -1,6 +1,9 @@
 package fr.shapeUp.partie;
 
 import fr.shapeUp.partie.Deck;
+import fr.shapeUp.partie.Carte.formeCarte;
+import fr.shapeUp.partie.plateau.Plateau;
+import fr.shapeUp.partie.plateau.Plateau.formePlateau;
 import fr.shapeUp.joueur.Joueur;
 import fr.shapeUp.joueur.JoueurPhysique;
 import fr.shapeUp.partie.Carte;
@@ -15,7 +18,7 @@ public class Partie {
 	
 	Partie(int largeurP, int hauteurP){
 		this.deck = new Deck();
-		this.plateau = new Plateau(largeurP, hauteurP);
+		this.plateau = new Plateau(formePlateau.values()[0]);
 		this.numTour = 0;
 	}
 	
