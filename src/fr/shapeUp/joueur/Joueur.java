@@ -20,7 +20,7 @@ public abstract class Joueur {
 	private Partie partie;
 	protected Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
 	protected boolean carteEnMain = false;
-	public boolean tourFini;
+	protected boolean tourFini;
 
 	public Joueur(Partie partie, int numJoueur) {
 		this.score = 0;
@@ -38,7 +38,7 @@ public abstract class Joueur {
 	public abstract void jouerTour();
 
 	public void piocher() {
-		
+		tourFini = false;
 		System.out.println("Carte Piochée");
 		this.carteCourante = partie.deck.piocher();
 		System.out.print("Votre carte est : ");

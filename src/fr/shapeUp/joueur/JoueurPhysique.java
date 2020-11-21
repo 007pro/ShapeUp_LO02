@@ -14,12 +14,15 @@ import java.util.Scanner;
 public class JoueurPhysique extends Joueur {
 	
 	Scanner saisiUseur = new Scanner(System.in);
-
+	private boolean pose ;
+	private boolean deplace;
+	
+	
+	
 	public JoueurPhysique(Partie partie,int numJoueur) {
 		super(partie,numJoueur);
 	}
-	private boolean pose ;
-	private boolean deplace;
+	
 	
 	@Override
 	public void jouerTour() {
@@ -51,7 +54,7 @@ public class JoueurPhysique extends Joueur {
 			}
 			while(deplace == false);
 		}
-		else if (ouiOuNon == 2) {
+		else {
 			super.finTour();
 		}
 		super.finTour();
