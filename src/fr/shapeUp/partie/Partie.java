@@ -18,7 +18,7 @@ public class Partie {
 	
 	Partie(int largeurP, int hauteurP){
 		this.deck = new Deck();
-		this.plateau = new Plateau(formePlateau.values()[0]);
+		this.plateau = new Plateau(formePlateau.values()[1]);
 		this.numTour = 0;
 	}
 	
