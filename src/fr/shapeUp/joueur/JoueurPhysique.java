@@ -36,6 +36,7 @@ public class JoueurPhysique extends Joueur {
 		System.out.println("Déplacer une carte ? 1=oui/2=non ");
 
 		int ouiOuNon = saisiUseur.nextInt();
+		saisiUseur.nextLine();
 		if (ouiOuNon == 1) {
 			do {
 				System.out.println("La carte est à quelle position ? ");
