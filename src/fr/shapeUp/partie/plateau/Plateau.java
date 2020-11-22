@@ -47,7 +47,7 @@ public class Plateau implements VComptage{
 	}
 	
 	public boolean placerCarte(String position, Carte carte) {
-		if(this.clesValides.contains(position)) {
+		if(this.clesValides.contains(position) && !this.cases.containsKey(position)) {
 			String auDessus = Character.toString(position.charAt(0) - 1) + position.charAt(1) ;
 			String enDessous = Character.toString(position.charAt(0) + 1) + position.charAt(1) ;
 			String aDroite = position.charAt(0) + Integer.toString(position.charAt(1) - 48 + 1) ;
