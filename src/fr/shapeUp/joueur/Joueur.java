@@ -25,15 +25,15 @@ public abstract class Joueur {
 	protected boolean tourFini;
 	private String position;
 	Scanner saisiUseur = new Scanner(System.in);
-	
+
 	public Joueur(Partie partie, int numJoueur) {
 		this.score = 0;
 		this.partie = partie;
 		this.carteVictoire = partie.deck.piocher();
 		this.carteCourante = null;
-		
+
 		System.out.print("\n");
-		System.out.println("Le joueur" + (numJoueur+1) + " viens d'être ajouté à la partie");
+		System.out.println("Le joueur" + (numJoueur + 1) + " viens d'être ajouté à la partie");
 		System.out.print("Sa carte victoire est : ");
 		this.carteVictoire.afficherCarte();
 		System.out.print("\n");
@@ -53,58 +53,55 @@ public abstract class Joueur {
 
 	public boolean poserCarte(String position) {
 		boolean cartePlacé = partie.plateau.placerCarte(position, this.carteCourante);
-		
-		if (cartePlacé == true) { 
+
+		if (cartePlacé == true) {
 			System.out.println("Vous avez posé votre carte en " + position);
 			return true;
-		}
-		else if(cartePlacé == false) {
+		} else if (cartePlacé == false) {
 			System.out.println("il y a déja une carte ici");
 			return false;
 		}
-		
-			return false;
-		
-	} 
 
-	public boolean deplacerCarte(String nouvellePosition ) {
-		
+		return false;
+
+	}
+
+	public void deplacerCarte() {
+
 		System.out.println("vous allez déplacer une carte");
 		Carte carteRetiré;
+		boolean carteHere;
 		do {
 			System.out.println("La carte est à quelle position ? ");
 			String positionCarteADeplacer = saisiUseur.nextLine();
 			carteRetiré = partie.plateau.retirerCarte(positionCarteADeplacer);
-		}
-		while(carteRetiré == null );
-		
-		
-		if (carteRetiré != null) {			
-			boolean carteHere = poserCarte(nouvellePosition);
-			if(carteHere ==false) {
-				return false;
+			if (carteRetiré == null) {
+				System.out.println("il n'y a pas de carte ici");
 			}
-			else {
-				return true;
-			}
-		}
-		else if (carteRetiré == null){
-			System.out.println("il n'y a pas de carte ici");
-			return false;
-		}
-	return false;
+		} while (carteRetiré == null);
+
+		do {
+			System.out.println("Poser la carte à quelle position ? ");
+			String newPosition = saisiUseur.nextLine();
+			carteHere = poserCarte(newPosition);
+		} while (carteHere == false);
+
+		/*
+		 * if (carteRetiré != null) { boolean carteHere = poserCarte(nouvellePosition);
+		 * if(carteHere ==false) { return false; } else { return true; } } else if
+		 * (carteRetiré == null){ System.out.println("il n'y a pas de carte ici");
+		 * return false; } return false;
+		 */
 	}
-	
-	
-	
+
 	public void finTour() {
 		carteCourante = null;
 		carteEnMain = false;
 		tourFini = true;
 		System.out.println("Votre tour est terminé, au joueur suivant ! ");
-		
+
 	}
-	
+
 	public int getScore() {
 		return score;
 	}
@@ -136,6 +133,5 @@ public abstract class Joueur {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-
 
 }

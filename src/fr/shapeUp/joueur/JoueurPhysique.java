@@ -16,7 +16,6 @@ public class JoueurPhysique extends Joueur {
 	Scanner saisiUseur = new Scanner(System.in);
 	private boolean pose;
 	private boolean deplace;
-	
 
 	public JoueurPhysique(Partie partie, int numJoueur) {
 		super(partie, numJoueur);
@@ -38,13 +37,16 @@ public class JoueurPhysique extends Joueur {
 		int ouiOuNon = saisiUseur.nextInt();
 		saisiUseur.nextLine();
 		if (ouiOuNon == 1) {
-			do {
-				System.out.println("La carte est à quelle position ? ");
-				String positionCarteADeplacer = saisiUseur.nextLine();
-				System.out.println("Poser la carte à quelle position ? ");
-				String newPosition = saisiUseur.nextLine();
-				deplace = super.deplacerCarte(positionCarteADeplacer, newPosition);
-			} while (deplace == false);
+			/*
+			 * do { /*System.out.println("La carte est à quelle position ? "); String
+			 * positionCarteADeplacer = saisiUseur.nextLine();
+			 * System.out.println("Poser la carte à quelle position ? "); String newPosition
+			 * = saisiUseur.nextLine(); deplace =
+			 * super.deplacerCarte(positionCarteADeplacer, newPosition); } while (deplace ==
+			 * false);
+			 */
+			super.deplacerCarte();
+
 		} else {
 			super.finTour();
 		}
@@ -75,5 +77,4 @@ public class JoueurPhysique extends Joueur {
 		return tourFini;
 	}
 
-	
 }
