@@ -1,6 +1,8 @@
 package fr.shapeUp.joueur;
 
 import java.util.Random;
+import java.util.Scanner;
+
 import fr.shapeUp.partie.*;
 import fr.shapeUp.partie.Partie.*;
 
@@ -22,6 +24,7 @@ public abstract class Joueur {
 	protected boolean carteEnMain = false;
 	protected boolean tourFini;
 	private String position;
+	Scanner saisiUseur = new Scanner(System.in);
 	
 	public Joueur(Partie partie, int numJoueur) {
 		this.score = 0;
@@ -64,9 +67,17 @@ public abstract class Joueur {
 		
 	} 
 
-	public boolean deplacerCarte(String positionCarteADeplacer, String nouvellePosition ) {
+	public boolean deplacerCarte(String nouvellePosition ) {
+		
 		System.out.println("vous allez déplacer une carte");
-		Carte carteRetiré = partie.plateau.retirerCarte(positionCarteADeplacer);
+		Carte carteRetiré;
+		do {
+			System.out.println("La carte est à quelle position ? ");
+			String positionCarteADeplacer = saisiUseur.nextLine();
+			carteRetiré = partie.plateau.retirerCarte(positionCarteADeplacer);
+		}
+		while(carteRetiré == null );
+		
 		
 		if (carteRetiré != null) {			
 			boolean carteHere = poserCarte(nouvellePosition);
@@ -83,6 +94,8 @@ public abstract class Joueur {
 		}
 	return false;
 	}
+	
+	
 	
 	public void finTour() {
 		carteCourante = null;
