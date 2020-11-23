@@ -85,4 +85,10 @@ public class Plateau implements VComptage{
 	public void accept(CVisitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public ArrayList<String> getClesValides() {
+		return clesValides;
+	}
+
+	
 }
