@@ -19,7 +19,7 @@ public abstract class Joueur {
 
 	protected int score = 0;
 	protected Carte carteVictoire;
-	private Partie partie;
+	protected Partie partie;
 	protected Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
 	protected boolean carteEnMain = false;
 	protected boolean tourFini;
