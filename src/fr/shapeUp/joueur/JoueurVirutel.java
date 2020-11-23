@@ -1,7 +1,11 @@
 package fr.shapeUp.joueur;
 
 import fr.shapeUp.partie.Partie;
+
+import java.util.List;
+import java.util.ArrayList;
 import fr.shapeUp.joueur.JoueurPhysique;
+import fr.shapeUp.partie.plateau.*;
 
 /**
  * La classe joueurVirtuel vas permettre à l'ordinateur de jouer contre un
@@ -13,30 +17,28 @@ import fr.shapeUp.joueur.JoueurPhysique;
 public class JoueurVirutel extends Joueur {
 
 	boolean tourAutreJoueurFini;
-	int ligne;
-	int colonne;
+	String position;
+	ArrayList<String> recupID = partie.plateau.getClesValides();
 
 	public JoueurVirutel(Partie partie, int numJoueur) {
 
 		super(partie, numJoueur);
 
 	}
+	
 
 	@Override
 	public void jouerTour() {
-
-//		tourAutreJoueurFini = isTourFini();
-//		if (tourAutreJoueurFini == true) {
-//			System.out.println("Joueur Virtuel joue");
-//			ligne = getLigne()+1;
-//			
-//			if (ligne <5) {ligne = ligne-2;}
-//			
-//			boolean pose = poserCarte(ligne, colonne);
-//			
-//
-//		}
+		
+		if(isTourFini()) {
+			super.piocher();
+			System.out.println("Joueur Virtuel joue");
+			position = getPosition();
+			
+		}
+		
+		
 
 	}
-
+	
 }
