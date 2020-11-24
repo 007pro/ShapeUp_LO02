@@ -14,6 +14,7 @@ import fr.shapeUp.partie.plateau.*;
  * @author Adrien Warnet, Vincent Diop
  * @version 1.0
  */
+
 public class JoueurVirutel extends Joueur {
 
 	boolean tourAutreJoueurFini;
@@ -21,9 +22,7 @@ public class JoueurVirutel extends Joueur {
 	ArrayList<String> recupID = partie.plateau.getClesValides();
 
 	public JoueurVirutel(Partie partie, int numJoueur) {
-
 		super(partie, numJoueur);
-
 	}
 	
 
@@ -34,11 +33,18 @@ public class JoueurVirutel extends Joueur {
 			super.piocher();
 			System.out.println("Joueur Virtuel joue");
 			position = getPosition();
-			
+			int i=0;
+			 boolean fonctionne;
+		     do {
+		    	 fonctionne = super.poserCarte(partie.plateau.getClesValides().get(i));
+		    	 i++;
+		     }
+		     while(fonctionne == false);
+		     System.out.println("carte poser en " + partie.plateau.getClesValides().get(i-1) );
+		     
+		     super.finTour();
 		}
 		
-		
-
 	}
 	
 }
