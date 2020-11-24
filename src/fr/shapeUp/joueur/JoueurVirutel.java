@@ -26,21 +26,34 @@ public class JoueurVirutel extends Joueur {
 		super(partie, numJoueur);
 	}
 	
+	public boolean poserCarte(String position) {
+		boolean cartePlacé = partie.plateau.placerCarte(position, this.carteCourante);
 
+		if (cartePlacé == true) {
+			System.out.print("La carte posé est " ); carteCourante.afficherCarte(); 
+			System.out.println("\nest elle est posé en "+ position);
+			return true;
+		} else if (cartePlacé == false) {
+			return false;
+		}
+
+		return false;
+
+	}
 	@Override
 	public void jouerTour() {
-		//TODO supprimer le text quand il cherche une carte
+		
 		int i=0;
 		boolean fonctionne;
 			super.piocher();
-			System.out.println("Joueur Virtuel joue");
+			System.out.println("\nJoueur Virtuel joue");
 			position = getPosition();
 		     do {
-		    	 fonctionne = super.poserCarte(partie.plateau.getClesValides().get(i));
+		    	 fonctionne = poserCarte(partie.plateau.getClesValides().get(i));
 		    	 i++;
 		     }
 		     while(fonctionne == false);
-		     System.out.println("carte poser en " + partie.plateau.getClesValides().get(i-1) );
+		     
 		     
 		     super.finTour();			
 	}
