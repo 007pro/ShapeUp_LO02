@@ -1,6 +1,7 @@
 package fr.shapeUp.partie.plateau;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class genererRectangle implements genererClesStrategy {
@@ -16,6 +17,7 @@ public class genererRectangle implements genererClesStrategy {
 				cles.add(ligneChar + Integer.toString(colonne));
 			}
 		}
+		Collections.sort(cles);
 		return cles;
 	}
 }

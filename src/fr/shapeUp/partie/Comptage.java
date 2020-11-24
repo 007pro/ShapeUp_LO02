@@ -4,7 +4,13 @@ import fr.shapeUp.partie.plateau.Plateau;
 
 public class Comptage implements CVisitor{
 	
-	public void visit(Plateau plateau) {
-		plateau.accept(this);
+	public void visitPlateau(Plateau plateau) {
+		System.out.println("je compte");
+		
+		
+		//Comptage couleurs
+		for(String cle : plateau.getClesValides()) {
+			
+		}
 	}
 }

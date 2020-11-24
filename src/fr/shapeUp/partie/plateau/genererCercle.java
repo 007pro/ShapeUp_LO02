@@ -1,6 +1,7 @@
 package fr.shapeUp.partie.plateau;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class genererCercle implements genererClesStrategy {
@@ -20,6 +21,7 @@ public class genererCercle implements genererClesStrategy {
 	                }           
 	        }
 		}
+		Collections.sort(cles);
 		return cles;
 	}
 }

@@ -83,12 +83,14 @@ public class Plateau implements VComptage{
 	}
 	
 	public void accept(CVisitor visitor) {
-		visitor.visit(this);
+		visitor.visitPlateau(this);
 	}
 	
 	public ArrayList<String> getClesValides() {
-		return clesValides;
+		return this.clesValides;
 	}
 
-	
+	public LinkedHashMap<String, Carte> getCases(){
+		return this.cases;
+	}
 }

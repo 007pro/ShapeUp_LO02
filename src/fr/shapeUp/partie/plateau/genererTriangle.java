@@ -1,6 +1,7 @@
 package fr.shapeUp.partie.plateau;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class genererTriangle implements genererClesStrategy {
@@ -20,6 +21,7 @@ public class genererTriangle implements genererClesStrategy {
 			i++;
 			j--;
 		}
+		Collections.sort(cles);
 		return cles;
 	}
 }

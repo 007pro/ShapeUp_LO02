@@ -43,9 +43,9 @@ public class Partie {
 				this.plateau.afficherPlateau();
 				i = (i + 1) % 3;
 			}
+			this.plateau.accept(new Comptage());
 		}
-		System.out.println("Comptage des scores");
-		this.plateau.accept(new Comptage());
+		System.out.println("Calcul des scores totaux");
 		System.out.println("La partie se termine");
 	}
 	
