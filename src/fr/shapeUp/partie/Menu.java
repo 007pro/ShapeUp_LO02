@@ -37,9 +37,9 @@ public class Menu {
 			System.out.println("Il ne peut y avoir que 3 joueurs max, il y aura donc 3 joueurs dans cette partie");
 			nbrJoueurPhysique = 3;
 		}
-		else {
-			System.out.println("pour l'instant il y doit forcément y avoir 3 joueur physiques");
-			nbrJoueurPhysique = 3;
+		if(nbrJoueurPhysique<1) {
+			nbrJoueurPhysique =1; 
+			System.out.println("Il doit y avoir au moins 1 joueurs");
 		}
 		partie.lancerPartie(nbrJoueurPhysique);
 		
