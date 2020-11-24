@@ -44,7 +44,7 @@ public class Comptage implements CVisitor{
 		
 		
 		// Par colonnes
-		for(char i = '0' ; i <= cleMaxInt - 48 ; i++) {
+		for(char i = '0' ; i <= cleMaxInt; i++) {
 			formeCarte formePrec = null;
 			couleurCarte couleurPrec = null;
 			contenu contenuPrec = null;
@@ -89,6 +89,55 @@ public class Comptage implements CVisitor{
 			}
 		}
 		
+		
+		// Par lignes
+				for(char j = 'A' ; j <= cleMaxChar; j++) {
+					formeCarte formePrec = null;
+					couleurCarte couleurPrec = null;
+					contenu contenuPrec = null;
+					int idxForme = 1;
+					int idxCouleur = 1;
+					int idxContenu = 1;
+					for(char i = '0' ; i <= cleMaxInt ; i++) {
+						String cle = j + Character.toString(i);
+						if(cases.containsKey(cle)) {
+							Carte carte = cases.get(cle);
+							if(carte.getForme() == formePrec) {
+								idxForme++;
+							}else {
+								if(idxForme >= 2) {
+									scoreFormes.put(formePrec, scoreFormes.get(formePrec) + idxForme - 1);
+								}
+								idxForme = 1;
+							}
+							
+							if(carte.getCouleur() == couleurPrec) {
+								idxCouleur++;
+							}else {
+								if(idxCouleur >= 3) {
+									scoreCouleurs.put(couleurPrec, scoreCouleurs.get(couleurPrec) + idxForme + 1);
+								}
+								idxCouleur = 1;
+							}
+							
+							if(carte.getContenu() == contenuPrec) {
+								idxContenu++;
+							}else {
+								if(idxContenu >= 3) {
+									scoreContenus.put(contenuPrec, scoreContenus.get(contenuPrec) + idxForme);
+								}
+								idxContenu = 1;
+							}
+							
+							formePrec = carte.getForme();
+							couleurPrec = carte.getCouleur();
+							contenuPrec = carte.getContenu();
+						}
+					}
+				}
+	System.out.println(scoreFormes);
+	System.out.println(scoreCouleurs);
+	System.out.println(scoreContenus);
 	}
 }
 
