@@ -61,11 +61,12 @@ public class JoueurPhysique extends Joueur {
 			 * false);
 			 */
 			super.deplacerCarte();
+			super.finTour();
 
 		} else {
 			super.finTour();
 		}
-		super.finTour();
+		
 	}
 
 	public int getScore() {
