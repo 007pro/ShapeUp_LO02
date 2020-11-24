@@ -10,14 +10,13 @@ import fr.shapeUp.partie.plateau.Plateau;
 public class Comptage implements CVisitor{
 	
 	private HashMap<formeCarte, Integer> scoreFormes = new HashMap<formeCarte, Integer>();
-	private HashMap<contenu, Integer> scoreContenu = new HashMap<contenu, Integer>();
-	private HashMap<couleurCarte, Integer> scoreCouleur = new HashMap<couleurCarte, Integer>();
+	private HashMap<contenu, Integer> scoreContenus = new HashMap<contenu, Integer>();
+	private HashMap<couleurCarte, Integer> scoreCouleurs = new HashMap<couleurCarte, Integer>();
 	
 	public void visitPlateau(Plateau plateau) {
 		System.out.println("je compte");
 		
 		
-		//Comptage couleurs
 		LinkedHashMap<String, Carte> cases = plateau.getCases();
 		char cleMaxChar = 'A';
 		char cleMaxInt = '0';
@@ -29,14 +28,26 @@ public class Comptage implements CVisitor{
 				cleMaxInt = cle.charAt(1);
 			}
 		}
+		
+		
+		
+		for(int i = 0; i < couleurCarte.values().length; i++) {
+			scoreCouleurs.put(couleurCarte.values()[i], 0);
+		}
+		for(int i = 0; i < formeCarte.values().length; i++) {
+			scoreFormes.put(formeCarte.values()[i], 0);
+		}
+		for(int i = 0; i < contenu.values().length; i++) {
+			scoreContenus.put(contenu.values()[i], 0);
+		}
+		
+		
+		
 		// Par colonnes
 		for(char i = '0' ; i <= cleMaxInt - 48 ; i++) {
 			formeCarte formePrec = null;
 			couleurCarte couleurPrec = null;
 			contenu contenuPrec = null;
-			ArrayList<Integer> combosForme = new ArrayList<Integer>();
-			ArrayList<Integer> combosCouleur = new ArrayList<Integer>();
-			ArrayList<Integer> combosContenu = new ArrayList<Integer>();
 			int idxForme = 1;
 			int idxCouleur = 1;
 			int idxContenu = 1;
@@ -47,21 +58,27 @@ public class Comptage implements CVisitor{
 					if(carte.getForme() == formePrec) {
 						idxForme++;
 					}else {
-						combosForme.add(idxForme);
+						if(idxForme >= 2) {
+							scoreFormes.put(formePrec, scoreFormes.get(formePrec) + idxForme - 1);
+						}
 						idxForme = 1;
 					}
 					
 					if(carte.getCouleur() == couleurPrec) {
 						idxCouleur++;
 					}else {
-						combosCouleur.add(idxCouleur);
+						if(idxCouleur >= 3) {
+							scoreCouleurs.put(couleurPrec, scoreCouleurs.get(couleurPrec) + idxForme + 1);
+						}
 						idxCouleur = 1;
 					}
 					
 					if(carte.getContenu() == contenuPrec) {
 						idxContenu++;
 					}else {
-						combosContenu.add(idxContenu);
+						if(idxContenu >= 3) {
+							scoreContenus.put(contenuPrec, scoreContenus.get(contenuPrec) + idxForme);
+						}
 						idxContenu = 1;
 					}
 					
