@@ -1,5 +1,6 @@
 package fr.shapeUp.joueur;
 
+import fr.shapeUp.partie.Comptage;
 import fr.shapeUp.partie.Partie;
 
 import java.util.List;
@@ -28,13 +29,12 @@ public class JoueurVirutel extends Joueur {
 
 	@Override
 	public void jouerTour() {
-		
-		if(isTourFini()) {
+		//TODO supprimer le text quand il cherche une carte
+		int i=0;
+		boolean fonctionne;
 			super.piocher();
 			System.out.println("Joueur Virtuel joue");
 			position = getPosition();
-			int i=0;
-			 boolean fonctionne;
 		     do {
 		    	 fonctionne = super.poserCarte(partie.plateau.getClesValides().get(i));
 		    	 i++;
@@ -42,9 +42,6 @@ public class JoueurVirutel extends Joueur {
 		     while(fonctionne == false);
 		     System.out.println("carte poser en " + partie.plateau.getClesValides().get(i-1) );
 		     
-		     super.finTour();
-		}
-		
+		     super.finTour();			
 	}
-	
 }
