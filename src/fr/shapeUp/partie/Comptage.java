@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import fr.shapeUp.joueur.Joueur;
 import fr.shapeUp.partie.Carte.*;
 import fr.shapeUp.partie.plateau.Plateau;
 
@@ -12,6 +13,11 @@ public class Comptage implements CVisitor{
 	private HashMap<formeCarte, Integer> scoreFormes = new HashMap<formeCarte, Integer>();
 	private HashMap<contenu, Integer> scoreContenus = new HashMap<contenu, Integer>();
 	private HashMap<couleurCarte, Integer> scoreCouleurs = new HashMap<couleurCarte, Integer>();
+	private Partie partie;
+	
+	Comptage(Partie partie){
+		this.partie = partie;
+	}
 	
 	public void visitPlateau(Plateau plateau) {
 		System.out.println("je compte");
@@ -157,6 +163,14 @@ public class Comptage implements CVisitor{
 	System.out.println(scoreFormes);
 	System.out.println(scoreCouleurs);
 	System.out.println(scoreContenus);
+	
+	for(Joueur joueur : partie.getJoueurs()) {
+		joueur.setScore(joueur.getScore() + scoreFormes.get(joueur.getCarteVictoire().getForme()));
+		joueur.setScore(joueur.getScore() + scoreCouleurs.get(joueur.getCarteVictoire().getCouleur()));
+		joueur.setScore(joueur.getScore() + scoreContenus.get(joueur.getCarteVictoire().getContenu()));
+		System.out.println("Score du joueur " + joueur.getScore());
+	}
+	
 	}
 	
 }

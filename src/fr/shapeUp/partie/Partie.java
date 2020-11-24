@@ -43,7 +43,7 @@ public class Partie {
 				this.plateau.afficherPlateau();
 				i = (i + 1) % 3;
 			}
-			this.plateau.accept(new Comptage());
+			this.plateau.accept(new Comptage(this));
 		}
 		System.out.println("Calcul des scores totaux");
 		System.out.println("La partie se termine");
@@ -57,6 +57,9 @@ public class Partie {
 		System.out.println("Un nouveau tour est lancé");
 	}
 
+	public Joueur[] getJoueurs() {
+		return this.joueurs;
+	}
 //	public static Partie partie = new Partie(3,1);
 	// Exemple de partie ou les joueurs piochent et posent
 	/*public static void main (String[] args){
