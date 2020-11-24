@@ -139,5 +139,6 @@ public class Comptage implements CVisitor{
 	System.out.println(scoreCouleurs);
 	System.out.println(scoreContenus);
 	}
+	
 }
 
