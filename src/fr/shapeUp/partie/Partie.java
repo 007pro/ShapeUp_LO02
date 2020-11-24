@@ -6,6 +6,7 @@ import fr.shapeUp.partie.plateau.Plateau;
 import fr.shapeUp.partie.plateau.Plateau.formePlateau;
 import fr.shapeUp.joueur.Joueur;
 import fr.shapeUp.joueur.JoueurPhysique;
+import fr.shapeUp.joueur.JoueurVirutel;
 import fr.shapeUp.partie.Carte;
 
 public class Partie {
@@ -23,19 +24,24 @@ public class Partie {
 	}
 	
 	public void lancerPartie(int nbJoueurs){
-		this.joueurs = new Joueur[nbJoueurs];
-		for(int i = 0; i < nbJoueurs; i++) {
+		this.joueurs = new Joueur[3]; 
+		
+		for(int i = 0 ; i < nbJoueurs; i++) {
 			this.joueurs[i] = new JoueurPhysique(this,i);
+			System.out.println("physique" + i);
+		}
+		for (int i = nbJoueurs;i<3;i++) {
+			this.joueurs[i] = new JoueurVirutel(this,i);
+			System.out.println("virtuel" + i);
 		}
 		while(this.numTour != 5) {
 			nouveauTour();
 			int i = 0;
 			while(this.deck.getNombreDeCartes() != 0 && !this.plateau.rempli()) {
 				System.out.println("Le joueur " + (i+1) +" joue son tour");
-				//this.plateau.placerCarte(i, 0, this.deck.piocher());
 				this.joueurs[i].jouerTour();
 				this.plateau.afficherPlateau();
-				i = (i + 1) % nbJoueurs;
+				i = (i + 1) % 3;
 			}
 		}
 		System.out.println("Comptage des scores");
