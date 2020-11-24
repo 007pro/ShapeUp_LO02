@@ -68,7 +68,7 @@ public class Comptage implements CVisitor{
 						idxCouleur++;
 					}else {
 						if(idxCouleur >= 3) {
-							scoreCouleurs.put(couleurPrec, scoreCouleurs.get(couleurPrec) + idxForme + 1);
+							scoreCouleurs.put(couleurPrec, scoreCouleurs.get(couleurPrec) + idxCouleur + 1);
 						}
 						idxCouleur = 1;
 					}
@@ -77,7 +77,7 @@ public class Comptage implements CVisitor{
 						idxContenu++;
 					}else {
 						if(idxContenu >= 3) {
-							scoreContenus.put(contenuPrec, scoreContenus.get(contenuPrec) + idxForme);
+							scoreContenus.put(contenuPrec, scoreContenus.get(contenuPrec) + idxContenu);
 						}
 						idxContenu = 1;
 					}
@@ -86,6 +86,16 @@ public class Comptage implements CVisitor{
 					couleurPrec = carte.getCouleur();
 					contenuPrec = carte.getContenu();
 				}
+				
+			}
+			if(idxForme >= 2) {
+				scoreFormes.put(formePrec, scoreFormes.get(formePrec) + idxForme - 1);
+			}
+			if(idxCouleur >= 3) {
+				scoreCouleurs.put(couleurPrec, scoreCouleurs.get(couleurPrec) + idxCouleur + 1);
+			}
+			if(idxContenu >= 3) {
+				scoreContenus.put(contenuPrec, scoreContenus.get(contenuPrec) + idxContenu);
 			}
 		}
 		
@@ -115,7 +125,7 @@ public class Comptage implements CVisitor{
 								idxCouleur++;
 							}else {
 								if(idxCouleur >= 3) {
-									scoreCouleurs.put(couleurPrec, scoreCouleurs.get(couleurPrec) + idxForme + 1);
+									scoreCouleurs.put(couleurPrec, scoreCouleurs.get(couleurPrec) + idxCouleur + 1);
 								}
 								idxCouleur = 1;
 							}
@@ -124,7 +134,7 @@ public class Comptage implements CVisitor{
 								idxContenu++;
 							}else {
 								if(idxContenu >= 3) {
-									scoreContenus.put(contenuPrec, scoreContenus.get(contenuPrec) + idxForme);
+									scoreContenus.put(contenuPrec, scoreContenus.get(contenuPrec) + idxContenu);
 								}
 								idxContenu = 1;
 							}
@@ -133,6 +143,15 @@ public class Comptage implements CVisitor{
 							couleurPrec = carte.getCouleur();
 							contenuPrec = carte.getContenu();
 						}
+					}
+					if(idxForme >= 2) {
+						scoreFormes.put(formePrec, scoreFormes.get(formePrec) + idxForme - 1);
+					}
+					if(idxCouleur >= 3) {
+						scoreCouleurs.put(couleurPrec, scoreCouleurs.get(couleurPrec) + idxCouleur + 1);
+					}
+					if(idxContenu >= 3) {
+						scoreContenus.put(contenuPrec, scoreContenus.get(contenuPrec) + idxContenu);
 					}
 				}
 	System.out.println(scoreFormes);
