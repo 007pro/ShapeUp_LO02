@@ -44,6 +44,16 @@ public class Carte {
 		System.out.print (this.forme + " ");
 		System.out.print (this.contenant + "       ");
 	}
+	
+	public formeCarte getForme() {
+		return this.forme;
+	}
+	public contenu getContenu() {
+		return this.contenant;
+	}
+	public couleurCarte getCouleur() {
+		return this.couleur;
+	}
 	//construteur avant les modif
 	/*public Carte(formeCarte forme, couleurCarte couleur, boolean remplie){
 		this.forme = forme;
