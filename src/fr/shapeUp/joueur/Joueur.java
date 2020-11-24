@@ -51,20 +51,8 @@ public abstract class Joueur {
 
 	}
 
-	public boolean poserCarte(String position) {
-		boolean cartePlacé = partie.plateau.placerCarte(position, this.carteCourante);
-
-		if (cartePlacé == true) {
-			System.out.println("Vous avez posé votre carte en " + position);
-			return true;
-		} else if (cartePlacé == false) {
-			System.out.println("il y a déja une carte ici");
-			return false;
-		}
-
-		return false;
-
-	}
+	
+	public abstract boolean poserCarte(String position);
 
 	public void deplacerCarte() {
 

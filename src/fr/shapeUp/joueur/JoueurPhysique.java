@@ -20,6 +20,21 @@ public class JoueurPhysique extends Joueur {
 	public JoueurPhysique(Partie partie, int numJoueur) {
 		super(partie, numJoueur);
 	}
+	
+	public boolean poserCarte(String position) {
+		boolean cartePlacé = partie.plateau.placerCarte(position, this.carteCourante);
+
+		if (cartePlacé == true) {
+			System.out.println("Vous avez posé votre carte en " + position);
+			return true;
+		} else if (cartePlacé == false) {
+			System.out.println("il y a déja une carte ici");
+			return false;
+		}
+
+		return false;
+
+	}
 
 	@Override
 	public void jouerTour() {
@@ -29,7 +44,7 @@ public class JoueurPhysique extends Joueur {
 			System.out.println("Poser la carte à quelle position? ");
 			String position = saisiUseur.nextLine();
 			setPosition(position);
-			pose = super.poserCarte(position);
+			pose = poserCarte(position);
 		} while (pose == false);
 		System.out.print("\n");
 		System.out.println("Déplacer une carte ? 1=oui/2=non ");
