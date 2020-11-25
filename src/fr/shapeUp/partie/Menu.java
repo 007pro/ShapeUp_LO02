@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 import fr.shapeUp.partie.*;
 import fr.shapeUp.partie.Partie;
+import fr.shapeUp.partie.plateau.Plateau;
+import fr.shapeUp.partie.plateau.Plateau.formePlateau;
+import fr.shapeUp.partie.plateau.genererCercle;
+import fr.shapeUp.partie.plateau.genererRectangle;
+import fr.shapeUp.partie.plateau.genererTriangle;
 
 public class Menu {
 
@@ -22,13 +27,22 @@ public class Menu {
 
 		System.out.println("Quel plateau souhaité vous avoir ? 1 = rectangle, 2 = disque, 3 = triangle ");
 		int typePlateau = saisiUseur.nextInt();
+		Partie partie;
 		if (typePlateau == 1) {
-			ligne = 3;
-			colonne = 5;
-		} else {
-			System.out.println("Vous avez le plateau rectangle par defaut");
+			partie = new Partie(formePlateau.rectangle);
+			System.out.println("Le plateau est un rectangle");
 		}
-		Partie partie = new Partie(colonne, ligne);
+		else if (typePlateau == 2) {
+			partie = new Partie(formePlateau.cercle);
+			System.out.println("Le plateau est un cercle");
+		}
+		else {
+			partie = new Partie(formePlateau.triangle);
+			System.out.println("Le plateau est un triangle");
+		}
+		
+			
+		
 		partie.plateau.afficherPlateau();
 		System.out.println("Combien de Joueur ? 1 Joueur min et 3 Joueur max ");
 		int nbrJoueurPhysique = saisiUseur.nextInt();
