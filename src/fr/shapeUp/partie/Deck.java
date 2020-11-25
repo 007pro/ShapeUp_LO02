@@ -9,6 +9,11 @@ import fr.shapeUp.partie.Carte.contenu;
 import fr.shapeUp.partie.Carte.couleurCarte;
 import fr.shapeUp.partie.Carte.formeCarte;
 
+/**
+ * Constitution du deck de plusieurs de carte
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
 public class Deck {
 	
 	private int nbrCartes = 18;
@@ -17,6 +22,9 @@ public class Deck {
 	public Carte carteCourante;
 	
 	
+	/**
+	 * Constructeur de la classe
+	 */
 	public Deck() {
 		   // Initialisation des cartes du paquet.
 	      this.cartes = new Carte[18];
@@ -35,7 +43,10 @@ public class Deck {
 	         melanger();
 	}
 	
-	 private void melanger()
+	 /**
+	 * Mélange le deck
+	 */
+	private void melanger()
 	   {
 	      Random r = new Random();
 	      for(int i = 0; i < NB_ITERATIONS; i++)
@@ -47,7 +58,12 @@ public class Deck {
 	      }
 	   }
 	 
-	 private void echanger(int i, int j)
+	 /**
+	  * Permet d'echanger les carte de place utile pour mélanger
+	 * @param i
+	 * @param j
+	 */
+	private void echanger(int i, int j)
 	   {
 	      Carte temp;
 	      temp = this.cartes[i];
@@ -55,12 +71,20 @@ public class Deck {
 	      this.cartes[j] = temp;
 	   }
 	 
-	 public int getNombreDeCartes()
+	 /**
+	 * @return le nombre de carte
+	 */
+	public int getNombreDeCartes()
 	   {
 	      return this.cartes.length;
 	   }
 	 
-	 public Carte[] piocher(int n) // problème!! dans l'affichage il manque une carte c'est bizarre mais osef on peut dégager cette methode en vrai
+	 /**
+	 * Piocher un nombre n de carte
+	 * @param n nombre de carte
+	 * @return la/les Carte
+	 */
+	public Carte[] piocher(int n) // problème!! dans l'affichage il manque une carte c'est bizarre mais osef on peut dégager cette methode en vrai
 	   {
 		
 	      if(n <= this.cartes.length)
@@ -72,7 +96,11 @@ public class Deck {
 	     return null;
 	   }
 	 
-	 public Carte piocher() {
+	 /**
+	 * Permet de piocher 1 carte 
+	 * @return La carte
+	 */
+	public Carte piocher() {
 		 
 		 if (1<=this.cartes.length) {
 			Carte[] carte1= this.cartes ;

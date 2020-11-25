@@ -10,12 +10,21 @@ import fr.shapeUp.partie.plateau.genererCercle;
 import fr.shapeUp.partie.plateau.genererRectangle;
 import fr.shapeUp.partie.plateau.genererTriangle;
 
+/**
+ * Classe principale, oriente le choix du type de partie, et s'occupe du déroulement
+ * @author Adrien Warnet, Vincent Diop
+ * @version 1.0
+ */
 public class Menu {
 
 	Scanner saisiUseur = new Scanner(System.in);
 	private int ligne = 3;
 	private int colonne = 5;
 
+	
+	/**
+	 * Construteur
+	 */
 	Menu() {
 		System.out.println("Bonjour Bienvenue dans notre jeu Shape up!");
 		System.out.println("@auteur Adrien Warnet, Vicent Diop");
@@ -23,6 +32,9 @@ public class Menu {
 
 	}
 
+	/**
+	 * Choix du plateau, nombre de joueur physique 
+	 */
 	public void nbrJoueurTypePlateau() {
 
 		System.out.println("Quel plateau souhaité vous avoir ? 1 = rectangle, 2 = disque, 3 = triangle ");
@@ -58,6 +70,9 @@ public class Menu {
 
 	}
 
+	/**
+	 * main 
+	 */
 	public static void main(String[] args) {
 		Scanner saisiUser = new Scanner(System.in);
 		Menu partie = new Menu();

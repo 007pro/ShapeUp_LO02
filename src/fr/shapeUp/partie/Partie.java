@@ -9,6 +9,11 @@ import fr.shapeUp.joueur.JoueurPhysique;
 import fr.shapeUp.joueur.JoueurVirutel;
 import fr.shapeUp.partie.Carte;
 
+/**
+ * Classe permet le bon déroulement d'une partie
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
 public class Partie {
 	
 	public Deck deck;
@@ -17,12 +22,20 @@ public class Partie {
 	//private int nbJoueurs = 2;
 	private Joueur[] joueurs;
 	
+	/**
+	 * Constructeur de la classe
+	 * @param forme la forme du plateau
+	 */
 	Partie(formePlateau forme){
 		this.deck = new Deck();
 		this.plateau = new Plateau(forme);
 		this.numTour = 0;
 	}
 	
+	/**
+	 * Permet de lancer une partie, définie le nombre de joueur physique et joueur virtuel
+	 * @param nbJoueurs nombre de joueurs physique
+	 */
 	public void lancerPartie(int nbJoueurs){
 		this.joueurs = new Joueur[3]; 
 		
@@ -49,6 +62,9 @@ public class Partie {
 		System.out.println("La partie se termine");
 	}
 	
+	/**
+	 * Démarrer un nouveau tour
+	 */
 	private void nouveauTour(){
 		this.numTour++;
 		this.deck = new Deck();
@@ -57,6 +73,9 @@ public class Partie {
 		System.out.println("Un nouveau tour est lancé");
 	}
 
+	/**
+	 * @return les Joueurs
+	 */
 	public Joueur[] getJoueurs() {
 		return this.joueurs;
 	}
