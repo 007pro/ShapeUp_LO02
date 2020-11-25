@@ -5,7 +5,7 @@ import fr.shapeUp.partie.Partie;
 import java.util.Scanner;
 
 /**
- * La classe joueur physique va permettre a l'utilisateur de jouer une partie
+ * Classe fille de Joueur, permet à l'utilisateur de pouvoir jouer.
  * 
  * @author Adrien Warnet, Vincent Diop
  * @version 1.0
@@ -17,10 +17,19 @@ public class JoueurPhysique extends Joueur {
 	private boolean pose;
 	private boolean deplace;
 
+	/**
+	 * Constructeur de la classe
+	 * @param partie la partie encore
+	 * @param numJoueur le numéro du joueur
+	 */
 	public JoueurPhysique(Partie partie, int numJoueur) {
 		super(partie, numJoueur);
 	}
 
+	
+	/**
+	 * Déclaration de la méthode poserCarte, pour un JoueurPhysique
+	 */
 	public boolean poserCarte(String position) {
 		boolean cartePlacé = partie.plateau.placerCarte(position, this.carteCourante);
 
@@ -36,6 +45,9 @@ public class JoueurPhysique extends Joueur {
 
 	}
 
+	/**
+	 * Tour d'un JoueurPhysique
+	 */
 	@Override
 	public void jouerTour() {
 		super.piocher();
@@ -61,6 +73,7 @@ public class JoueurPhysique extends Joueur {
 
 	}
 
+	
 	public int getScore() {
 		return score;
 	}

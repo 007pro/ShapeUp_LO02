@@ -7,9 +7,7 @@ import fr.shapeUp.partie.*;
 import fr.shapeUp.partie.Partie.*;
 
 /**
- * La classe joueur qui va être la classe d'origine des classes joueurVirtuel et
- * JoueurPhysique Elle est défini en classe abstraite car on n'est pas sensé
- * pouvoir l'instancier.
+ * Classe mère de JoueurPhysique et JoueurVirutel, elle est abstraite pour qu'on ne puisse pas l'instancier.
  * 
  * @author Adrien Warnet, Vincent Diop
  * @version 1.0
@@ -26,6 +24,11 @@ public abstract class Joueur {
 	private String position;
 	Scanner saisiUseur = new Scanner(System.in);
 
+	/**
+	 * Constructeur de la classe
+	 * @param partie la partie encore
+	 * @param numJoueur le numéro du joueur
+	 */
 	public Joueur(Partie partie, int numJoueur) {
 		this.score = 0;
 		this.partie = partie;
@@ -39,8 +42,14 @@ public abstract class Joueur {
 		System.out.print("\n");
 	}
 
+	/**
+	 * Pour jouer un tour
+	 */
 	public abstract void jouerTour();
 
+	/**
+	 * Pour piocher une carte dans le deck
+	 */
 	public void piocher() {
 		tourFini = false;
 		System.out.println("Carte Piochée");
@@ -51,8 +60,16 @@ public abstract class Joueur {
 
 	}
 
+	/**
+	 * Pose la carte courante 
+	 * @param position pose la carte à cette position
+	 * @return
+	 */
 	public abstract boolean poserCarte(String position);
 
+	/**
+	 * Déplace une carte
+	 */
 	public void deplacerCarte() {
 
 		System.out.println("vous allez déplacer une carte");
@@ -75,6 +92,9 @@ public abstract class Joueur {
 
 	}
 
+	/**
+	 * Cloture le tour d'un joueur
+	 */
 	public void finTour() {
 		carteCourante = null;
 		carteEnMain = false;
@@ -83,34 +103,61 @@ public abstract class Joueur {
 
 	}
 
+	/**
+	 * @return score
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	
+	/**
+	 * Modifier score
+	 * @param score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
 
+	/**
+	 * @return carteVictoire
+	 */
 	public Carte getCarteVictoire() {
 		return carteVictoire;
 	}
 
+	/**
+	 * @return carteCourante
+	 */
 	public Carte getCarteCourante() {
 		return carteCourante;
 	}
 
+	/**
+	 * @return carteEnMain
+	 */
 	public boolean isCarteEnMain() {
 		return carteEnMain;
 	}
 
+	/**
+	 * @return tourFini
+	 */
 	public boolean isTourFini() {
 		return tourFini;
 	}
 
+	/**
+	 * @return position
+	 */
 	public String getPosition() {
 		return position;
 	}
 
+	/**
+	 * Modifier position
+	 * @param position
+	 */
 	public void setPosition(String position) {
 		this.position = position;
 	}

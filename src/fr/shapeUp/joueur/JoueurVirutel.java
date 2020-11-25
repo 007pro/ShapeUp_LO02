@@ -9,8 +9,7 @@ import fr.shapeUp.joueur.JoueurPhysique;
 import fr.shapeUp.partie.plateau.*;
 
 /**
- * La classe joueurVirtuel vas permettre à l'ordinateur de jouer contre un
- * joueurPhysique
+ * Classe fille de Joueur, joueu automatiquement.
  * 
  * @author Adrien Warnet, Vincent Diop
  * @version 1.0
