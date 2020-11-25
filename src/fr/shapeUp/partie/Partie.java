@@ -17,9 +17,9 @@ public class Partie {
 	//private int nbJoueurs = 2;
 	private Joueur[] joueurs;
 	
-	Partie(int largeurP, int hauteurP){
+	Partie(formePlateau forme){
 		this.deck = new Deck();
-		this.plateau = new Plateau(formePlateau.values()[0]);
+		this.plateau = new Plateau(forme);
 		this.numTour = 0;
 	}
 	
