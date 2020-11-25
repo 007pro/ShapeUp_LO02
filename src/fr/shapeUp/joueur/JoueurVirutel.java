@@ -25,13 +25,14 @@ public class JoueurVirutel extends Joueur {
 	public JoueurVirutel(Partie partie, int numJoueur) {
 		super(partie, numJoueur);
 	}
-	
+
 	public boolean poserCarte(String position) {
 		boolean cartePlacé = partie.plateau.placerCarte(position, this.carteCourante);
 
 		if (cartePlacé == true) {
-			System.out.print("La carte posé est " ); carteCourante.afficherCarte(); 
-			System.out.println("\nest elle est posé en "+ position);
+			System.out.print("La carte posé est ");
+			carteCourante.afficherCarte();
+			System.out.println("\nest elle est posé en " + position);
 			return true;
 		} else if (cartePlacé == false) {
 			return false;
@@ -40,21 +41,20 @@ public class JoueurVirutel extends Joueur {
 		return false;
 
 	}
+
 	@Override
 	public void jouerTour() {
-		
-		int i=0;
+
+		int i = 0;
 		boolean fonctionne;
-			super.piocher();
-			System.out.println("\nJoueur Virtuel joue");
-			position = getPosition();
-		     do {
-		    	 fonctionne = poserCarte(partie.plateau.getClesValides().get(i));
-		    	 i++;
-		     }
-		     while(fonctionne == false);
-		     
-		     
-		     super.finTour();			
+		super.piocher();
+		System.out.println("\nJoueur Virtuel joue");
+		position = getPosition();
+		do {
+			fonctionne = poserCarte(partie.plateau.getClesValides().get(i));
+			i++;
+		} while (fonctionne == false);
+
+		super.finTour();
 	}
 }

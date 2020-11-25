@@ -51,7 +51,6 @@ public abstract class Joueur {
 
 	}
 
-	
 	public abstract boolean poserCarte(String position);
 
 	public void deplacerCarte() {
@@ -74,12 +73,6 @@ public abstract class Joueur {
 			carteHere = poserCarte(newPosition);
 		} while (carteHere == false);
 
-		/*
-		 * if (carteRetiré != null) { boolean carteHere = poserCarte(nouvellePosition);
-		 * if(carteHere ==false) { return false; } else { return true; } } else if
-		 * (carteRetiré == null){ System.out.println("il n'y a pas de carte ici");
-		 * return false; } return false;
-		 */
 	}
 
 	public void finTour() {
