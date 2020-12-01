@@ -8,6 +8,12 @@ import fr.shapeUp.joueur.Joueur;
 import fr.shapeUp.partie.Carte.*;
 import fr.shapeUp.partie.plateau.Plateau;
 
+/**
+ * Classe pour compter les points à la fin du round
+ * 
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
 public class Comptage implements CVisitor{
 	
 	private HashMap<formeCarte, Integer> scoreFormes = new HashMap<formeCarte, Integer>();
@@ -15,10 +21,19 @@ public class Comptage implements CVisitor{
 	private HashMap<couleurCarte, Integer> scoreCouleurs = new HashMap<couleurCarte, Integer>();
 	private Partie partie;
 	
+	/**
+	 * Constructeur
+	 * @param partie partie en cours
+	 */
 	Comptage(Partie partie){
 		this.partie = partie;
 	}
 	
+	
+	/**
+	 * Méthode pour compter les points 
+	 * @param plateau
+	 */
 	public void visitPlateau(Plateau plateau) {
 		System.out.println("je compte");
 		
