@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Classe permettant de générer un plateau rectangulaire 
+ * 
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
 public class genererRectangle implements genererClesStrategy {
+	/**
+	 * Génère la liste représentant le plateau
+	 */
 	@Override
 	public ArrayList<String> generer(){
 		ArrayList<String> cles = new ArrayList<String>();

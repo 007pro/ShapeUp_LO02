@@ -4,7 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * Classe permettant de générer un plateau Triangulaire 
+ * 
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
 public class genererTriangle implements genererClesStrategy {
+	
+	/**
+	 * Génère la liste représentant le plateau
+	 */
 	@Override
 	public ArrayList<String> generer(){
 		ArrayList<String> cles = new ArrayList<String>();
