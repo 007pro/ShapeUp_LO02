@@ -84,12 +84,12 @@ public class Deck {
 	 * @param n nombre de carte
 	 * @return la/les Carte
 	 */
-	public Carte[] piocher(int n) // problème!! dans l'affichage il manque une carte c'est bizarre mais osef on peut dégager cette methode en vrai
+	public Carte[] piocher(int n) 
 	   {
 		
 	      if(n <= this.cartes.length)
 	      {
-	         Carte [] main = Arrays.copyOfRange(this.cartes, 0, n - 1);
+	         Carte [] main = Arrays.copyOfRange(this.cartes, 0, n);
 	         this.cartes = Arrays.copyOfRange(this.cartes, n, this.cartes.length);
 	         return main;
 	      }
@@ -112,25 +112,24 @@ public class Deck {
 	 }
 	      
 	 
-//	 	public static void main (String[] args){
-//			Deck deck = new Deck();
-//			
-//		System.out.println(deck.getNombreDeCartes());
-//		Carte main = deck.piocher();
-//		main.afficherCarte();
-//		System.out.println(deck.getNombreDeCartes());
-//		main = deck.piocher();
-//		main.afficherCarte();
+	 	/*public static void main (String[] args){
+			Deck deck = new Deck();
+			
+		System.out.println(deck.getNombreDeCartes());
+		Carte[] main = deck.piocher(2);
+		
+		System.out.println(deck.getNombreDeCartes());
+		
 
 		// Affichage à l'aide d'une boucle forEach
-		/*for(Carte elem: main)
+		for(Carte elem: main)
 		{
 			elem.afficherCarte();
 		}
-		System.out.println(deck.getNombreDeCartes());*/
+		System.out.println(deck.getNombreDeCartes());
 		
 		
-//	}
+	 	}*/
 
 
 }

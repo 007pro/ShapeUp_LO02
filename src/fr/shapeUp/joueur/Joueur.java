@@ -22,7 +22,9 @@ public abstract class Joueur {
 	protected boolean carteEnMain = false;
 	protected boolean tourFini;
 	private String position;
-	Scanner saisiUseur = new Scanner(System.in);
+	private Carte [] mainCourante = new Carte[3];
+	private Scanner saisiUseur = new Scanner(System.in);
+	
 
 	/**
 	 * Constructeur de la classe
@@ -58,6 +60,19 @@ public abstract class Joueur {
 		this.carteCourante.afficherCarte();
 		carteEnMain = true;
 
+	}
+	
+	public void piocherMainde3() {
+		this.mainCourante[0] = this.carteVictoire;
+		this.mainCourante = partie.deck.piocher(2);
+		afficherMain(this.mainCourante);
+	}
+	
+	public void afficherMain(Carte[] main) {
+		for(Carte elem: main)
+		{
+			elem.afficherCarte();
+		}
 	}
 
 	/**
