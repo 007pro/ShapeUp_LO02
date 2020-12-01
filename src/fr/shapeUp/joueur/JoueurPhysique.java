@@ -44,12 +44,27 @@ public class JoueurPhysique extends Joueur {
 		return false;
 
 	}
+	
+	public boolean poserCarteOfMain(String position,int numCarte) {
+		//TODO transformer la main courante pour que la carte victoire ne soit pas dedans (je le modifi tout a l'heure)
+		boolean cartePlacé = partie.plateau.placerCarte(position,mainCourante[numCarte -1]);//-1 car le joueur va dire carte 1,2 ou 3 et l'index commence en 0
+		mainCourante[numCarte -1]= null;
+		if (cartePlacé == true) {
+			System.out.println("Vous avez posé votre carte en " + position);
+			return true;
+		} else if (cartePlacé == false) {
+			System.out.println("il y a déja une carte ici");
+			return false;
+		}
+
+		return false;
+	}
 
 	/**
 	 * Tour d'un JoueurPhysique
 	 */
 	@Override
-	public void jouerTour() {
+	public void jouerTourClassique() {
 		super.piocher();
 		System.out.print("\n");
 		do {
@@ -72,6 +87,16 @@ public class JoueurPhysique extends Joueur {
 		}
 
 	}
+	
+
+	@Override
+	public void jouerTourAvancé() {
+		super.piocherMainde3();
+		System.out.print("\n");
+		
+		
+	}
+
 
 	
 	public int getScore() {
@@ -97,5 +122,6 @@ public class JoueurPhysique extends Joueur {
 	public boolean isTourFini() {
 		return tourFini;
 	}
+
 
 }

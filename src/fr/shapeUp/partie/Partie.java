@@ -52,7 +52,7 @@ public class Partie {
 			int i = 0;
 			while(this.deck.getNombreDeCartes() != 0 && !this.plateau.rempli()) {
 				System.out.println("Le joueur " + (i+1) +" joue son tour");
-				this.joueurs[i].jouerTour();
+				this.joueurs[i].jouerTourClassique();
 				this.plateau.afficherPlateau();
 				i = (i + 1) % 3;
 			}

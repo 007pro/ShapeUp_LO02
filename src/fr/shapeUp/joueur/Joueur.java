@@ -22,7 +22,7 @@ public abstract class Joueur {
 	protected boolean carteEnMain = false;
 	protected boolean tourFini;
 	private String position;
-	private Carte [] mainCourante = new Carte[3];
+	protected Carte [] mainCourante = new Carte[3];
 	private Scanner saisiUseur = new Scanner(System.in);
 	
 
@@ -45,10 +45,14 @@ public abstract class Joueur {
 	}
 
 	/**
-	 * Pour jouer un tour
+	 * Pour jouer un tour avec les régles classiques 
 	 */
-	public abstract void jouerTour();
+	public abstract void jouerTourClassique();
 
+	/**
+	 * Pour jouer un tour avec les régles avancées
+	 */
+	public abstract void jouerTourAvancé();
 	/**
 	 * Pour piocher une carte dans le deck
 	 */
@@ -62,12 +66,19 @@ public abstract class Joueur {
 
 	}
 	
+	/**
+	 * Permet de constistuer la main du joueur
+	 */
 	public void piocherMainde3() {
 		this.mainCourante[0] = this.carteVictoire;
 		this.mainCourante = partie.deck.piocher(2);
 		afficherMain(this.mainCourante);
 	}
 	
+	/**
+	 * Afficher un tableau de carte  
+	 * @param main le tableau à afficher
+	 */
 	public void afficherMain(Carte[] main) {
 		for(Carte elem: main)
 		{
@@ -176,5 +187,22 @@ public abstract class Joueur {
 	public void setPosition(String position) {
 		this.position = position;
 	}
+	
+	/**
+	 * @return mainCourante
+	 */
+	public Carte[] getMainCourante() {
+		return mainCourante;
+	}
+
+	/**
+	 * Modifier la mainCourante
+	 * @param mainCourante
+	 */
+	public void setMainCourante(Carte[] mainCourante) {
+		this.mainCourante = mainCourante;
+	}
+
+
 
 }

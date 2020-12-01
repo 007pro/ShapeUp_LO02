@@ -42,7 +42,7 @@ public class JoueurVirutel extends Joueur {
 	}
 
 	@Override
-	public void jouerTour() {
+	public void jouerTourClassique() {
 
 		int i = 0;
 		boolean fonctionne;
@@ -55,5 +55,11 @@ public class JoueurVirutel extends Joueur {
 		} while (fonctionne == false);
 
 		super.finTour();
+	}
+
+	@Override
+	public void jouerTourAvancé() {
+		// TODO Auto-generated method stub
+		
 	}
 }
