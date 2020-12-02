@@ -48,7 +48,10 @@ public class JoueurPhysique extends Joueur {
 	public boolean poserCarteOfMain(String position,int numCarte) {
 		//TODO transformer la main courante pour que la carte victoire ne soit pas dedans (je le modifi tout a l'heure)
 		boolean cartePlacé = partie.plateau.placerCarte(position,this.mainCourante[numCarte -1]);//-1 car le joueur va dire carte 1,2 ou 3 et l'index commence en 0
-		mainCourante[numCarte -1] = null;
+		this.mainCourante[numCarte -1] = partie.deck.piocher();
+		if (mainCourante[numCarte - 1] == null) {
+			System.out.println("Le deck est vide");
+		}
 		if (cartePlacé == true) {
 			System.out.println("Vous avez posé votre carte en " + position);
 			return true;
@@ -56,7 +59,10 @@ public class JoueurPhysique extends Joueur {
 			System.out.println("il y a déja une carte ici");
 			return false;
 		}
+		
+		
 		afficherMain(this.mainCourante);
+
 
 		return false;
 	}
@@ -100,13 +106,11 @@ public class JoueurPhysique extends Joueur {
 		saisiUseur.nextLine();
 		if (ouiOuNon == 1) {
 			super.deplacerCarte();
-			super.ajoutCartEnMain();
 			super.setTourFini(true);
 			System.out.println("Tour fini au suivant !");
 
 		} else {
 			super.setTourFini(true);
-			super.ajoutCartEnMain();
 			System.out.println("Tour fini au suivant !");
 		}
 		

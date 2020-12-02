@@ -30,7 +30,7 @@ public abstract class Joueur {
 	 * Constructeur de la classe
 	 * @param partie la partie encore
 	 * @param numJoueur le numéro du joueur
-	 * @param typePartie TODO
+	 * @param typePartie determiner le type de partie
 	 */
 	public Joueur(Partie partie, int numJoueur, int typePartie) {
 		this.score = 0;
@@ -87,13 +87,6 @@ public abstract class Joueur {
 		afficherMain(this.mainCourante);
 	}
 	
-	public void ajoutCartEnMain() {
-		this.mainCourante[1] =  partie.deck.piocher();
-		if (mainCourante[1] == null) {
-			System.out.println("Le deck est vide");
-		}
-		afficherMain(this.mainCourante);
-	}
 	
 	/**
 	 * Afficher un tableau de carte  
