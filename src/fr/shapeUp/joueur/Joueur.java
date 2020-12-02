@@ -122,27 +122,7 @@ public abstract class Joueur {
 	/**
 	 * Déplace une carte
 	 */
-	public void deplacerCarte() {
-
-		System.out.println("vous allez déplacer une carte");
-		Carte carteRetiré;
-		boolean carteHere;
-		do {
-			System.out.println("La carte est à quelle position ? ");
-			String positionCarteADeplacer = saisiUseur.nextLine();
-			carteRetiré = partie.plateau.retirerCarte(positionCarteADeplacer);
-			if (carteRetiré == null) {
-				System.out.println("il n'y a pas de carte ici");
-			}
-		} while (carteRetiré == null);
-
-		do {
-			System.out.println("Poser la carte à quelle position ? ");
-			String newPosition = saisiUseur.nextLine();
-			carteHere = poserCarte(newPosition);
-		} while (carteHere == false);
-
-	}
+	public abstract void deplacerCarte() ;
 
 	/**
 	 * Cloture le tour d'un joueur

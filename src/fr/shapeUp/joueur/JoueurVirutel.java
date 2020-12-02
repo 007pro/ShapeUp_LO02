@@ -109,5 +109,11 @@ public class JoueurVirutel extends Joueur {
 		
 		return false;
 	}
+
+	@Override
+	public void deplacerCarte() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	}
