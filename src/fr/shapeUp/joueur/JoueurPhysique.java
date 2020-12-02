@@ -46,7 +46,6 @@ public class JoueurPhysique extends Joueur {
 	}
 	
 	public boolean poserCarteOfMain(String position,int numCarte) {
-		//TODO transformer la main courante pour que la carte victoire ne soit pas dedans (je le modifi tout a l'heure)
 		boolean cartePlacé = partie.plateau.placerCarte(position,this.mainCourante[numCarte -1]);//-1 car le joueur va dire carte 1,2 ou 3 et l'index commence en 0
 		this.mainCourante[numCarte -1] = partie.deck.piocher();
 		if (mainCourante[numCarte - 1] == null) {
@@ -59,11 +58,7 @@ public class JoueurPhysique extends Joueur {
 			System.out.println("il y a déja une carte ici");
 			return false;
 		}
-		
-		
 		afficherMain(this.mainCourante);
-
-
 		return false;
 	}
 
@@ -73,11 +68,9 @@ public class JoueurPhysique extends Joueur {
 	@Override
 	public void jouerTour() {
 		if (getTypePartie() == 1) {
-			System.out.println("Nous jouons donc avec les regles classiques");
 			jouerTourClassique();
 		}
 		else {
-			System.out.println("Nous jouons donc avec les regles avancées");
 			jouerTourAvancé();
 		}
 		

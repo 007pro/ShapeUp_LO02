@@ -68,8 +68,13 @@ public class Menu {
 		}
 		System.out.println("Vous voulez jouer avec les règles classique ou avancées ? 1 = classique, 2 = avancé ");
 		int typePartie = saisiUseur.nextInt();
+		if (typePartie == 1) {
+			System.out.println("Nous jouons donc avec les regles classiques");
+		}
+		else {
+			System.out.println("Nous jouons donc avec les regles avancées");
+		}			
 		partie.lancerPartie(nbrJoueurPhysique,typePartie);
-
 	}
 
 	/**

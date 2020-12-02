@@ -87,6 +87,13 @@ public abstract class Joueur {
 		afficherMain(this.mainCourante);
 	}
 	
+	/**
+	 * Pose une carte et piocher une carte pour l'ajouter à la main du joueur
+	 * @param position position de la carte à placer 
+	 * @param numCarte choix de la carte dans la main 
+	 * @return
+	 */
+	public abstract boolean poserCarteOfMain(String position,int numCarte);
 	
 	/**
 	 * Afficher un tableau de carte  
@@ -100,6 +107,7 @@ public abstract class Joueur {
 		{
 			elem.afficherCarte();
 		}
+		System.out.println("");
 		
 	}
 
