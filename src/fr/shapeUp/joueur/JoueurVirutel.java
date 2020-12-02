@@ -109,4 +109,5 @@ public class JoueurVirutel extends Joueur {
 		
 		return false;
 	}
-}
+	
+	}
