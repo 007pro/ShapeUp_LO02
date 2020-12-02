@@ -106,29 +106,48 @@ public class JoueurPhysique extends Joueur {
 	public void jouerTourAvancé() {
 		
 		System.out.print("\n");
-		do { 
-			afficherMain(this.mainCourante);
-			System.out.println("Quelle carte souhaite-tu poser : (1,2)");
-			int numCarte= saisiUseur.nextInt();
-			saisiUseur.nextLine();
-			System.out.println("Poser la carte à quelle position? ");
-			String position = saisiUseur.nextLine();
-			setPosition(position);
-			pose = poserCarteOfMain(position, numCarte);
-		} while (pose == false);
-		System.out.print("\n");
-		System.out.println("Déplacer une carte ? 1=oui/2=non ");
-
-		int ouiOuNon = saisiUseur.nextInt();
+		System.out.println("Voulez-vous d'abord poser votre carte (1) ou en déplacer une (2) ?");
+		int choix = saisiUseur.nextInt();
 		saisiUseur.nextLine();
-		if (ouiOuNon == 1) {
-			deplacerCarte();
-			super.setTourFini(true);
-			System.out.println("Tour fini au suivant !");
-
+		if(choix == 1) {
+			do { 
+				afficherMain(this.mainCourante);
+				System.out.println("Quelle carte souhaite-tu poser : (1,2)");
+				int numCarte= saisiUseur.nextInt();
+				saisiUseur.nextLine();
+				System.out.println("Poser la carte à quelle position? ");
+				String position = saisiUseur.nextLine();
+				setPosition(position);
+				pose = poserCarteOfMain(position, numCarte);
+			} while (pose == false);
+			System.out.print("\n");
+			System.out.println("Déplacer une carte ? 1=oui/2=non ");
+	
+			int ouiOuNon = saisiUseur.nextInt();
+			saisiUseur.nextLine();
+			if (ouiOuNon == 1) {
+				deplacerCarte();
+				super.setTourFini(true);
+				System.out.println("Tour fini au suivant !");
+	
+			} else {
+				super.setTourFini(true);
+				System.out.println("Tour fini au suivant !");
+			}
 		} else {
+			deplacerCarte();
+			do { 
+				afficherMain(this.mainCourante);
+				System.out.println("Quelle carte souhaite-tu poser : (1,2)");
+				int numCarte= saisiUseur.nextInt();
+				saisiUseur.nextLine();
+				System.out.println("Poser la carte à quelle position? ");
+				String position = saisiUseur.nextLine();
+				setPosition(position);
+				pose = poserCarteOfMain(position, numCarte);
+			} while (pose == false);
+			System.out.print("\n");
 			super.setTourFini(true);
-			System.out.println("Tour fini au suivant !");
 		}
 		
 	}
@@ -137,24 +156,40 @@ public class JoueurPhysique extends Joueur {
 	public void jouerTourClassique() {
 		super.piocher();
 		System.out.print("\n");
-		do {
-			System.out.println("Poser la carte à quelle position? ");
-			String position = saisiUseur.nextLine();
-			setPosition(position);
-			pose = poserCarte(position);
-		} while (pose == false);
-		System.out.print("\n");
-		System.out.println("Déplacer une carte ? 1=oui/2=non ");
-
-		int ouiOuNon = saisiUseur.nextInt();
+		System.out.println("Voulez-vous d'abord poser votre carte (1) ou en déplacer une (2) ?");
+		int choix = saisiUseur.nextInt();
 		saisiUseur.nextLine();
-		if (ouiOuNon == 1) {
+		if(choix == 1) {
+			do {
+				System.out.println("Poser la carte à quelle position? ");
+				String position = saisiUseur.nextLine();
+				setPosition(position);
+				pose = poserCarte(position);
+			} while (pose == false);
+			System.out.print("\n");
+			System.out.println("Déplacer une carte ? 1=oui/2=non ");
+	
+			int ouiOuNon = saisiUseur.nextInt();
+			saisiUseur.nextLine();
+			if (ouiOuNon == 1) {
+				deplacerCarte();
+				super.finTour();
+	
+			} else {
+				super.finTour();
+			}
+		}else {
 			deplacerCarte();
-			super.finTour();
-
-		} else {
+			do {
+				System.out.println("Poser la carte à quelle position? ");
+				String position = saisiUseur.nextLine();
+				setPosition(position);
+				pose = poserCarte(position);
+				} while (pose == false);
+			System.out.print("\n");
 			super.finTour();
 		}
+		
 		
 	}
 
