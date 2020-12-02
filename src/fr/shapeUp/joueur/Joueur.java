@@ -23,36 +23,48 @@ public abstract class Joueur {
 	protected boolean tourFini;
 	private String position;
 	protected Carte [] mainCourante = new Carte[3];
+	private int typePartie;
 	private Scanner saisiUseur = new Scanner(System.in);
 	
-
 	/**
 	 * Constructeur de la classe
 	 * @param partie la partie encore
 	 * @param numJoueur le numéro du joueur
+	 * @param typePartie TODO
 	 */
-	public Joueur(Partie partie, int numJoueur) {
+	public Joueur(Partie partie, int numJoueur, int typePartie) {
 		this.score = 0;
 		this.partie = partie;
 		this.carteVictoire = partie.deck.piocher();
 		this.carteCourante = null;
+		this.typePartie = typePartie;
+		
 
 		System.out.print("\n");
 		System.out.println("Le joueur" + (numJoueur + 1) + " viens d'être ajouté à la partie");
 		System.out.print("Sa carte victoire est : ");
 		this.carteVictoire.afficherCarte();
 		System.out.print("\n");
+		if (typePartie>=2) {
+			piocherMain();
+		}
 	}
 
 	/**
-	 * Pour jouer un tour avec les régles classiques 
+	 * Pour jouer un tour 
 	 */
-	public abstract void jouerTourClassique();
+	public abstract void jouerTour();
 
 	/**
 	 * Pour jouer un tour avec les régles avancées
 	 */
 	public abstract void jouerTourAvancé();
+	
+	/**
+	 * Pour jouer un tour avec les régles classiques
+	 */
+	public abstract void jouerTourClassique();
+	
 	/**
 	 * Pour piocher une carte dans le deck
 	 */
@@ -67,11 +79,19 @@ public abstract class Joueur {
 	}
 	
 	/**
-	 * Permet de constistuer la main du joueur
+	 * Permet de constistuer la main du joueur pioche que 2 carte car il a déja la carte victoire qui est la première 
+	 * et comme il ne pourra pas la jouer je ne la met pas dans l'objet maincourante
 	 */
-	public void piocherMainde3() {
-		this.mainCourante[0] = this.carteVictoire;
+	public void piocherMain() {
 		this.mainCourante = partie.deck.piocher(2);
+		afficherMain(this.mainCourante);
+	}
+	
+	public void ajoutCartEnMain() {
+		this.mainCourante[1] =  partie.deck.piocher();
+		if (mainCourante[1] == null) {
+			System.out.println("Le deck est vide");
+		}
 		afficherMain(this.mainCourante);
 	}
 	
@@ -80,10 +100,14 @@ public abstract class Joueur {
 	 * @param main le tableau à afficher
 	 */
 	public void afficherMain(Carte[] main) {
+		System.out.print("Carte victoire : ");
+		this.carteVictoire.afficherCarte();
+		System.out.println("");
 		for(Carte elem: main)
 		{
 			elem.afficherCarte();
 		}
+		
 	}
 
 	/**
@@ -134,6 +158,14 @@ public abstract class Joueur {
 	 */
 	public int getScore() {
 		return score;
+	}
+
+	/**
+	 * Modifier tourFini
+	 * @param tourFini
+	 */
+	public void setTourFini(boolean tourFini) {
+		this.tourFini = tourFini;
 	}
 
 	
@@ -202,7 +234,13 @@ public abstract class Joueur {
 	public void setMainCourante(Carte[] mainCourante) {
 		this.mainCourante = mainCourante;
 	}
-
-
+	
+	/**
+	 * 
+	 * @return le type de partie
+	 */
+	public int getTypePartie() {
+		return typePartie;
+	}
 
 }

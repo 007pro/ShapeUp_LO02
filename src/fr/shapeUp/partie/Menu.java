@@ -66,7 +66,9 @@ public class Menu {
 			nbrJoueurPhysique = 1;
 			System.out.println("Il doit y avoir au moins 1 joueurs");
 		}
-		partie.lancerPartie(nbrJoueurPhysique);
+		System.out.println("Vous voulez jouer avec les règles classique ou avancées ? 1 = classique, 2 = avancé ");
+		int typePartie = saisiUseur.nextInt();
+		partie.lancerPartie(nbrJoueurPhysique,typePartie);
 
 	}
 

@@ -21,8 +21,8 @@ public class JoueurVirutel extends Joueur {
 	String position;
 	ArrayList<String> recupID = partie.plateau.getClesValides();
 
-	public JoueurVirutel(Partie partie, int numJoueur) {
-		super(partie, numJoueur);
+	public JoueurVirutel(Partie partie, int numJoueur, int typePartie) {
+		super(partie, numJoueur, typePartie);
 	}
 
 	public boolean poserCarte(String position) {
@@ -42,7 +42,7 @@ public class JoueurVirutel extends Joueur {
 	}
 
 	@Override
-	public void jouerTourClassique() {
+	public void jouerTour() {
 
 		int i = 0;
 		boolean fonctionne;
@@ -59,6 +59,12 @@ public class JoueurVirutel extends Joueur {
 
 	@Override
 	public void jouerTourAvancé() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void jouerTourClassique() {
 		// TODO Auto-generated method stub
 		
 	}

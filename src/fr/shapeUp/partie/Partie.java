@@ -35,16 +35,17 @@ public class Partie {
 	/**
 	 * Permet de lancer une partie, définie le nombre de joueur physique et joueur virtuel
 	 * @param nbJoueurs nombre de joueurs physique
+	 * @param typePartie en fonction des règles
 	 */
-	public void lancerPartie(int nbJoueurs){
+	public void lancerPartie(int nbJoueurs,int typePartie){
 		this.joueurs = new Joueur[3]; 
 		
 		for(int i = 0 ; i < nbJoueurs; i++) {
-			this.joueurs[i] = new JoueurPhysique(this,i);
+			this.joueurs[i] = new JoueurPhysique(this,i,typePartie);
 			System.out.println("physique" + i);
 		}
 		for (int i = nbJoueurs;i<3;i++) {
-			this.joueurs[i] = new JoueurVirutel(this,i);
+			this.joueurs[i] = new JoueurVirutel(this,i,typePartie);
 			System.out.println("virtuel" + i);
 		}
 		while(this.numTour != 5) {
@@ -52,7 +53,7 @@ public class Partie {
 			int i = 0;
 			while(this.deck.getNombreDeCartes() != 0 && !this.plateau.rempli()) {
 				System.out.println("Le joueur " + (i+1) +" joue son tour");
-				this.joueurs[i].jouerTourClassique();
+				this.joueurs[i].jouerTour();
 				this.plateau.afficherPlateau();
 				i = (i + 1) % 3;
 			}
