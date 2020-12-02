@@ -7,6 +7,8 @@ import fr.shapeUp.partie.Partie;
 import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
 import fr.shapeUp.joueur.JoueurPhysique;
 import fr.shapeUp.partie.plateau.*;
 
@@ -77,6 +79,11 @@ public class JoueurVirutel extends Joueur {
 			i++;
 		} while (fonctionne == false);
 		
+		int choix = new Random().nextInt(3);
+		if(choix == 0) {
+			deplacerCarte();
+		}
+		
 		afficherMain(this.mainCourante);
 	}
 
@@ -92,6 +99,11 @@ public class JoueurVirutel extends Joueur {
 			i++;
 		} while (fonctionne == false);
 
+		int choix = new Random().nextInt(3);
+		if(choix == 0) {
+			deplacerCarte();
+		}
+			
 		super.finTour();
 		
 	}
@@ -113,23 +125,24 @@ public class JoueurVirutel extends Joueur {
 
 	@Override
 	public void deplacerCarte() {
-		System.out.println("vous allez déplacer une carte");
 		Carte carteRetiré;
 		boolean carteHere;
+		Random rand = new Random();
 		do {
-			System.out.println("La carte est à quelle position ? ");
-			String positionCarteADeplacer = null ;
+//			System.out.println("La carte est à quelle position ? ");
+			String positionCarteADeplacer = recupID.get(rand.nextInt(recupID.size())) ;
 			carteRetiré = partie.plateau.retirerCarte(positionCarteADeplacer);
 			if (carteRetiré == null) {
-				System.out.println("il n'y a pas de carte ici");
+//				System.out.println("il n'y a pas de carte ici");
 			}
 		} while (carteRetiré == null);
 
 		do {
-			System.out.println("Poser la carte à quelle position ? ");
-			String newPosition = null ;
+//			System.out.println("Poser la carte à quelle position ? ");
+			String newPosition = recupID.get(rand.nextInt(recupID.size())) ;
 			carteHere = poserCarte(newPosition);
 		} while (carteHere == false);
+		System.out.println("Carte déplacée par le joueur virtuel ");
 
 		
 	}
