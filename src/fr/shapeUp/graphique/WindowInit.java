@@ -41,15 +41,15 @@ public class WindowInit extends JDialog {
 	private void init() {
 		// TODO Auto-generated method stub
 	    
-		JPanel panNom = new JPanel();
-	    panNom.setBackground(Color.white);
-	    panNom.setPreferredSize(new Dimension(220, 60));
+		JPanel panNbr = new JPanel();
+	    panNbr.setBackground(Color.white);
+	    panNbr.setPreferredSize(new Dimension(220, 60));
 	    nbrJoueur = new JTextField();
 	    nbrJoueur.setPreferredSize(new Dimension(100, 25));
-	    panNom.setBorder(BorderFactory.createTitledBorder("Nom du personnage"));
-	    JLabel nomLabel = new JLabel("Saisir un nom :");
-	    panNom.add(nomLabel);
-	    panNom.add(nbrJoueur);
+	    panNbr.setBorder(BorderFactory.createTitledBorder("Nombre de joueur"));
+	    JLabel nbrjLabel = new JLabel("Saisir un nombre de joueur :");
+	    panNbr.add(nbrjLabel);
+	    panNbr.add(nbrJoueur);
 		
 		
 	}
