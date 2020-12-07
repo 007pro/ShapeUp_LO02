@@ -56,6 +56,11 @@ public class JoueurVirutel extends Joueur {
 		
 		
 	}
+	
+	public void modeDif() {
+		LinkedHashMap<String, Carte> casespleine = partie.plateau.getCases();
+		
+	}
 
 	@Override
 	public void jouerTourAvancé() {
@@ -146,5 +151,7 @@ public class JoueurVirutel extends Joueur {
 
 		
 	}
+	
+	
 	
 	}
