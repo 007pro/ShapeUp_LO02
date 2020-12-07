@@ -54,12 +54,12 @@ public class WindowInit extends JDialog {
 		
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MainWindow mainwin= new MainWindow();
 		//WindowInit win = WindowInit(null, "choix",true);
 		
-	}
+	}*/
 	
 }
 

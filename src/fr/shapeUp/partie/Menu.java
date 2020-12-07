@@ -37,6 +37,14 @@ public class Menu {
 	 */
 	public void nbrJoueurTypePlateau() {
 
+		System.out.println("Vous voulez jouer avec les règles classique ou avancées ? 1 = classique, 2 = avancé ");
+		int typePartie = saisiUseur.nextInt();
+		if (typePartie == 1) {
+			System.out.println("Nous jouons donc avec les regles classiques");
+		}
+		else {
+			System.out.println("Nous jouons donc avec les regles avancées");
+		}			
 		System.out.println("Quel plateau souhaité vous avoir ? 1 = rectangle, 2 = disque, 3 = triangle ");
 		int typePlateau = saisiUseur.nextInt();
 		Partie partie;
@@ -66,14 +74,7 @@ public class Menu {
 			nbrJoueurPhysique = 1;
 			System.out.println("Il doit y avoir au moins 1 joueurs");
 		}
-		System.out.println("Vous voulez jouer avec les règles classique ou avancées ? 1 = classique, 2 = avancé ");
-		int typePartie = saisiUseur.nextInt();
-		if (typePartie == 1) {
-			System.out.println("Nous jouons donc avec les regles classiques");
-		}
-		else {
-			System.out.println("Nous jouons donc avec les regles avancées");
-		}			
+		
 		partie.lancerPartie(nbrJoueurPhysique,typePartie);
 	}
 
