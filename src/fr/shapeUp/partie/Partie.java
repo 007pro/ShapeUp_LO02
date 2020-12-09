@@ -27,7 +27,7 @@ public class Partie {
 	 * Constructeur de la classe
 	 * @param forme la forme du plateau
 	 */
-	Partie(formePlateau forme){
+	public Partie(formePlateau forme){
 		this.deck = new Deck();
 		this.plateau = new Plateau(forme);
 		this.numTour = 0;
