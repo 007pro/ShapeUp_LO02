@@ -21,6 +21,7 @@ public class Partie {
 	private int numTour;
 	//private int nbJoueurs = 2;
 	private Joueur[] joueurs;
+	private int typePartie ;
 	
 	/**
 	 * Constructeur de la classe
@@ -38,6 +39,7 @@ public class Partie {
 	 * @param typePartie en fonction des règles
 	 */
 	public void lancerPartie(int nbJoueurs,int typePartie){
+		this.typePartie = typePartie;
 		this.joueurs = new Joueur[3]; 
 		
 		for(int i = 0 ; i < nbJoueurs; i++) {
@@ -80,6 +82,14 @@ public class Partie {
 	public Joueur[] getJoueurs() {
 		return this.joueurs;
 	}
+	
+    /**
+     * @return le type de partie
+     */
+	public int getTypePartie() {
+		return typePartie;
+	}
+
 //	public static Partie partie = new Partie(3,1);
 	// Exemple de partie ou les joueurs piochent et posent
 	/*public static void main (String[] args){
