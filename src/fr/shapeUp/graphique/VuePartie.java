@@ -14,19 +14,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class VuePartie {
+public class VuePartie extends JFrame {
 
 	
 	private JFrame fenetre;
@@ -45,83 +44,54 @@ public class VuePartie {
 	 */
 	public VuePartie(Partie partie) {
 	
-				//Création de la fenêtre
-				fenetre = new JFrame("Bataille Norvégienne");
-				fenetre.setLayout(new BorderLayout());
-				fenetre.setResizable(true);
-				
-				//Panel qui contient les joueurs
-				panelJoueur = new JPanel();
-				panelJoueur.setLayout(new BoxLayout(panelJoueur, BoxLayout.Y_AXIS));
-				//On lui ajoute un JScrollPane (car si + de 5 joueurs, ça dépasse)
-				JScrollPane scroll = new JScrollPane();
-				scroll.setViewportView(panelJoueur);
-				
-				
-				//Image d'un tapis
-				JPanel panelTapis = new JPanel();
-				JLabel imgTapis = new JLabel(new ImageIcon("img/shape.jpg"));
-			
-				
-				tas = new JLabel(new ImageIcon("img/tasvide.png"));
-				pile = new JLabel(new ImageIcon("img/b2fv.png")); 
-				
-				imgTapis.setLayout(new GridLayout()); 
-				imgTapis.add(tas);
-				imgTapis.add(pile);
-				panelTapis.add(imgTapis);
-				
-				
-				
-				/*// Pour tous les joueurs on ajoute leur vue respective
-				Iterator<Joueur> it = joueurs.iterator();
-				while (it.hasNext()){
-					VueJoueur vueJoueur = new VueJoueur(it.next());
-					vueJoueurs.add(vueJoueur);
-					panelJoueur.add(vueJoueur.getJpanel());
-					
-				}*/
-				
-				/*TextArea des logs
-				setLog(new JTextArea());
-				getLog().setEditable(false);
-				getLog().setRows(5);
-				scrollPane = new JScrollPane(getLog());*/
-				
-				JButton continuer = new JButton("continuer");
-				// Permet de jouer au fur et à mesure
-				continuer.addMouseListener(new MouseAdapter() {
-					public void mouseClicked(MouseEvent me) {
-						
-					}
-				});
-				
-				
-				fenetre.add(scrollPane, BorderLayout.NORTH);
-				fenetre.add(scroll, BorderLayout.WEST);
-				fenetre.add(continuer, BorderLayout.SOUTH);
-				fenetre.add(panelTapis, BorderLayout.EAST);
-				
-				
-				
-				
-				fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				fenetre.pack();
-				fenetre.setVisible(true);
-				fenetre.setLocationRelativeTo(null);;
-				
-				
+		 JButton boutonInit = new JButton("init");
+		 JButton boutonPlacerCarte1carte = new JButton("Joueur avec 1 carte");
+		 JButton boutonPlacerCarte2carte = new JButton("Joueur avec la main");
+		 
+		 this.setTitle("test des fenetres de dialog");
+		    this.setSize(300, 100);
+		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    this.setLocationRelativeTo(null);      
+		    this.getContentPane().setLayout(new FlowLayout());
+		    this.getContentPane().add(boutonInit);
+		    this.getContentPane().add(boutonPlacerCarte1carte);
+		    this.getContentPane().add(boutonPlacerCarte2carte);
+		    
+		    boutonInit.addActionListener(new ActionListener(){
+		      public void actionPerformed(ActionEvent arg0) {
+		        WindowInit zd = new WindowInit(null, "Coucou les ZérOs", true);
+		        zd.setVisible(true);
+		      }         
+		    });
+		   
+		    
+		    boutonPlacerCarte1carte.addActionListener(new ActionListener(){
+			      public void actionPerformed(ActionEvent arg0) {
+			    	 VueJoueur jv = new VueJoueur(null, null, "Joue ta carte", false, 1);
+			    	 jv.setVisible(true);
+			      }         
+			    });
+		    
+
+		    boutonPlacerCarte2carte.addActionListener(new ActionListener(){
+			      public void actionPerformed(ActionEvent arg0) {
+			    	 VueJoueur jv = new VueJoueur(null, null, "Joue ta carte", false, 2);
+			    	 jv.setVisible(true);
+			      }         
+			    });
+		    
+		    this.setVisible(true);      
+		  }
 				
 	
 	    
 	
-	}
+	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//WindowInit choixPartie = new WindowInit(null, "Choix des régles", true);
+		
 		VuePartie window = new VuePartie(null);
-		//WindowInit win = WindowInit(null, "choix",true);
+		
 		
 	}
 

@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -37,7 +39,7 @@ public class VueJoueur extends JDialog {
 	private JLabel positionLabel,choixDeLaCarteLabel;
 	private JComboBox choixDeLaCarte;
 	
-	public VueJoueur(Joueur joueur,JFrame parent,String title,boolean modal) {
+	public VueJoueur(Joueur joueur,JFrame parent,String title,boolean modal,int typePartie) {
 		super(parent, title, modal);
 		this.joueur = joueur;
 		this.cartes = new ArrayList<>();
@@ -46,8 +48,13 @@ public class VueJoueur extends JDialog {
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		this.setVisible(true);
-		//this.initOneCard();
-		this.initTwocard();
+		if (typePartie == 1) {
+			this.initOneCard();	
+		}
+		else {
+			this.initTwocard();	
+		}
+		
 		
 		
 	}
@@ -136,6 +143,15 @@ public class VueJoueur extends JDialog {
 		content.add(panChoixCarte);
 	   
 	    control.add(okBouton);
+	    
+	    okBouton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// zInfo = new ZDialogInfo(nom.getText(), (String)sexe.getSelectedItem(),
+				// getAge(), (String)cheveux.getSelectedItem() ,getTaille());
+				setVisible(false);
+			}
+			
+		});
 	      
 		this.getContentPane().add(content, BorderLayout.CENTER);
 		this.getContentPane().add(control, BorderLayout.SOUTH);
@@ -147,7 +163,7 @@ public class VueJoueur extends JDialog {
 		// TODO Auto-generated method stub
 		//WindowInit choixPartie = new WindowInit(null, "Choix des régles", true);
 		//VuePartie window = new VuePartie(null);
-		VueJoueur J = new VueJoueur(null, null, "teste", false);
+		VueJoueur J = new VueJoueur(null, null, "teste", false,2);
 		
 		
 				
