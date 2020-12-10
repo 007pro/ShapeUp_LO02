@@ -7,7 +7,10 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.BorderFactory;
@@ -28,7 +31,7 @@ import fr.shapeUp.partie.plateau.Plateau;
 import fr.shapeUp.partie.plateau.Plateau.formePlateau;
 
 public class VueJoueur extends JDialog {
-	
+	//TODO Essayer de gérer le selction de la carte de devoir juste cliqué dessus pour la selectionner
 
 	private Joueur joueur; 
 	private JPanel main;
@@ -88,7 +91,7 @@ public class VueJoueur extends JDialog {
 	    JPanel content = new JPanel();
 		content.setBackground(Color.white);
 		content.add(image);
-		content.add(panPosition);
+		control.add(panPosition);
 	   
 	    control.add(okBouton);
 	    
@@ -108,6 +111,39 @@ public class VueJoueur extends JDialog {
 		VueCarte vuecarte = new VueCarte(joueur.getCarteCourante());
 		main = vuecarte.getImage();*/
 		
+		/*
+		 * Pour chaques cartes possédées dans la main du joueur
+		 * on crée une VueCarte correspondant, à laquelle un ajoute un listener
+		 * afin d'ajouter la carte à liste de cartes lorsque le joueur la sélectionne
+		 * (ou supprimer de la liste si le joueur la déselectionne)
+		 * Puis on ajoute cette carte au JPanel
+		 *
+		Iterator<Carte> it = joueur.getCarteCourante().iterator();
+	    while (it.hasNext()) {
+	    	final VueCarte vc = new VueCarte(it.next());
+	    	
+	    	
+				vc.getImage().addMouseListener(new MouseAdapter() {
+					public void mouseClicked(MouseEvent me) {
+						if (vc.getImage().getBorder() == null) {
+							vc.getImage().setBorder(BorderFactory.createLineBorder(Color.black));
+							carteMain = new Carte(vc.getCarte().getValeur(), vc.getCarte().getCouleur());
+							cartes.add(carteMain);
+						} else {
+							carteMain = new Carte(vc.getForme(), vc.getCarte().getCouleur());
+							cartes.remove(carteMain);
+							vc.getImage().setBorder(null);
+							carteMain = null;
+						}	
+					}				
+				});
+			
+	    	main.add(vc.getImage());
+	    }
+		*/
+		
+		
+		
 	    JPanel panPosition = new JPanel();
 	    panPosition.setBackground(Color.white);
 	    panPosition.setPreferredSize(new Dimension(220, 60));
@@ -118,7 +154,7 @@ public class VueJoueur extends JDialog {
 	    panPosition.add(positionLabel);
 	    panPosition.add(position);
 		
-	 // le nombre de joueurs
+	
  		JPanel panChoixCarte = new JPanel();
  		panChoixCarte.setBackground(Color.white);
  		panChoixCarte.setPreferredSize(new Dimension(220, 60));
