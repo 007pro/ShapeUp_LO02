@@ -32,6 +32,7 @@ import fr.shapeUp.partie.plateau.Plateau.formePlateau;
 
 public class VueJoueur extends JDialog {
 	//TODO Essayer de gérer le selction de la carte de devoir juste cliqué dessus pour la selectionner
+	//TODO modifier la stucture en model vue et controleur
 
 	private Joueur joueur; 
 	private JPanel main;
@@ -107,6 +108,8 @@ public class VueJoueur extends JDialog {
 		
 		JLabel image = new JLabel(new ImageIcon("img/CarreBleueVide.jpg"));
 		JLabel image2 = new JLabel(new ImageIcon("img/CarreBleueVide.jpg"));
+		
+		
 		/*JLabel main = new JLabel();
 		VueCarte vuecarte = new VueCarte(joueur.getCarteCourante());
 		main = vuecarte.getImage();*/
