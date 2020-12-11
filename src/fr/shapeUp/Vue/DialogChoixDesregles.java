@@ -22,7 +22,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class WindowInit extends JDialog {
+public class DialogChoixDesregles extends JDialog {
 
 
 	private boolean sendData;
@@ -39,7 +39,7 @@ public class WindowInit extends JDialog {
 	 * @param title  titre
 	 * @param modal  vrai ou faux
 	 */
-	WindowInit(JFrame parent, String title, boolean modal) {
+	DialogChoixDesregles(JFrame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		this.setSize(550, 230);
 		this.setLocationRelativeTo(null);

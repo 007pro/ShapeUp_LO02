@@ -1,6 +1,6 @@
 package fr.shapeUp.Vue;
 
-import fr.shapeUp.Vue.WindowInit;
+import fr.shapeUp.Vue.DialogChoixDesregles;
 import fr.shapeUp.modele.joueur.Joueur;
 import fr.shapeUp.modele.partie.Partie;
 
@@ -59,7 +59,7 @@ public class VuePartie extends JFrame {
 		    
 		    boutonInit.addActionListener(new ActionListener(){
 		      public void actionPerformed(ActionEvent arg0) {
-		        WindowInit zd = new WindowInit(null, "Coucou les ZérOs", true);
+		        DialogChoixDesregles zd = new DialogChoixDesregles(null, "Coucou les ZérOs", true);
 		        zd.setVisible(true);
 		      }         
 		    });
@@ -67,7 +67,7 @@ public class VuePartie extends JFrame {
 		    
 		    boutonPlacerCarte1carte.addActionListener(new ActionListener(){
 			      public void actionPerformed(ActionEvent arg0) {
-			    	 VueJoueur jv = new VueJoueur(null, null, "Joue ta carte", false, 1);
+			    	 DialogJoue1Carte jv = new DialogJoue1Carte();
 			    	 jv.setVisible(true);
 			      }         
 			    });
@@ -75,7 +75,7 @@ public class VuePartie extends JFrame {
 
 		    boutonPlacerCarte2carte.addActionListener(new ActionListener(){
 			      public void actionPerformed(ActionEvent arg0) {
-			    	 VueJoueur jv = new VueJoueur(null, null, "Joue ta carte", false, 2);
+			    	 DialogJoue2Cartes jv = new DialogJoue2Cartes();
 			    	 jv.setVisible(true);
 			      }         
 			    });
