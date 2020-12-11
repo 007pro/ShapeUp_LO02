@@ -24,7 +24,7 @@ public class Carte {
 	 *
 	 */
 	public enum formeCarte {
-		Carré,
+		Carre,
 		Rond,
 		Triangle
 
@@ -49,7 +49,7 @@ public class Carte {
 	public enum couleurCarte {
 		Rouge,
 		Vert,
-		Bleu
+		Bleue
 	}
 	
 	/**

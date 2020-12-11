@@ -6,17 +6,30 @@ import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import fr.shapeUp.modele.partie.Carte;
+import fr.shapeUp.modele.partie.Carte.contenu;
+import fr.shapeUp.modele.partie.Carte.couleurCarte;
+import fr.shapeUp.modele.partie.Carte.formeCarte;
+
 import java.awt.Panel;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 public class DialogJoue1Carte extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private VueCarte carteview ;
+	Carte carteCourante = new Carte(formeCarte.Carre,couleurCarte.Bleue,contenu.Plein);
+	Carte carteVictoire = new Carte(formeCarte.Rond,couleurCarte.Rouge,contenu.Vide);
 
 	/**
 	 * Launch the application.
@@ -35,19 +48,39 @@ public class DialogJoue1Carte extends JDialog {
 	 * Create the dialog.
 	 */
 	public DialogJoue1Carte() {
-		setBounds(100, 100, 335, 547);
+		setBounds(100, 100, 586, 537);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			Panel panel = new Panel();
-			panel.setBounds(32, 10, 259, 331);
-			contentPanel.add(panel);
+			Panel panCarteCourante = new Panel();
+			panCarteCourante.setBounds(10, 44, 259, 331);
+			contentPanel.add(panCarteCourante);
+			
+			JLabel imageCarte = new JLabel();
+			carteview = new VueCarte(carteCourante);
+			ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage().getScaledInstance(202, 308, Image.SCALE_DEFAULT)); // permet de redimensionner une image
+			imageCarte.setIcon(imageIcon);
+			
+			panCarteCourante.add(imageCarte);
+			
+			
+		}
+		{
+			Panel panCarteVictoire = new Panel();
+			panCarteVictoire.setBounds(301, 44, 259, 331);
+			contentPanel.add(panCarteVictoire);
+			JLabel imageCarteVict = new JLabel();
+			carteview = new VueCarte(carteVictoire);
+			ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage().getScaledInstance(202, 308, Image.SCALE_DEFAULT)); // permet de redimensionner une image
+			imageCarteVict.setIcon(imageIcon);
+			
+			panCarteVictoire.add(imageCarteVict);
 		}
 		{
 			JPanel panChoixPosition = new JPanel();
-			panChoixPosition.setBounds(32, 395, 259, 54);
+			panChoixPosition.setBounds(155, 400, 259, 54);
 			panChoixPosition.setBorder(BorderFactory.createTitledBorder("Choix de la position"));
 			contentPanel.add(panChoixPosition);
 			
@@ -58,6 +91,12 @@ public class DialogJoue1Carte extends JDialog {
 				choixPosition.setFont(new Font("Tahoma", Font.PLAIN, 14));
 				panChoixPosition.add(choixPosition);
 			}
+		}
+		
+		{
+			JLabel lblCarteVictoire = new JLabel("Carte Victoire");
+			lblCarteVictoire.setBounds(388, 11, 84, 14);
+			contentPanel.add(lblCarteVictoire);
 		}
 		
 		{

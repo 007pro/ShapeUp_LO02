@@ -1,5 +1,7 @@
 package fr.shapeUp.Vue;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -9,7 +11,8 @@ public class VueCarte {
 	
 	private Carte carte;
 	private JLabel image;
-	
+	private ImageIcon imageIcon;
+	private String cheminImage;
 	
 	/**
 	 * Constructeur de l'affichage graphique d'une carte
@@ -17,9 +20,11 @@ public class VueCarte {
 	 */
 	public VueCarte(Carte carte) {
 		this.carte = carte;
-		String cheminImage = "img/" + carte.getForme() + carte.getCouleur()+ carte.getContenu() + ".png";
+		this.cheminImage = "img/" + carte.getForme() + carte.getCouleur()+ carte.getContenu() + ".jpg";
 		this.image = new JLabel(new ImageIcon(cheminImage));
 	}
+	
+	
 
 
 	/**
@@ -37,5 +42,10 @@ public class VueCarte {
 	public JLabel getImage() {
 		return image;
 	}
+	
+	public String getCheminImage() {
+		return cheminImage;
+	}
+
 }
 
