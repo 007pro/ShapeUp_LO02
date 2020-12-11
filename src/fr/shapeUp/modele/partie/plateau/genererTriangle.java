@@ -1,4 +1,4 @@
-package fr.shapeUp.partie.plateau;
+package fr.shapeUp.modele.partie.plateau;
 
 import java.util.ArrayList;
 import java.util.Collections;

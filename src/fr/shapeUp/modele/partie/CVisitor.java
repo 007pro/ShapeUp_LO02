@@ -1,6 +1,6 @@
-package fr.shapeUp.partie;
+package fr.shapeUp.modele.partie;
 
-import fr.shapeUp.partie.plateau.Plateau;
+import fr.shapeUp.modele.partie.plateau.Plateau;
 
 /**
  * interface CVisitor

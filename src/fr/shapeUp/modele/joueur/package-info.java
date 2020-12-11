@@ -4,4 +4,4 @@
  * @author Adrien Warnet, Vincent Diop
  * @version 1.0
  */
-package fr.shapeUp.joueur;
+package fr.shapeUp.modele.joueur;

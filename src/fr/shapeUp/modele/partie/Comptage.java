@@ -1,12 +1,12 @@
-package fr.shapeUp.partie;
+package fr.shapeUp.modele.partie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import fr.shapeUp.joueur.Joueur;
-import fr.shapeUp.partie.Carte.*;
-import fr.shapeUp.partie.plateau.Plateau;
+import fr.shapeUp.modele.joueur.Joueur;
+import fr.shapeUp.modele.partie.Carte.*;
+import fr.shapeUp.modele.partie.plateau.Plateau;
 
 /**
  * Classe pour compter les points à la fin du round

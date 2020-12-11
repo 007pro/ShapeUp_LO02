@@ -1,14 +1,13 @@
-package fr.shapeUp.partie;
+package fr.shapeUp.modele.partie;
 
 import java.util.Scanner;
 
-import fr.shapeUp.partie.*;
-import fr.shapeUp.partie.Partie;
-import fr.shapeUp.partie.plateau.Plateau;
-import fr.shapeUp.partie.plateau.Plateau.formePlateau;
-import fr.shapeUp.partie.plateau.genererCercle;
-import fr.shapeUp.partie.plateau.genererRectangle;
-import fr.shapeUp.partie.plateau.genererTriangle;
+import fr.shapeUp.modele.partie.*;
+import fr.shapeUp.modele.partie.plateau.Plateau;
+import fr.shapeUp.modele.partie.plateau.genererCercle;
+import fr.shapeUp.modele.partie.plateau.genererRectangle;
+import fr.shapeUp.modele.partie.plateau.genererTriangle;
+import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
 
 /**
  * Classe principale, oriente le choix du type de partie, et s'occupe du déroulement

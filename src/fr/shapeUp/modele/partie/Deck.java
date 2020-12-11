@@ -1,13 +1,14 @@
-package fr.shapeUp.partie;
+package fr.shapeUp.modele.partie;
 
 
 import java.util.Random;
-import java.util.Arrays;
 
-import fr.shapeUp.partie.*;
-import fr.shapeUp.partie.Carte.contenu;
-import fr.shapeUp.partie.Carte.couleurCarte;
-import fr.shapeUp.partie.Carte.formeCarte;
+import fr.shapeUp.modele.partie.*;
+import fr.shapeUp.modele.partie.Carte.contenu;
+import fr.shapeUp.modele.partie.Carte.couleurCarte;
+import fr.shapeUp.modele.partie.Carte.formeCarte;
+
+import java.util.Arrays;
 
 /**
  * Constitution du deck de plusieurs de carte

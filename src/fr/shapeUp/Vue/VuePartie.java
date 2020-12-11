@@ -1,8 +1,8 @@
-package fr.shapeUp.graphique;
+package fr.shapeUp.Vue;
 
-import fr.shapeUp.graphique.WindowInit;
-import fr.shapeUp.joueur.Joueur;
-import fr.shapeUp.partie.Partie;
+import fr.shapeUp.Vue.WindowInit;
+import fr.shapeUp.modele.joueur.Joueur;
+import fr.shapeUp.modele.partie.Partie;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

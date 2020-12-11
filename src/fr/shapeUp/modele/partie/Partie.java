@@ -1,13 +1,13 @@
-package fr.shapeUp.partie;
+package fr.shapeUp.modele.partie;
 
-import fr.shapeUp.partie.Deck;
-import fr.shapeUp.partie.Carte.formeCarte;
-import fr.shapeUp.partie.plateau.Plateau;
-import fr.shapeUp.partie.plateau.Plateau.formePlateau;
-import fr.shapeUp.joueur.Joueur;
-import fr.shapeUp.joueur.JoueurPhysique;
-import fr.shapeUp.joueur.JoueurVirutel;
-import fr.shapeUp.partie.Carte;
+import fr.shapeUp.modele.joueur.Joueur;
+import fr.shapeUp.modele.joueur.JoueurPhysique;
+import fr.shapeUp.modele.joueur.JoueurVirutel;
+import fr.shapeUp.modele.partie.Carte;
+import fr.shapeUp.modele.partie.Deck;
+import fr.shapeUp.modele.partie.Carte.formeCarte;
+import fr.shapeUp.modele.partie.plateau.Plateau;
+import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
 
 /**
  * Classe permet le bon déroulement d'une partie

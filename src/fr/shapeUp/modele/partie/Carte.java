@@ -1,4 +1,4 @@
-package fr.shapeUp.partie;
+package fr.shapeUp.modele.partie;
 
 import java.util.Random;
 

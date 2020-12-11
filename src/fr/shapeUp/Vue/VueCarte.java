@@ -1,9 +1,9 @@
-package fr.shapeUp.graphique;
+package fr.shapeUp.Vue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import fr.shapeUp.partie.Carte;
+import fr.shapeUp.modele.partie.Carte;
 
 public class VueCarte {
 	

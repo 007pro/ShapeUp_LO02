@@ -1,16 +1,15 @@
-package fr.shapeUp.joueur;
+package fr.shapeUp.modele.joueur;
 
-import fr.shapeUp.partie.Carte;
-import fr.shapeUp.partie.Comptage;
-import fr.shapeUp.partie.Partie;
+import fr.shapeUp.modele.joueur.JoueurPhysique;
+import fr.shapeUp.modele.partie.Carte;
+import fr.shapeUp.modele.partie.Comptage;
+import fr.shapeUp.modele.partie.Partie;
+import fr.shapeUp.modele.partie.plateau.*;
 
 import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-
-import fr.shapeUp.joueur.JoueurPhysique;
-import fr.shapeUp.partie.plateau.*;
 
 /**
  * Classe fille de Joueur, joueu automatiquement.

@@ -1,9 +1,9 @@
-package fr.shapeUp.partie.plateau;
+package fr.shapeUp.modele.partie.plateau;
 import java.util.*;
 
-import fr.shapeUp.partie.CVisitor;
-import fr.shapeUp.partie.Carte;
-import fr.shapeUp.partie.VComptage;
+import fr.shapeUp.modele.partie.CVisitor;
+import fr.shapeUp.modele.partie.Carte;
+import fr.shapeUp.modele.partie.VComptage;
 
 /**
  * Classe de la création du plateau

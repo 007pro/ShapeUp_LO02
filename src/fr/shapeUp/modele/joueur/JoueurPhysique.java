@@ -1,8 +1,9 @@
-package fr.shapeUp.joueur;
+package fr.shapeUp.modele.joueur;
 
-import fr.shapeUp.partie.Carte;
-import fr.shapeUp.partie.Partie;
 import java.util.Scanner;
+
+import fr.shapeUp.modele.partie.Carte;
+import fr.shapeUp.modele.partie.Partie;
 
 /**
  * Classe fille de Joueur, permet à l'utilisateur de pouvoir jouer.

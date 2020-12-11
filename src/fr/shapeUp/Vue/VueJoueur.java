@@ -1,4 +1,4 @@
-package fr.shapeUp.graphique;
+package fr.shapeUp.Vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,12 +23,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import fr.shapeUp.joueur.Joueur;
-import fr.shapeUp.joueur.JoueurPhysique;
-import fr.shapeUp.partie.Carte;
-import fr.shapeUp.partie.Partie;
-import fr.shapeUp.partie.plateau.Plateau;
-import fr.shapeUp.partie.plateau.Plateau.formePlateau;
+import fr.shapeUp.modele.joueur.Joueur;
+import fr.shapeUp.modele.joueur.JoueurPhysique;
+import fr.shapeUp.modele.partie.Carte;
+import fr.shapeUp.modele.partie.Partie;
+import fr.shapeUp.modele.partie.plateau.Plateau;
+import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
 
 public class VueJoueur extends JDialog {
 	//TODO Essayer de gérer le selction de la carte de devoir juste cliqué dessus pour la selectionner

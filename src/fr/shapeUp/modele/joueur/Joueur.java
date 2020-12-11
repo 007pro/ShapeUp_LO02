@@ -1,10 +1,10 @@
-package fr.shapeUp.joueur;
+package fr.shapeUp.modele.joueur;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import fr.shapeUp.partie.*;
-import fr.shapeUp.partie.Partie.*;
+import fr.shapeUp.modele.partie.*;
+import fr.shapeUp.modele.partie.Partie.*;
 
 /**
  * Classe mère de JoueurPhysique et JoueurVirutel, elle est abstraite pour qu'on ne puisse pas l'instancier.

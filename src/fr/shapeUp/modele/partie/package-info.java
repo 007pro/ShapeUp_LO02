@@ -4,4 +4,4 @@
  * @author Adrien Warnet, Vincent Diop
  * @version 1.0
  */
-package fr.shapeUp.partie;
+package fr.shapeUp.modele.partie;
