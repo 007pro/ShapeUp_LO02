@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -41,6 +43,8 @@ public class DialogChoixDesregles extends JDialog {
 	 */
 	DialogChoixDesregles(JFrame parent, String title, boolean modal) {
 		super(parent, title, modal);
+		Image icon = Toolkit.getDefaultToolkit().getImage("img/icon.png");  
+	    this.setIconImage(icon);  
 		this.setSize(550, 230);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);

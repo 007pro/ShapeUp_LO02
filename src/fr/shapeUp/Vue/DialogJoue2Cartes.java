@@ -14,6 +14,8 @@ import fr.shapeUp.modele.partie.Carte.couleurCarte;
 import fr.shapeUp.modele.partie.Carte.formeCarte;
 
 import java.awt.Panel;
+import java.awt.Toolkit;
+
 import javax.swing.JComboBox;
 import javax.swing.BorderFactory;
 import java.awt.Font;
@@ -55,6 +57,8 @@ public class DialogJoue2Cartes extends JDialog {
 	 */
 	public DialogJoue2Cartes() {
 		setBounds(100, 100, 687, 493);
+		Image icon = Toolkit.getDefaultToolkit().getImage("img/icon.png");  
+	    this.setIconImage(icon);  
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
