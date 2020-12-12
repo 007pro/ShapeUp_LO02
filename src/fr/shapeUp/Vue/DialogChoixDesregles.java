@@ -3,46 +3,56 @@ package fr.shapeUp.Vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import fr.shapeUp.modele.partie.plateau.Plateau;
+import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
+import javax.swing.JFormattedTextField;
 
 public class DialogChoixDesregles extends JDialog {
 
-
+	private final JPanel contentPanel = new JPanel();
 	private boolean sendData;
 	private JLabel nomLabel, nbrJoueurLabel, cheveuxLabel, ageLabel, tailleLabel, taille2Label, icon, nbrPlateauLabel;
 	private JRadioButton regleClassique, regleAvance;
 	private JComboBox nbrJoueur, cheveux, typePlateau;
 	private JTextField taille;
 	private boolean partieDemarre = false;
-	
+	private JTextField textField;
+
 	/**
-	 * Construit le JDialog
-	 * 
-	 * @param parent Jframe qui detient le Jdialog
-	 * @param title  titre
-	 * @param modal  vrai ou faux
+	 * Launch the application.
 	 */
-	DialogChoixDesregles(JFrame parent, String title, boolean modal) {
-		super(parent, title, modal);
+	public static void main(String[] args) {
+		try {
+			DialogChoixDesregles dialog = new DialogChoixDesregles();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DialogChoixDesregles() {
+		this.setTitle("Choix des régles");		
 		Image icon = Toolkit.getDefaultToolkit().getImage("img/icon.png");  
 	    this.setIconImage(icon);  
 		this.setSize(550, 230);
@@ -50,8 +60,6 @@ public class DialogChoixDesregles extends JDialog {
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		this.init();
-		this.setVisible(true);
-
 	}
 
 	private void init() {
@@ -106,35 +114,54 @@ public class DialogChoixDesregles extends JDialog {
 
 		JPanel control = new JPanel();
 		JButton okBouton = new JButton("OK");
-
-		okBouton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// zInfo = new ZDialogInfo(nom.getText(), (String)sexe.getSelectedItem(),
-				// getAge(), (String)cheveux.getSelectedItem() ,getTaille());
-				setVisible(false);
-				partieDemarre = true;
-			}
-			
-		});
-
-		JButton cancelBouton = new JButton("Annuler");
-		cancelBouton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-			}
-		});
-
+		
+		JButton cancelBouton;
+		cancelBouton = new JButton("Annuler");
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		control.add(lblNewLabel);
+		
+		
+		
 		control.add(okBouton);
 		control.add(cancelBouton);
 
 		this.getContentPane().add(content, BorderLayout.CENTER);
 		this.getContentPane().add(control, BorderLayout.SOUTH);
+
+		
+		
+	
+		
+		//event 
+		okBouton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// zInfo = new ZDialogInfo(nom.getText(), (String)sexe.getSelectedItem(),
+				// getAge(), (String)cheveux.getSelectedItem() ,getTaille());
+				setVisible(false);
+				int joueur = (int)nbrJoueur.getSelectedItem(); //recupérer la valeur d'une combot box
+				formePlateau laforme = (formePlateau) typePlateau.getSelectedItem();
+				partieDemarre = true;
+			}
+			
+		});
+
+		
+		cancelBouton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
+		
+		
+		
+		
 	}
 	
-	public boolean isPartieDemarre() {
-		return partieDemarre;
-	}
-
-
-
+	public String getRegle(){
+        return (regleClassique.isSelected()) ? regleClassique.getText(): 
+               (regleAvance.isSelected()) ? regleAvance.getText() : 
+            	   regleClassique.getText();  
+      }
+	
 }

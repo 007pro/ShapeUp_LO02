@@ -25,6 +25,8 @@ import java.awt.Image;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DialogJoue1Carte extends JDialog {
 
@@ -110,6 +112,10 @@ public class DialogJoue1Carte extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

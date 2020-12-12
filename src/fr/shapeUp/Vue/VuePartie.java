@@ -59,7 +59,7 @@ public class VuePartie extends JFrame {
 		    
 		    boutonInit.addActionListener(new ActionListener(){
 		      public void actionPerformed(ActionEvent arg0) {
-		        DialogChoixDesregles zd = new DialogChoixDesregles(null, "Coucou les ZérOs", true);
+		        DialogChoixDesregles zd = new DialogChoixDesregles();
 		        zd.setVisible(true);
 		      }         
 		    });
