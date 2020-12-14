@@ -1,5 +1,6 @@
 package fr.shapeUp.modele.joueur;
 
+import java.util.Observable;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import fr.shapeUp.modele.partie.Partie.*;
  * @version 1.0
  * 
  */
-public abstract class Joueur {
+public abstract class Joueur extends Observable {
 
 	protected int score = 0;
 	protected Carte carteVictoire;

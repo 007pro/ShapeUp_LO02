@@ -34,7 +34,7 @@ public class VueCarte {
 	public Carte getCarte() {
 		return carte;
 	}
-
+	
 	/**
 	 * Getter de l'image
 	 * @return l'image associée à la carte

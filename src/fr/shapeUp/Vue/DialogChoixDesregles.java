@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -24,7 +26,7 @@ import fr.shapeUp.modele.partie.plateau.Plateau;
 import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
 import javax.swing.JFormattedTextField;
 
-public class DialogChoixDesregles extends JDialog {
+public class DialogChoixDesregles extends JDialog implements Observer {
 
 	private final JPanel contentPanel = new JPanel();
 	private boolean sendData;
@@ -118,9 +120,6 @@ public class DialogChoixDesregles extends JDialog {
 		JButton cancelBouton;
 		cancelBouton = new JButton("Annuler");
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		control.add(lblNewLabel);
-		
 		
 		
 		control.add(okBouton);
@@ -136,11 +135,11 @@ public class DialogChoixDesregles extends JDialog {
 		//event 
 		okBouton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// zInfo = new ZDialogInfo(nom.getText(), (String)sexe.getSelectedItem(),
-				// getAge(), (String)cheveux.getSelectedItem() ,getTaille());
+				
 				setVisible(false);
-				int joueur = (int)nbrJoueur.getSelectedItem(); //recupérer la valeur d'une combot box
-				formePlateau laforme = (formePlateau) typePlateau.getSelectedItem();
+				String joueur = (String)nbrJoueur.getSelectedItem(); //recupérer la valeur d'une combot box
+				String laforme = (String) typePlateau.getSelectedItem();
+				String typeRegle = getRegle();
 				partieDemarre = true;
 			}
 			
@@ -163,5 +162,11 @@ public class DialogChoixDesregles extends JDialog {
                (regleAvance.isSelected()) ? regleAvance.getText() : 
             	   regleClassique.getText();  
       }
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
