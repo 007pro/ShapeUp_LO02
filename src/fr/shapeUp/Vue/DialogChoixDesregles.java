@@ -26,7 +26,7 @@ import fr.shapeUp.modele.partie.plateau.Plateau;
 import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
 import javax.swing.JFormattedTextField;
 
-public class DialogChoixDesregles extends JDialog implements Observer {
+public class DialogChoixDesregles extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private boolean sendData;
@@ -36,6 +36,10 @@ public class DialogChoixDesregles extends JDialog implements Observer {
 	private JTextField taille;
 	private boolean partieDemarre = false;
 	private JTextField textField;
+
+	private String joueur ;
+	private String laforme;
+	private String typeRegle;
 
 	/**
 	 * Launch the application.
@@ -137,15 +141,14 @@ public class DialogChoixDesregles extends JDialog implements Observer {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				setVisible(false);
-				String joueur = (String)nbrJoueur.getSelectedItem(); //recupérer la valeur d'une combot box
-				String laforme = (String) typePlateau.getSelectedItem();
-				String typeRegle = getRegle();
+				joueur = (String)nbrJoueur.getSelectedItem(); //recupérer la valeur d'une combot box
+				laforme = (String) typePlateau.getSelectedItem();
+				typeRegle = getRegle();
 				partieDemarre = true;
 			}
 			
 		});
 
-		
 		cancelBouton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
@@ -162,11 +165,33 @@ public class DialogChoixDesregles extends JDialog implements Observer {
                (regleAvance.isSelected()) ? regleAvance.getText() : 
             	   regleClassique.getText();  
       }
-
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
+	
+	public int getNbrJoueur() {
+		return Integer.parseInt(joueur);
 	}
 	
+	public formePlateau getLaforme() {
+		if (laforme == "Rectangulaire")
+		{
+			return formePlateau.rectangle;
+		}
+			
+		else if(laforme =="Triangulaire")
+		{
+			return formePlateau.triangle;
+		}
+			
+		else if (laforme == "Circulaire")
+		{
+			return formePlateau.cercle;
+		}
+		 return null;
+	}
+	
+	public int getRegleint() {
+		return Integer.parseInt(typeRegle);
+	}
+	
+
+
 }
