@@ -29,17 +29,10 @@ import javax.swing.JFormattedTextField;
 public class DialogChoixDesregles extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private boolean sendData;
-	private JLabel nomLabel, nbrJoueurLabel, cheveuxLabel, ageLabel, tailleLabel, taille2Label, icon, nbrPlateauLabel;
+	private JLabel nbrJoueurLabel,nbrPlateauLabel;
 	private JRadioButton regleClassique, regleAvance;
-	private JComboBox nbrJoueur, cheveux, typePlateau;
-	private JTextField taille;
+	private JComboBox nbrJoueur, typePlateau;
 	private boolean partieDemarre = false;
-	private JTextField textField;
-
-	private String joueur ;
-	private String laforme;
-	private String typeRegle;
 
 	/**
 	 * Launch the application.
@@ -79,7 +72,6 @@ public class DialogChoixDesregles extends JDialog {
 		typePlateau.addItem("Circulaire");
 		nbrPlateauLabel = new JLabel("Plateau : ");
 		panPlateau.setBorder(BorderFactory.createTitledBorder("Type de plateau : "));
-		nomLabel = new JLabel("Saisir un nom :");
 		panPlateau.add(nbrPlateauLabel);
 		panPlateau.add(typePlateau);
 
@@ -136,18 +128,7 @@ public class DialogChoixDesregles extends JDialog {
 		
 	
 		
-		//event 
-		okBouton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				setVisible(false);
-				joueur = (String)nbrJoueur.getSelectedItem(); //recupérer la valeur d'une combot box
-				laforme = (String) typePlateau.getSelectedItem();
-				typeRegle = getRegle();
-				partieDemarre = true;
-			}
-			
-		});
+		
 
 		cancelBouton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -167,21 +148,21 @@ public class DialogChoixDesregles extends JDialog {
       }
 	
 	public int getNbrJoueur() {
-		return Integer.parseInt(joueur);
+		return Integer.parseInt((String)nbrJoueur.getSelectedItem());
 	}
 	
 	public formePlateau getLaforme() {
-		if (laforme == "Rectangulaire")
+		if ((String)typePlateau.getSelectedItem() == "Rectangulaire")
 		{
 			return formePlateau.rectangle;
 		}
 			
-		else if(laforme =="Triangulaire")
+		else if((String)typePlateau.getSelectedItem()=="Triangulaire")
 		{
 			return formePlateau.triangle;
 		}
 			
-		else if (laforme == "Circulaire")
+		else if ((String)typePlateau.getSelectedItem() == "Circulaire")
 		{
 			return formePlateau.cercle;
 		}
@@ -189,7 +170,7 @@ public class DialogChoixDesregles extends JDialog {
 	}
 	
 	public int getRegleint() {
-		return Integer.parseInt(typeRegle);
+		return Integer.parseInt((String)getRegle());
 	}
 	
 

@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 
 public class VuePartie {
 
-	private JFrame frame;
-	DialogChoixDesregles choixregle = new DialogChoixDesregles();
+	public JFrame frame;
+	public DialogChoixDesregles choixregle = new DialogChoixDesregles();
 	/**
 	 * Launch the application.
 	 */
