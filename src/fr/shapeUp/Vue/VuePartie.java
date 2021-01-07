@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class VuePartie {
 
@@ -39,18 +42,18 @@ public class VuePartie {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		JButton btndemarrePartie = new JButton("D\u00E9marrer une partie");
+		btndemarrePartie.setBounds(253, 188, 129, 40);
 		btndemarrePartie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				choixregle.setVisible(true);
 				btndemarrePartie.setVisible(false);
 			}
 		});
-		btndemarrePartie.setBounds(165, 99, 129, 40);
+		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(btndemarrePartie);
 	}
 }

@@ -24,7 +24,7 @@ public class Menu {
 	/**
 	 * Construteur
 	 */
-	Menu() {
+	public Menu() {
 		System.out.println("Bonjour Bienvenue dans notre jeu Shape up!");
 		System.out.println("@auteur Adrien Warnet, Vicent Diop");
 		System.out.println();
