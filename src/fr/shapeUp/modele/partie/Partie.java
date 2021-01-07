@@ -38,7 +38,7 @@ public class Partie {
 	 * @param nbJoueurs nombre de joueurs physique
 	 * @param typePartie en fonction des règles
 	 */
-	public void lancerPartie(int nbJoueurs,int typePartie){
+	public void lancerPartie(int nbJoueurs,int nbVirtu,int typePartie){
 		this.typePartie = typePartie;
 		this.joueurs = new Joueur[3]; 
 		
@@ -46,7 +46,7 @@ public class Partie {
 			this.joueurs[i] = new JoueurPhysique(this,i,typePartie);
 			System.out.println("physique" + i);
 		}
-		for (int i = nbJoueurs;i<3;i++) {
+		for (int i = 0; i<nbVirtu ; i++) {
 			this.joueurs[i] = new JoueurVirutel(this,i,typePartie);
 			System.out.println("virtuel" + i);
 		}

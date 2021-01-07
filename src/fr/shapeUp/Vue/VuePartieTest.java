@@ -57,7 +57,7 @@ public class VuePartieTest implements Observer {
 	 */
 	public VuePartieTest() {
 		initialize();
-		new ControleurTest(this.btnDemarrer);
+		new ControleurTest(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau);
 	}
 
 	/**

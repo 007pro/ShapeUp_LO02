@@ -16,7 +16,6 @@ import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
  */
 public class Menu {
 
-	Scanner saisiUseur = new Scanner(System.in);
 	private int ligne = 3;
 	private int colonne = 5;
 
@@ -34,10 +33,9 @@ public class Menu {
 	/**
 	 * Choix du plateau, nombre de joueur physique 
 	 */
-	public void nbrJoueurTypePlateau() {
+	public void nbrJoueurTypePlateau(int typePartie, int typePlateau, int nbrJoueurPhysique, int nbrJoueurVirtuels) {
 
 		System.out.println("Vous voulez jouer avec les règles classique ou avancées ? 1 = classique, 2 = avancé ");
-		int typePartie = saisiUseur.nextInt();
 		if (typePartie == 1) {
 			System.out.println("Nous jouons donc avec les regles classiques");
 		}
@@ -45,7 +43,6 @@ public class Menu {
 			System.out.println("Nous jouons donc avec les regles avancées");
 		}			
 		System.out.println("Quel plateau souhaité vous avoir ? 1 = rectangle, 2 = disque, 3 = triangle ");
-		int typePlateau = saisiUseur.nextInt();
 		Partie partie;
 		if (typePlateau == 1) {
 			partie = new Partie(formePlateau.rectangle);
@@ -64,7 +61,6 @@ public class Menu {
 		
 		partie.plateau.afficherPlateau();
 		System.out.println("Combien de Joueur ? 1 Joueur min et 3 Joueur max ");
-		int nbrJoueurPhysique = saisiUseur.nextInt();
 		if (nbrJoueurPhysique > 3) {
 			System.out.println("Il ne peut y avoir que 3 joueurs max, il y aura donc 3 joueurs dans cette partie");
 			nbrJoueurPhysique = 3;
@@ -74,24 +70,25 @@ public class Menu {
 			System.out.println("Il doit y avoir au moins 1 joueurs");
 		}
 		
-		partie.lancerPartie(nbrJoueurPhysique,typePartie);
+		partie.lancerPartie(nbrJoueurPhysique,nbrJoueurVirtuels,typePartie);
 	}
+}
 
 	/**
 	 * main 
 	 */
-	public static void main(String[] args) {
-		Scanner saisiUser = new Scanner(System.in);
-		Menu partie = new Menu();
-		System.out.println("Vous voulez démarrer une partie ? 1 = oui / 2 = non ");
-		int demarrage = saisiUser.nextInt();
-		if (demarrage == 1) {
-			partie.nbrJoueurTypePlateau();
-		} else {
-			System.out.println("A bientôt");
-			System.exit(0);
-		}
-
-	}
-
-}
+//	public static void main(String[] args) {
+//		Scanner saisiUser = new Scanner(System.in);
+//		Menu partie = new Menu();
+//		System.out.println("Vous voulez démarrer une partie ? 1 = oui / 2 = non ");
+//		int demarrage = saisiUser.nextInt();
+//		if (demarrage == 1) {
+//			partie.nbrJoueurTypePlateau();
+//		} else {
+//			System.out.println("A bientôt");
+//			System.exit(0);
+//		}
+//
+//	}
+//
+//}

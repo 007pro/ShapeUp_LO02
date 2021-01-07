@@ -18,9 +18,8 @@ public class genererCercle implements genererClesStrategy {
 	@Override
 	public ArrayList<String> generer(){
 		ArrayList<String> cles = new ArrayList<String>();
-		Scanner saisiUser = new Scanner(System.in);
+		double rayon = 2.5;
 		System.out.println("Veuillez indiquer le rayon du cercle (multiples de 0,5 acceptés)");
-		double rayon = saisiUser.nextDouble();
 		for(int i=0;i<rayon*2;i++) {
 	        for(int j=0;j<rayon*2;j++){
 	        	double x = (2*(double)i + 1)/2;

@@ -20,7 +20,7 @@ public class genererTriangle implements genererClesStrategy {
 		ArrayList<String> cles = new ArrayList<String>();
 		Scanner saisiUser = new Scanner(System.in);
 		System.out.println("Veuillez indiquer la hauteur du triangle");
-		int hauteur = saisiUser.nextInt();
+		int hauteur = 5;
 		int charDepart  = 64 + hauteur;
 		int j = 1 + (2*(hauteur-1));
 		int i = 0;
