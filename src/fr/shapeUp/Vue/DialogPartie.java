@@ -141,6 +141,7 @@ public class DialogPartie extends JDialog implements Observer{
 		
 		btnNextTurn = new JButton("Tour Suivant");
 		btnNextTurn.setBounds(182, 645, 148, 23);
+		btnNextTurn.setEnabled(false);
 		content.add(btnNextTurn);
 		
 		btnCarte1 = new JButton();

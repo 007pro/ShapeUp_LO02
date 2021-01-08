@@ -100,6 +100,7 @@ public class ControleurTest {
 	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie) {	
 		btnNextTurn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnPlacer.setEnabled(true);
 				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.BLACK);
 				currentPlayer = (currentPlayer + 1) % partie.getJoueurs().length;
 				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.RED);
@@ -118,7 +119,10 @@ public class ControleurTest {
 		btnPlacer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(getSelectedButtonPos(btnPos) != null) {
-					partie.getJoueurs()[currentPlayer].poserCarte(getSelectedButtonPos(btnPos));
+					if(partie.getJoueurs()[currentPlayer].poserCarte(getSelectedButtonPos(btnPos))) {
+						btnPlacer.setEnabled(false);
+						btnNextTurn.setEnabled(true);
+					}
 				}
 				}
 		});
