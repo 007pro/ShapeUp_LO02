@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 import fr.shapeUp.controleur.ControleurTest;
+import fr.shapeUp.modele.partie.Menu;
+import fr.shapeUp.modele.partie.Partie;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
@@ -16,7 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VuePartieTest implements Observer {
+public class VueMenu implements Observer {
 
 	private JFrame frame;
 	private final ButtonGroup btnGrpNbJ = new ButtonGroup();
@@ -43,7 +45,7 @@ public class VuePartieTest implements Observer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VuePartieTest window = new VuePartieTest();
+					VueMenu window = new VueMenu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,9 +57,9 @@ public class VuePartieTest implements Observer {
 	/**
 	 * Create the application.
 	 */
-	public VuePartieTest() {
+	public VueMenu() {
 		initialize();
-		new ControleurTest(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau);
+		new ControleurTest(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau, this);
 	}
 
 	/**
@@ -141,6 +143,11 @@ public class VuePartieTest implements Observer {
 	
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		
+		if(arg0 instanceof Menu) {
+			frame.setVisible(false);
+			Partie partie = ((Menu) arg0).getPartie();
+			DialogPartie vuePartie = new DialogPartie(partie);
+			vuePartie.setVisible(true);
+		}
 	}
 }

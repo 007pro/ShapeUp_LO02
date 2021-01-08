@@ -8,11 +8,12 @@ import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 
+import fr.shapeUp.Vue.VueMenu;
 import fr.shapeUp.modele.partie.Menu;
 
 public class ControleurTest {
 
-	public ControleurTest(JButton btnDemarrer, ButtonGroup btnGrpNbJ, ButtonGroup btnGrpRegles, ButtonGroup btnGrpPlateau) {
+	public ControleurTest(JButton btnDemarrer, ButtonGroup btnGrpNbJ, ButtonGroup btnGrpRegles, ButtonGroup btnGrpPlateau, VueMenu vueGraphique) {
 		btnDemarrer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int nbJP ;
@@ -20,6 +21,7 @@ public class ControleurTest {
 				int typePartie;
 				int typePlateau;
 				Menu menu = new Menu();
+				menu.addObserver(vueGraphique);
 				String nbJs = getSelectedButtonText(btnGrpNbJ);
 				switch(nbJs) {
 				case "2J":

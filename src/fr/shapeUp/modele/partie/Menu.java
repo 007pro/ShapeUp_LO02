@@ -1,5 +1,7 @@
 package fr.shapeUp.modele.partie;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
 import fr.shapeUp.modele.partie.*;
@@ -14,12 +16,17 @@ import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
  * @author Adrien Warnet, Vincent Diop
  * @version 1.0
  */
-public class Menu {
+public class Menu extends Observable{
 
 	private int ligne = 3;
 	private int colonne = 5;
+	private Partie partie;
 
 	
+	public Partie getPartie() {
+		return this.partie;
+	}
+
 	/**
 	 * Construteur
 	 */
@@ -27,7 +34,6 @@ public class Menu {
 		System.out.println("Bonjour Bienvenue dans notre jeu Shape up!");
 		System.out.println("@auteur Adrien Warnet, Vicent Diop");
 		System.out.println();
-
 	}
 
 	/**
@@ -43,23 +49,22 @@ public class Menu {
 			System.out.println("Nous jouons donc avec les regles avancées");
 		}			
 		System.out.println("Quel plateau souhaité vous avoir ? 1 = rectangle, 2 = disque, 3 = triangle ");
-		Partie partie;
 		if (typePlateau == 1) {
-			partie = new Partie(formePlateau.rectangle);
+			this.partie = new Partie(formePlateau.rectangle);
 			System.out.println("Le plateau est un rectangle");
 		}
 		else if (typePlateau == 2) {
-			partie = new Partie(formePlateau.cercle);
+			this.partie = new Partie(formePlateau.cercle);
 			System.out.println("Le plateau est un cercle");
 		}
 		else {
-			partie = new Partie(formePlateau.triangle);
+			this.partie = new Partie(formePlateau.triangle);
 			System.out.println("Le plateau est un triangle");
 		}
 		
 			
 		
-		partie.plateau.afficherPlateau();
+		this.partie.plateau.afficherPlateau();
 		System.out.println("Combien de Joueur ? 1 Joueur min et 3 Joueur max ");
 		if (nbrJoueurPhysique > 3) {
 			System.out.println("Il ne peut y avoir que 3 joueurs max, il y aura donc 3 joueurs dans cette partie");
@@ -69,8 +74,10 @@ public class Menu {
 			nbrJoueurPhysique = 1;
 			System.out.println("Il doit y avoir au moins 1 joueurs");
 		}
-		
-		partie.lancerPartie(nbrJoueurPhysique,nbrJoueurVirtuels,typePartie);
+		this.partie.lancerPartie(nbrJoueurPhysique,nbrJoueurVirtuels,typePartie);
+		this.setChanged();
+		this.notifyObservers();
+
 	}
 }
 

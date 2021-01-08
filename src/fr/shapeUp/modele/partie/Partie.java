@@ -40,7 +40,7 @@ public class Partie {
 	 */
 	public void lancerPartie(int nbJoueurs,int nbVirtu,int typePartie){
 		this.typePartie = typePartie;
-		this.joueurs = new Joueur[3]; 
+		this.joueurs = new Joueur[nbJoueurs + nbVirtu]; 
 		
 		for(int i = 0 ; i < nbJoueurs; i++) {
 			this.joueurs[i] = new JoueurPhysique(this,i,typePartie);
@@ -50,19 +50,19 @@ public class Partie {
 			this.joueurs[i] = new JoueurVirutel(this,i,typePartie);
 			System.out.println("virtuel" + i);
 		}
-		while(this.numTour != 5) {
-			nouveauTour();
-			int i = 0;
-			while(this.deck.getNombreDeCartes() != 0 && !this.plateau.rempli()) {
-				System.out.println("Le joueur " + (i+1) +" joue son tour");
-				this.joueurs[i].jouerTour();
-				this.plateau.afficherPlateau();
-				i = (i + 1) % 3;
-			}
-			this.plateau.accept(new Comptage(this));
-		}
-		System.out.println("Calcul des scores totaux");
-		System.out.println("La partie se termine");
+//		while(this.numTour != 5) {
+//			nouveauTour();
+//			int i = 0;
+//			while(this.deck.getNombreDeCartes() != 0 && !this.plateau.rempli()) {
+//				System.out.println("Le joueur " + (i+1) +" joue son tour");
+//				this.joueurs[i].jouerTour();
+//				this.plateau.afficherPlateau();
+//				i = (i + 1) % 3;
+//			}
+//			this.plateau.accept(new Comptage(this));
+//		}
+//		System.out.println("Calcul des scores totaux");
+//		System.out.println("La partie se termine");
 	}
 	
 	/**
