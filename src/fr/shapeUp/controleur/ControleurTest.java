@@ -1,5 +1,6 @@
 package fr.shapeUp.controleur;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
@@ -8,11 +9,18 @@ import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 
+import fr.shapeUp.Vue.DialogPartie;
 import fr.shapeUp.Vue.VueMenu;
+import fr.shapeUp.modele.joueur.JoueurVirutel;
+import fr.shapeUp.modele.partie.Comptage;
 import fr.shapeUp.modele.partie.Menu;
+import fr.shapeUp.modele.partie.Partie;
 
 public class ControleurTest {
 
+	private int currentPlayer = 0;
+	private Partie partie;
+	
 	public ControleurTest(JButton btnDemarrer, ButtonGroup btnGrpNbJ, ButtonGroup btnGrpRegles, ButtonGroup btnGrpPlateau, VueMenu vueGraphique) {
 		btnDemarrer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -76,6 +84,25 @@ public class ControleurTest {
 					typePlateau = 1;
 				}
 				menu.nbrJoueurTypePlateau(typePartie, typePlateau, nbJP, nbJV);
+				partie = menu.getPartie();
+			}
+		});
+	}
+	
+	public void PartieInit(JButton btnNextTurn, DialogPartie vuePartie) {	
+		btnNextTurn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(partie.getDeck().getNombreDeCartes() != 0 && !partie.getPlateau().rempli()) {
+					if(partie.getJoueurs()[currentPlayer] instanceof JoueurVirutel) {
+						partie.getJoueurs()[currentPlayer].jouerTour();
+					}
+					vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.BLACK);
+					currentPlayer = (currentPlayer + 1) % partie.getJoueurs().length;
+					vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.RED);
+				}else {
+					partie.getPlateau().accept(new Comptage(partie));	
+					partie.nouveauTour();
+				}
 			}
 		});
 	}

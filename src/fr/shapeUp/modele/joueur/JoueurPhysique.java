@@ -32,7 +32,7 @@ public class JoueurPhysique extends Joueur {
 	 * Déclaration de la méthode poserCarte, pour un JoueurPhysique
 	 */
 	public boolean poserCarte(String position) {
-		boolean cartePlacé = partie.plateau.placerCarte(position, this.carteCourante);
+		boolean cartePlacé = partie.getPlateau().placerCarte(position, this.carteCourante);
 
 		if (cartePlacé == true) {
 			System.out.println("Vous avez posé votre carte en " + position);
@@ -55,7 +55,7 @@ public class JoueurPhysique extends Joueur {
 		do {
 			System.out.println("La carte est à quelle position ? ");
 			String positionCarteADeplacer = saisiUseur.nextLine();
-			carteRetiré = partie.plateau.retirerCarte(positionCarteADeplacer);
+			carteRetiré = partie.getPlateau().retirerCarte(positionCarteADeplacer);
 			if (carteRetiré == null) {
 				System.out.println("il n'y a pas de carte ici");
 			}
@@ -71,8 +71,8 @@ public class JoueurPhysique extends Joueur {
 	}
 	
 	public boolean poserCarteOfMain(String position,int numCarte) {
-		boolean cartePlacé = partie.plateau.placerCarte(position,this.mainCourante[numCarte -1]);//-1 car le joueur va dire carte 1,2 ou 3 et l'index commence en 0
-		this.mainCourante[numCarte -1] = partie.deck.piocher();
+		boolean cartePlacé = partie.getPlateau().placerCarte(position,this.mainCourante[numCarte -1]);//-1 car le joueur va dire carte 1,2 ou 3 et l'index commence en 0
+		this.mainCourante[numCarte -1] = partie.getDeck().piocher();
 		if (mainCourante[numCarte - 1] == null) {
 			System.out.println("Le deck est vide");
 		}

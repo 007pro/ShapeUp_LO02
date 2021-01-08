@@ -36,7 +36,7 @@ public abstract class Joueur extends Observable {
 	public Joueur(Partie partie, int numJoueur, int typePartie) {
 		this.score = 0;
 		this.partie = partie;
-		this.carteVictoire = partie.deck.piocher();
+		this.carteVictoire = partie.getDeck().piocher();
 		this.carteCourante = null;
 		this.typePartie = typePartie;
 		
@@ -72,7 +72,7 @@ public abstract class Joueur extends Observable {
 	public void piocher() {
 		tourFini = false;
 		System.out.println("Carte Piochée");
-		this.carteCourante = partie.deck.piocher();
+		this.carteCourante = partie.getDeck().piocher();
 		System.out.print("Votre carte est : ");
 		this.carteCourante.afficherCarte();
 		carteEnMain = true;
@@ -84,7 +84,7 @@ public abstract class Joueur extends Observable {
 	 * et comme il ne pourra pas la jouer je ne la met pas dans l'objet maincourante
 	 */
 	public void piocherMain() {
-		this.mainCourante = partie.deck.piocher(2);
+		this.mainCourante = partie.getDeck().piocher(2);
 		afficherMain(this.mainCourante);
 	}
 	

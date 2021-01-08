@@ -64,7 +64,7 @@ public class Menu extends Observable{
 		
 			
 		
-		this.partie.plateau.afficherPlateau();
+		this.partie.getPlateau().afficherPlateau();
 		System.out.println("Combien de Joueur ? 1 Joueur min et 3 Joueur max ");
 		if (nbrJoueurPhysique > 3) {
 			System.out.println("Il ne peut y avoir que 3 joueurs max, il y aura donc 3 joueurs dans cette partie");

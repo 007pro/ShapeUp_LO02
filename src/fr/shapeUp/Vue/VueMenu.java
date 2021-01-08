@@ -37,6 +37,7 @@ public class VueMenu implements Observer {
 	private JRadioButton rdbtnTriangle;
 	private JRadioButton rdbtnCercle;
 	private JButton btnDemarrer;
+	private ControleurTest controleur;
 
 	/**
 	 * Launch the application.
@@ -59,7 +60,7 @@ public class VueMenu implements Observer {
 	 */
 	public VueMenu() {
 		initialize();
-		new ControleurTest(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau, this);
+		this.controleur = new ControleurTest(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau, this);
 	}
 
 	/**
@@ -146,7 +147,7 @@ public class VueMenu implements Observer {
 		if(arg0 instanceof Menu) {
 			frame.setVisible(false);
 			Partie partie = ((Menu) arg0).getPartie();
-			DialogPartie vuePartie = new DialogPartie(partie);
+			DialogPartie vuePartie = new DialogPartie(partie, this.controleur);
 			vuePartie.setVisible(true);
 		}
 	}

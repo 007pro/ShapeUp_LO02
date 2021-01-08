@@ -16,8 +16,8 @@ import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
  */
 public class Partie {
 	
-	public Deck deck;
-	public Plateau plateau;
+	private Deck deck;
+	private Plateau plateau;
 	private int numTour;
 	//private int nbJoueurs = 2;
 	private Joueur[] joueurs;
@@ -46,7 +46,7 @@ public class Partie {
 			this.joueurs[i] = new JoueurPhysique(this,i,typePartie);
 			System.out.println("physique" + i);
 		}
-		for (int i = 0; i<nbVirtu ; i++) {
+		for (int i = nbJoueurs; i < nbJoueurs + nbVirtu ; i++) {
 			this.joueurs[i] = new JoueurVirutel(this,i,typePartie);
 			System.out.println("virtuel" + i);
 		}
@@ -65,10 +65,22 @@ public class Partie {
 //		System.out.println("La partie se termine");
 	}
 	
+	public Deck getDeck() {
+		return deck;
+	}
+
+	public Plateau getPlateau() {
+		return plateau;
+	}
+
+	public int getNumTour() {
+		return numTour;
+	}
+
 	/**
 	 * Démarrer un nouveau tour
 	 */
-	private void nouveauTour(){
+	public void nouveauTour(){
 		this.numTour++;
 		this.deck = new Deck();
 		this.plateau.resetPlateau();

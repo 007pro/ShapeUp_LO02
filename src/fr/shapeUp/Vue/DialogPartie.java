@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -24,6 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import fr.shapeUp.controleur.ControleurTest;
 import fr.shapeUp.modele.joueur.Joueur;
 import fr.shapeUp.modele.partie.Carte;
 import fr.shapeUp.modele.partie.Carte.contenu;
@@ -34,19 +36,32 @@ import fr.shapeUp.modele.partie.plateau.Plateau;
 import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
 import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
+import javax.swing.JSeparator;
 
-public class DialogPartie extends JDialog {
+public class DialogPartie extends JDialog implements Observer{
+
 
 	private final JPanel contentPanel = new JPanel();
 	private VueCarte carteview;
 	private ArrayList<JPanel> panelJCVictoire = new ArrayList<JPanel>();
 	private ArrayList<JLabel> panelImageCVictoire = new ArrayList<JLabel>();
-	Carte carteVictoire = new Carte(formeCarte.Rond, couleurCarte.Rouge, contenu.Vide);
+	private LinkedHashMap<String, JButton> btnPos = new LinkedHashMap<String, JButton>();
+	private JButton btnNextTurn;
+	private JLabel[] labelJoueurs = new JLabel[3];
+	public JLabel[] getLabelJoueurs() {
+		return labelJoueurs;
+	}
+
+	private Partie partie;
+	private ControleurTest controleur;
 
 	/**
 	 * Create the dialog.
 	 */
-	public DialogPartie(Partie partie) {
+	public DialogPartie(Partie partie, ControleurTest controleur) {
+		this.partie = partie;
+		this.controleur = controleur;
+		partie.getPlateau().addObserver(this);
 		this.setTitle("Shape Up");		
 		Image icon = Toolkit.getDefaultToolkit().getImage("img/icon.png");  
 	    this.setIconImage(icon);  
@@ -54,10 +69,11 @@ public class DialogPartie extends JDialog {
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-		this.init(partie);
+		this.init();
+		this.controleur.PartieInit(btnNextTurn, this);
 	}
 
-	private void init(Partie partie) {
+	private void init() {
 				
 		JPanel content = new JPanel();
 		content.setBackground(Color.lightGray);
@@ -79,6 +95,7 @@ public class DialogPartie extends JDialog {
 		}
 		
 		JLabel lblJ1 = new JLabel("JOUEUR1");
+		lblJ1.setForeground(Color.RED);
 		lblJ1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblJ1.setBounds(10, 210, 140, 14);
 		content.add(lblJ1);
@@ -95,8 +112,66 @@ public class DialogPartie extends JDialog {
 		lblJ3.setBounds(10, 641, 140, 14);
 		content.add(lblJ3);
 		
+		labelJoueurs[0] = lblJ1;
+		labelJoueurs[1] = lblJ2;
+		labelJoueurs[2] = lblJ2;
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(170, 25, 2, 630);
+		content.add(separator);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setOrientation(SwingConstants.VERTICAL);
+		separator_2.setBounds(340, 25, 2, 630);
+		content.add(separator_2);
+		
+		JPanel panelPlateau = new JPanel();
+		panelPlateau.setBounds(350, 10, 900, 650);
+		content.add(panelPlateau);
+		panelPlateau.setLayout(null);
+		
+		
+		btnNextTurn = new JButton("Tour Suivant");
+		btnNextTurn.setBounds(182, 645, 148, 23);
+		content.add(btnNextTurn);
+		
+		JSeparator separator_1 = new JSeparator();
+		getContentPane().add(separator_1, BorderLayout.NORTH);
+		
+		for(String pos : partie.getPlateau().getClesValides()) {
+			this.btnPos.put(pos, new JButton());
+			this.btnPos.get(pos).setBounds(90 + (pos.charAt(1) - 48)*84, 25 + (pos.charAt(0) - 65)*120 , 84 , 120);
+			panelPlateau.add(this.btnPos.get(pos));
+		}
 		
 		
 		
+		
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		if(o instanceof Plateau) {
+			if(arg != "reset") {
+				if(partie.getPlateau().getCases().containsKey(arg)) {
+					carteview = new VueCarte(partie.getPlateau().getCases().get(arg));
+					ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
+							.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
+					this.btnPos.get(arg).setIcon(imageIcon);
+				}else {
+					ImageIcon imageIcon = new ImageIcon(new ImageIcon("").getImage()
+							.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
+					this.btnPos.get(arg).setIcon(imageIcon);
+				}
+			}else {
+				for(String pos : partie.getPlateau().getClesValides()) {
+					ImageIcon imageIcon = new ImageIcon(new ImageIcon("").getImage()
+							.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
+					this.btnPos.get(pos).setIcon(imageIcon);
+				}
+			}
+		}
 	}
 }

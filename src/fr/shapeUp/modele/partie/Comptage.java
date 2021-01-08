@@ -25,7 +25,7 @@ public class Comptage implements CVisitor{
 	 * Constructeur
 	 * @param partie partie en cours
 	 */
-	Comptage(Partie partie){
+	public Comptage(Partie partie){
 		this.partie = partie;
 	}
 	

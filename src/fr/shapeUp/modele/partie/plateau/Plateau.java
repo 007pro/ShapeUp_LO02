@@ -11,7 +11,7 @@ import fr.shapeUp.modele.partie.VComptage;
  * @author Adrien Warnet, Vincent Diop
  *
  */
-public class Plateau implements VComptage{
+public class Plateau extends Observable implements VComptage{
 	private ArrayList<String> clesValides;
 	LinkedHashMap<String, Carte> cases;
 	private boolean premCarte = true;
@@ -61,6 +61,8 @@ public class Plateau implements VComptage{
 	public void resetPlateau(){
 		this.cases = new LinkedHashMap<String, Carte>();
 		this.premCarte = true;
+		this.setChanged();
+		this.notifyObservers("reset");
 	}
 	
 	/**
@@ -79,6 +81,8 @@ public class Plateau implements VComptage{
 			if(this.cases.containsKey(auDessus) || this.cases.containsKey(enDessous) || this.cases.containsKey(aDroite) || this.cases.containsKey(aGauche) || this.premCarte) {
 				this.premCarte = false;
 				this.cases.put(position, carte);
+				this.setChanged();
+				this.notifyObservers(position);
 				return true;
 			}
 		}
@@ -93,6 +97,8 @@ public class Plateau implements VComptage{
 	public Carte retirerCarte(String position) {
 		if(this.clesValides.contains(position)) {
 			Carte carteRetiree = this.cases.remove(position);
+			this.setChanged();
+			this.notifyObservers(position);
 			return carteRetiree;
 		}
 		return null;
