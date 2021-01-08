@@ -76,7 +76,8 @@ public abstract class Joueur extends Observable {
 		System.out.print("Votre carte est : ");
 		this.carteCourante.afficherCarte();
 		carteEnMain = true;
-
+		this.setChanged();
+		this.notifyObservers(this.carteCourante);
 	}
 	
 	/**

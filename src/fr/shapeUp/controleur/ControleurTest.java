@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JToggleButton;
 
 import fr.shapeUp.Vue.DialogPartie;
 import fr.shapeUp.Vue.VueMenu;
@@ -19,6 +22,10 @@ import fr.shapeUp.modele.partie.Partie;
 public class ControleurTest {
 
 	private int currentPlayer = 0;
+	public int getCurrentPlayer() {
+		return currentPlayer;
+	}
+
 	private Partie partie;
 	
 	public ControleurTest(JButton btnDemarrer, ButtonGroup btnGrpNbJ, ButtonGroup btnGrpRegles, ButtonGroup btnGrpPlateau, VueMenu vueGraphique) {
@@ -85,25 +92,35 @@ public class ControleurTest {
 				}
 				menu.nbrJoueurTypePlateau(typePartie, typePlateau, nbJP, nbJV);
 				partie = menu.getPartie();
+				partie.getJoueurs()[currentPlayer].piocher();
 			}
 		});
 	}
 	
-	public void PartieInit(JButton btnNextTurn, DialogPartie vuePartie) {	
+	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie) {	
 		btnNextTurn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.BLACK);
+				currentPlayer = (currentPlayer + 1) % partie.getJoueurs().length;
+				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.RED);
 				if(partie.getDeck().getNombreDeCartes() != 0 && !partie.getPlateau().rempli()) {
 					if(partie.getJoueurs()[currentPlayer] instanceof JoueurVirutel) {
 						partie.getJoueurs()[currentPlayer].jouerTour();
+					}else {
+						partie.getJoueurs()[currentPlayer].piocher();
 					}
-					vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.BLACK);
-					currentPlayer = (currentPlayer + 1) % partie.getJoueurs().length;
-					vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.RED);
 				}else {
 					partie.getPlateau().accept(new Comptage(partie));	
 					partie.nouveauTour();
 				}
 			}
+		});
+		btnPlacer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(getSelectedButtonPos(btnPos) != null) {
+					partie.getJoueurs()[currentPlayer].poserCarte(getSelectedButtonPos(btnPos));
+				}
+				}
 		});
 	}
 	
@@ -113,6 +130,19 @@ public class ControleurTest {
 
             if (button.isSelected()) {
                 return button.getText();
+            }
+        }
+
+        return null;
+    }
+	
+	public String getSelectedButtonPos(LinkedHashMap<String, JToggleButton> btnPos) {
+		for(Map.Entry<String, JToggleButton> entry : btnPos.entrySet()) {
+		    String key = entry.getKey();
+		    JToggleButton value = entry.getValue();
+
+            if (value.isSelected()) {
+                return key;
             }
         }
 
