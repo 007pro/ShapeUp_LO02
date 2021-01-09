@@ -97,15 +97,19 @@ public class ControleurTest {
 		});
 	}
 	
-	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie) {	
+	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, JButton btnDeplace, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie) {	
 		btnNextTurn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnPlacer.setVisible(true);
+				btnDeplace.setVisible(true);
 				btnPlacer.setEnabled(true);
 				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.BLACK);
 				currentPlayer = (currentPlayer + 1) % partie.getJoueurs().length;
 				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.RED);
 				if(partie.getDeck().getNombreDeCartes() != 0 && !partie.getPlateau().rempli()) {
 					if(partie.getJoueurs()[currentPlayer] instanceof JoueurVirutel) {
+						btnPlacer.setVisible(false);
+						btnDeplace.setVisible(false);
 						partie.getJoueurs()[currentPlayer].jouerTour();
 					}else {
 						partie.getJoueurs()[currentPlayer].piocher();

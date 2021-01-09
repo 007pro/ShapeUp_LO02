@@ -58,6 +58,7 @@ public class DialogPartie extends JDialog implements Observer{
 	private Partie partie;
 	private ControleurTest controleur;
 	private JButton btnPlacer;
+	private JButton btnDeplace;
 
 	/**
 	 * Create the dialog.
@@ -77,7 +78,7 @@ public class DialogPartie extends JDialog implements Observer{
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		this.init();
-		this.controleur.PartieInit(btnNextTurn, btnPlacer, btnPos, this);
+		this.controleur.PartieInit(btnNextTurn, btnPlacer, btnDeplace, btnPos, this);
 	}
 
 	private void init() {
@@ -160,7 +161,7 @@ public class DialogPartie extends JDialog implements Observer{
 		btnPlacer.setBounds(182, 611, 148, 23);
 		content.add(btnPlacer);
 		
-		JButton btnDeplace = new JButton("Deplacer");
+		btnDeplace = new JButton("Deplacer");
 		btnDeplace.setBounds(182, 577, 148, 23);
 		content.add(btnDeplace);
 		
