@@ -3,6 +3,7 @@ package fr.shapeUp.modele.partie;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Observable;
 
 import fr.shapeUp.modele.joueur.Joueur;
 import fr.shapeUp.modele.partie.Carte.*;
@@ -14,7 +15,7 @@ import fr.shapeUp.modele.partie.plateau.Plateau;
  * @author Adrien Warnet, Vincent Diop
  *
  */
-public class Comptage implements CVisitor{
+public class Comptage extends Observable implements CVisitor{
 	
 	private HashMap<formeCarte, Integer> scoreFormes = new HashMap<formeCarte, Integer>();
 	private HashMap<contenu, Integer> scoreContenus = new HashMap<contenu, Integer>();
@@ -185,6 +186,8 @@ public class Comptage implements CVisitor{
 		joueur.setScore(joueur.getScore() + scoreContenus.get(joueur.getCarteVictoire().getContenu()));
 		System.out.println("Score du joueur " + joueur.getScore());
 	}
+	this.setChanged();
+	this.notifyObservers();
 	
 	}
 	

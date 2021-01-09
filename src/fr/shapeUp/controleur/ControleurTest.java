@@ -112,25 +112,33 @@ public class ControleurTest {
 	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, JButton btnDeplace, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie) {	
 		btnNextTurn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				phaseDeplacement = 1;
-				btnPlacer.setVisible(true);
-				btnDeplace.setVisible(true);
-				btnPlacer.setEnabled(true);
-				btnDeplace.setEnabled(true);
-				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.BLACK);
-				currentPlayer = (currentPlayer + 1) % partie.getJoueurs().length;
-				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.RED);
-				if(partie.getDeck().getNombreDeCartes() != 0 && !partie.getPlateau().rempli()) {
-					if(partie.getJoueurs()[currentPlayer] instanceof JoueurVirutel) {
-						btnPlacer.setVisible(false);
-						btnDeplace.setVisible(false);
-						partie.getJoueurs()[currentPlayer].jouerTour();
+				if(partie.getNumTour() < 5) {
+					phaseDeplacement = 1;
+					btnPlacer.setVisible(true);
+					btnDeplace.setVisible(true);
+					btnNextTurn.setEnabled(false);
+					btnPlacer.setEnabled(true);
+					btnDeplace.setEnabled(true);
+					vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.BLACK);
+					currentPlayer = (currentPlayer + 1) % partie.getJoueurs().length;
+					vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.RED);
+					if(partie.getDeck().getNombreDeCartes() != 0 && !partie.getPlateau().rempli()) {
+						if(partie.getJoueurs()[currentPlayer] instanceof JoueurVirutel) {
+							btnPlacer.setVisible(false);
+							btnDeplace.setVisible(false);
+							btnNextTurn.setEnabled(true);
+							partie.getJoueurs()[currentPlayer].jouerTour();
+						}else {
+							partie.getJoueurs()[currentPlayer].piocher();
+						}
 					}else {
-						partie.getJoueurs()[currentPlayer].piocher();
+						Comptage comptage = new Comptage(partie);
+						comptage.addObserver(vuePartie);
+						partie.getPlateau().accept(comptage);
+						partie.nouveauTour();
 					}
 				}else {
-					partie.getPlateau().accept(new Comptage(partie));	
-					partie.nouveauTour();
+					System.out.println("Fin de la partie");
 				}
 			}
 		});

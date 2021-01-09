@@ -32,12 +32,14 @@ import fr.shapeUp.modele.partie.Carte;
 import fr.shapeUp.modele.partie.Carte.contenu;
 import fr.shapeUp.modele.partie.Carte.couleurCarte;
 import fr.shapeUp.modele.partie.Carte.formeCarte;
+import fr.shapeUp.modele.partie.Comptage;
 import fr.shapeUp.modele.partie.Partie;
 import fr.shapeUp.modele.partie.plateau.Plateau;
 import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
 import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
+import java.awt.Font;
 
 public class DialogPartie extends JDialog implements Observer{
 
@@ -51,6 +53,7 @@ public class DialogPartie extends JDialog implements Observer{
 	private JButton btnNextTurn;
 	private JButton btnCarte1;
 	private JLabel[] labelJoueurs = new JLabel[3];
+	private JLabel[] labelScores = new JLabel[3];
 	public JLabel[] getLabelJoueurs() {
 		return labelJoueurs;
 	}
@@ -103,6 +106,7 @@ public class DialogPartie extends JDialog implements Observer{
 		}
 		
 		JLabel lblJ1 = new JLabel("JOUEUR1");
+		lblJ1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblJ1.setForeground(Color.RED);
 		lblJ1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblJ1.setBounds(10, 210, 140, 14);
@@ -110,12 +114,14 @@ public class DialogPartie extends JDialog implements Observer{
 
 		
 		JLabel lblJ2 = new JLabel("JOUEUR2");
+		lblJ2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblJ2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblJ2.setBounds(10, 424, 140, 14);
 		content.add(lblJ2);
 
 		
 		JLabel lblJ3 = new JLabel("JOUEUR3");
+		lblJ3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblJ3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblJ3.setBounds(10, 641, 140, 14);
 		content.add(lblJ3);
@@ -138,6 +144,27 @@ public class DialogPartie extends JDialog implements Observer{
 		panelPlateau.setBounds(350, 10, 900, 650);
 		content.add(panelPlateau);
 		panelPlateau.setLayout(null);
+		
+		JLabel lblScores = new JLabel("Scores :");
+		lblScores.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblScores.setBounds(0, 0, 90, 14);
+		panelPlateau.add(lblScores);
+		
+		JLabel lblScore1 = new JLabel("J1 : 0");
+		lblScore1.setBounds(120, 0, 103, 14);
+		panelPlateau.add(lblScore1);
+		
+		JLabel lblScore2 = new JLabel("J2 : 0");
+		lblScore2.setBounds(233, 0, 98, 14);
+		panelPlateau.add(lblScore2);
+		
+		JLabel lblScore3 = new JLabel("J3 : 0");
+		lblScore3.setBounds(341, 0, 113, 14);
+		panelPlateau.add(lblScore3);
+		
+		labelScores[0] = lblScore1;
+		labelScores[1] = lblScore2;
+		labelScores[2] = lblScore3;
 		
 		
 		btnNextTurn = new JButton("Tour Suivant");
@@ -215,6 +242,13 @@ public class DialogPartie extends JDialog implements Observer{
 			ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
 					.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
 			this.btnCarte1.setIcon(imageIcon);
+		}
+		if(o instanceof Comptage) {
+			int idx = 0;
+			for(Joueur joueur : partie.getJoueurs()) {
+				labelScores[idx].setText("J" + (idx+1) + ": " + joueur.getScore());
+				idx++;
+			}
 		}
 	}
 }
