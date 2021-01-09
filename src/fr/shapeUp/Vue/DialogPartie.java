@@ -186,14 +186,17 @@ public class DialogPartie extends JDialog implements Observer{
 		if(o instanceof Plateau) {
 			if(arg != "reset") {
 				if(partie.getPlateau().getCases().containsKey(arg)) {
-					System.out.println(partie.getJoueurs()[0].getCarteCourante());
-					System.out.println(partie.getJoueurs()[1].getCarteCourante());
-					System.out.println(partie.getJoueurs()[1]);
-					System.out.println(this.controleur.getCurrentPlayer());
-					carteview = new VueCarte(partie.getJoueurs()[this.controleur.getCurrentPlayer()].getCarteCourante());
-					ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
-							.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
-					this.btnPos.get(arg).setIcon(imageIcon);
+					if(this.controleur.getPhaseDeplacement() == 2) {
+						carteview = new VueCarte(this.controleur.getCarteDepl());
+						ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
+								.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
+						this.btnPos.get(arg).setIcon(imageIcon);
+					} else {
+						carteview = new VueCarte(partie.getJoueurs()[this.controleur.getCurrentPlayer()].getCarteCourante());
+						ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
+								.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
+						this.btnPos.get(arg).setIcon(imageIcon);
+					}
 				}else {
 					ImageIcon imageIcon = new ImageIcon(new ImageIcon("").getImage()
 							.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image

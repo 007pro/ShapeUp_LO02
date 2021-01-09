@@ -46,28 +46,22 @@ public class JoueurPhysique extends Joueur {
 
 	}
 	
-	@Override
-	public void deplacerCarte() {
-
+	public Carte deplacerCartePh1(String positionCarteADeplacer) {
 		System.out.println("vous allez déplacer une carte");
 		Carte carteRetiré;
-		boolean carteHere;
-		do {
-			System.out.println("La carte est à quelle position ? ");
-			String positionCarteADeplacer = saisiUseur.nextLine();
-			carteRetiré = partie.getPlateau().retirerCarte(positionCarteADeplacer);
-			if (carteRetiré == null) {
-				System.out.println("il n'y a pas de carte ici");
-			}
-		} while (carteRetiré == null);
-
-		do {
+		System.out.println("La carte est à quelle position ? ");
+		carteRetiré = partie.getPlateau().retirerCarte(positionCarteADeplacer);
+		if (carteRetiré == null) {
+			System.out.println("il n'y a pas de carte ici");
+		}
+		return carteRetiré;	
+	}
+	
+	public boolean deplacerCartePh2(Carte carte, String newPosition) {
+			boolean carteHere;
 			System.out.println("Poser la carte à quelle position ? ");
-			String newPosition = saisiUseur.nextLine();
-			carteHere = poserCarte(newPosition);
-		} while (carteHere == false);
-
-		
+			carteHere = partie.getPlateau().placerCarte(newPosition, carte);
+			return carteHere;
 	}
 	
 	public boolean poserCarteOfMain(String position,int numCarte) {
@@ -218,6 +212,13 @@ public class JoueurPhysique extends Joueur {
 
 	public boolean isTourFini() {
 		return tourFini;
+	}
+
+
+	@Override
+	public void deplacerCarte() {
+		// TODO Auto-generated method stub
+		
 	}
 
 

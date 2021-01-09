@@ -13,6 +13,10 @@ import java.util.Random;
  */
 public class Carte {
 	
+	@Override
+	public String toString() {
+		return "Carte [contenant=" + contenant + ", forme=" + forme + ", couleur=" + couleur + "]";
+	}
 	private contenu contenant;
 	private formeCarte forme;
 	private couleurCarte couleur;

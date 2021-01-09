@@ -14,7 +14,9 @@ import javax.swing.JToggleButton;
 
 import fr.shapeUp.Vue.DialogPartie;
 import fr.shapeUp.Vue.VueMenu;
+import fr.shapeUp.modele.joueur.JoueurPhysique;
 import fr.shapeUp.modele.joueur.JoueurVirutel;
+import fr.shapeUp.modele.partie.Carte;
 import fr.shapeUp.modele.partie.Comptage;
 import fr.shapeUp.modele.partie.Menu;
 import fr.shapeUp.modele.partie.Partie;
@@ -22,6 +24,16 @@ import fr.shapeUp.modele.partie.Partie;
 public class ControleurTest {
 
 	private int currentPlayer = 0;
+	private int phaseDeplacement = 1;
+	private Carte carteDepl;
+	public int getPhaseDeplacement() {
+		return phaseDeplacement;
+	}
+
+	public Carte getCarteDepl() {
+		return carteDepl;
+	}
+
 	public int getCurrentPlayer() {
 		return currentPlayer;
 	}
@@ -100,9 +112,11 @@ public class ControleurTest {
 	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, JButton btnDeplace, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie) {	
 		btnNextTurn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				phaseDeplacement = 1;
 				btnPlacer.setVisible(true);
 				btnDeplace.setVisible(true);
 				btnPlacer.setEnabled(true);
+				btnDeplace.setEnabled(true);
 				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.BLACK);
 				currentPlayer = (currentPlayer + 1) % partie.getJoueurs().length;
 				vuePartie.getLabelJoueurs()[currentPlayer].setForeground(Color.RED);
@@ -129,6 +143,31 @@ public class ControleurTest {
 					}
 				}
 				}
+		});
+		btnDeplace.addActionListener(new ActionListener() {
+			boolean PwasEnabled = false;
+			boolean NwasEnabled = false;
+			public void actionPerformed(ActionEvent e) {
+				if(getSelectedButtonPos(btnPos) != null) {
+					if(phaseDeplacement == 1) {
+						carteDepl = ((JoueurPhysique)partie.getJoueurs()[currentPlayer]).deplacerCartePh1(getSelectedButtonPos(btnPos));
+						if(carteDepl != null) {
+							if(btnPlacer.isEnabled()) PwasEnabled = true;
+							if(btnNextTurn.isEnabled()) NwasEnabled = true;
+							btnPlacer.setEnabled(false);
+							btnNextTurn.setEnabled(false);
+							phaseDeplacement = 2;
+						}
+					}else {
+						if(((JoueurPhysique)partie.getJoueurs()[currentPlayer]).deplacerCartePh2(carteDepl, getSelectedButtonPos(btnPos))) {
+							btnDeplace.setEnabled(false);
+							if(PwasEnabled) btnPlacer.setEnabled(true);
+							if(NwasEnabled) btnNextTurn.setEnabled(true);
+							phaseDeplacement = 1;
+						}
+					}
+				}
+			}
 		});
 	}
 	
