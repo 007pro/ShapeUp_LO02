@@ -32,9 +32,9 @@ public class JoueurVirutel extends Joueur {
 		boolean cartePlacé = partie.getPlateau().placerCarte(position, this.carteCourante);
 
 		if (cartePlacé == true) {
-			System.out.print("La carte posé est ");
-			carteCourante.afficherCarte();
-			System.out.println("\nest elle est posé en " + position);
+//			System.out.print("La carte posé est ");
+//			carteCourante.afficherCarte();
+//			System.out.println("\nest elle est posé en " + position);
 			return true;
 		} else if (cartePlacé == false) {
 			return false;
@@ -144,9 +144,9 @@ public class JoueurVirutel extends Joueur {
 		do {
 //			System.out.println("Poser la carte à quelle position ? ");
 			String newPosition = recupID.get(rand.nextInt(recupID.size())) ;
-			carteHere = poserCarte(newPosition);
+			carteHere = partie.getPlateau().placerCarte(newPosition, carteRetiré);
 		} while (carteHere == false);
-		System.out.println("Carte déplacée par le joueur virtuel ");
+//		System.out.println("Carte déplacée par le joueur virtuel ");
 
 		
 	}

@@ -9,13 +9,14 @@ import fr.shapeUp.modele.partie.Carte.couleurCarte;
 import fr.shapeUp.modele.partie.Carte.formeCarte;
 
 import java.util.Arrays;
+import java.util.Observable;
 
 /**
  * Constitution du deck de plusieurs de carte
  * @author Adrien Warnet, Vincent Diop
  *
  */
-public class Deck {
+public class Deck extends Observable{
 	
 	private int nbrCartes = 18;
 	private Carte[] cartes;
@@ -41,7 +42,9 @@ public class Deck {
 	         }
 	      }
 	      // Mélange le jeu de cartes.
-	         melanger();
+         melanger();
+         this.setChanged();
+         this.notifyObservers();
 	}
 	
 	 /**
@@ -92,8 +95,12 @@ public class Deck {
 	      {
 	         Carte [] main = Arrays.copyOfRange(this.cartes, 0, n);
 	         this.cartes = Arrays.copyOfRange(this.cartes, n, this.cartes.length);
+	         this.setChanged();
+	         this.notifyObservers();
 	         return main;
 	      }
+	     this.setChanged();
+         this.notifyObservers();
 	     return null;
 	   }
 	 
@@ -107,8 +114,12 @@ public class Deck {
 			Carte[] carte1= this.cartes ;
 			carteCourante = carte1[0];
 			this.cartes = Arrays.copyOfRange(this.cartes, 1, this.cartes.length);
+			this.setChanged();
+			this.notifyObservers();
 			return carteCourante;
 		 }
+		 this.setChanged();
+         this.notifyObservers();
 		 return null;
 	 }
 	      

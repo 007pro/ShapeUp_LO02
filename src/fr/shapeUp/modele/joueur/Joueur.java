@@ -71,10 +71,7 @@ public abstract class Joueur extends Observable {
 	 */
 	public void piocher() {
 		tourFini = false;
-		System.out.println("Carte Piochée");
 		this.carteCourante = partie.getDeck().piocher();
-		System.out.print("Votre carte est : ");
-		this.carteCourante.afficherCarte();
 		carteEnMain = true;
 		this.setChanged();
 		this.notifyObservers(this.carteCourante);
@@ -133,7 +130,6 @@ public abstract class Joueur extends Observable {
 		carteCourante = null;
 		carteEnMain = false;
 		tourFini = true;
-		System.out.println("Votre tour est terminé, au joueur suivant ! ");
 
 	}
 

@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -26,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
 
+import fr.shapeUp.Vue.VueTexte;
 import fr.shapeUp.controleur.ControleurTest;
 import fr.shapeUp.modele.joueur.Joueur;
 import fr.shapeUp.modele.partie.Carte;
@@ -33,6 +35,7 @@ import fr.shapeUp.modele.partie.Carte.contenu;
 import fr.shapeUp.modele.partie.Carte.couleurCarte;
 import fr.shapeUp.modele.partie.Carte.formeCarte;
 import fr.shapeUp.modele.partie.Comptage;
+import fr.shapeUp.modele.partie.Deck;
 import fr.shapeUp.modele.partie.Partie;
 import fr.shapeUp.modele.partie.plateau.Plateau;
 import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
@@ -40,6 +43,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import java.awt.Font;
+import javax.swing.JProgressBar;
 
 public class DialogPartie extends JDialog implements Observer{
 
@@ -51,6 +55,15 @@ public class DialogPartie extends JDialog implements Observer{
 	private ArrayList<JLabel> panelImageCVictoire = new ArrayList<JLabel>();
 	private LinkedHashMap<String, JToggleButton> btnPos = new LinkedHashMap<String, JToggleButton>();
 	private JButton btnNextTurn;
+	public JButton getBtnNextTurn() {
+		return btnNextTurn;
+	}
+	public JButton getBtnPlacer() {
+		return btnPlacer;
+	}
+	public JButton getBtnDeplace() {
+		return btnDeplace;
+	}
 	private JButton btnCarte1;
 	private JLabel[] labelJoueurs = new JLabel[3];
 	private JLabel[] labelScores = new JLabel[3];
@@ -62,11 +75,14 @@ public class DialogPartie extends JDialog implements Observer{
 	private ControleurTest controleur;
 	private JButton btnPlacer;
 	private JButton btnDeplace;
+	private JProgressBar progressBar;
+	private JButton btnQuitter;
 
 	/**
 	 * Create the dialog.
 	 */
 	public DialogPartie(Partie partie, ControleurTest controleur) {
+		VueTexte ConsoleText = new VueTexte(partie, controleur, this);
 		this.partie = partie;
 		this.controleur = controleur;
 		partie.getPlateau().addObserver(this);
@@ -81,7 +97,7 @@ public class DialogPartie extends JDialog implements Observer{
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		this.init();
-		this.controleur.PartieInit(btnNextTurn, btnPlacer, btnDeplace, btnPos, this);
+		this.controleur.PartieInit(btnNextTurn, btnPlacer, btnDeplace, btnPos, this, btnQuitter);
 	}
 
 	private void init() {
@@ -192,6 +208,19 @@ public class DialogPartie extends JDialog implements Observer{
 		btnDeplace.setBounds(182, 577, 148, 23);
 		content.add(btnDeplace);
 		
+		progressBar = new JProgressBar();
+		progressBar.setToolTipText("Nombre de cartes restantes dans le deck");
+		progressBar.setStringPainted(true);
+		progressBar.setValue(18);
+		progressBar.setOrientation(SwingConstants.VERTICAL);
+		progressBar.setBounds(177, 174, 25, 120);
+		content.add(progressBar);
+		progressBar.setMaximum(18);
+		
+		btnQuitter = new JButton("Quitter");
+		btnQuitter.setBounds(1175, 656, 89, 23);
+		content.add(btnQuitter);
+		
 		JSeparator separator_1 = new JSeparator();
 		getContentPane().add(separator_1, BorderLayout.NORTH);
 		
@@ -212,18 +241,25 @@ public class DialogPartie extends JDialog implements Observer{
 		// TODO Auto-generated method stub
 		if(o instanceof Plateau) {
 			if(arg != "reset") {
-				if(partie.getPlateau().getCases().containsKey(arg)) {
-					if(this.controleur.getPhaseDeplacement() == 2) {
-						carteview = new VueCarte(this.controleur.getCarteDepl());
-						ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
-								.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
-						this.btnPos.get(arg).setIcon(imageIcon);
-					} else {
-						carteview = new VueCarte(partie.getJoueurs()[this.controleur.getCurrentPlayer()].getCarteCourante());
-						ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
-								.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
-						this.btnPos.get(arg).setIcon(imageIcon);
+				if(partie.getPlateau().getCases().containsValue(arg)) {					
+//					if(this.controleur.getPhaseDeplacement() == 2) {
+//						carteview = new VueCarte(this.controleur.getCarteDepl());
+//						ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
+//								.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
+//						this.btnPos.get(arg).setIcon(imageIcon);
+//					} else {
+//						carteview = new VueCarte(partie.getJoueurs()[this.controleur.getCurrentPlayer()].getCarteCourante());
+//						ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
+//								.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
+//						this.btnPos.get(arg).setIcon(imageIcon);
+//					}					
+					carteview = new VueCarte((Carte)arg);
+					ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
+							.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
+					for(Entry<String, Carte> entry : partie.getPlateau().getCases().entrySet()) {
+						if(entry.getValue().equals((Carte)arg)) this.btnPos.get(entry.getKey()).setIcon(imageIcon);
 					}
+					
 				}else {
 					ImageIcon imageIcon = new ImageIcon(new ImageIcon("").getImage()
 							.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
@@ -249,6 +285,9 @@ public class DialogPartie extends JDialog implements Observer{
 				labelScores[idx].setText("J" + (idx+1) + ": " + joueur.getScore());
 				idx++;
 			}
+		}
+		if(o instanceof Deck) {
+			progressBar.setValue(((Deck)o).getNombreDeCartes());
 		}
 	}
 }

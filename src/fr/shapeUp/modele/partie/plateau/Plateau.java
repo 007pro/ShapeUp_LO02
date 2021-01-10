@@ -82,7 +82,7 @@ public class Plateau extends Observable implements VComptage{
 				this.premCarte = false;
 				this.cases.put(position, carte);
 				this.setChanged();
-				this.notifyObservers(position);
+				this.notifyObservers(carte);
 				return true;
 			}
 		}
@@ -109,8 +109,20 @@ public class Plateau extends Observable implements VComptage{
 	 */
 	public void afficherPlateau(){
 		System.out.println("Voici le plateau :");
-		System.out.print("\n\n");
-		System.out.println(this.cases);
+		System.out.print("\n");
+		char lettre = 'A';
+		for (String key : clesValides) {
+			if(key.charAt(0) != lettre) {
+				System.out.print("\n");
+				lettre = key.charAt(0);
+			}
+			if(cases.containsKey(key)) {
+				System.out.print("[ " + key + " : " + cases.get(key).toString() + " ]");
+			} else {
+				System.out.print("[ " + key + " : Case vide           ]");
+			}
+		}
+		System.out.print("\n");
 	}
 	
 	/**

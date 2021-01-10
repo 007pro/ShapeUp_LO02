@@ -40,7 +40,7 @@ public class ControleurTest {
 
 	private Partie partie;
 	
-	public ControleurTest(JButton btnDemarrer, ButtonGroup btnGrpNbJ, ButtonGroup btnGrpRegles, ButtonGroup btnGrpPlateau, VueMenu vueGraphique) {
+	public ControleurTest(JButton btnDemarrer, ButtonGroup btnGrpNbJ, ButtonGroup btnGrpRegles, ButtonGroup btnGrpPlateau, VueMenu vueGraphique, JButton btnQuitter) {
 		btnDemarrer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int nbJP ;
@@ -107,13 +107,19 @@ public class ControleurTest {
 				partie.getJoueurs()[currentPlayer].piocher();
 			}
 		});
+		btnQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 	}
 	
-	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, JButton btnDeplace, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie) {	
+	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, JButton btnDeplace, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie, JButton btnQuitter) {	
 		btnNextTurn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(partie.getNumTour() < 5) {
 					phaseDeplacement = 1;
+					partie.getDeck().addObserver(vuePartie);
 					btnPlacer.setVisible(true);
 					btnDeplace.setVisible(true);
 					btnNextTurn.setEnabled(false);
@@ -175,6 +181,11 @@ public class ControleurTest {
 						}
 					}
 				}
+			}
+		});
+		btnQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
 			}
 		});
 	}

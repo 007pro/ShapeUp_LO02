@@ -38,6 +38,7 @@ public class VueMenu implements Observer {
 	private JRadioButton rdbtnCercle;
 	private JButton btnDemarrer;
 	private ControleurTest controleur;
+	private JButton btnQuitter;
 
 	/**
 	 * Launch the application.
@@ -60,7 +61,7 @@ public class VueMenu implements Observer {
 	 */
 	public VueMenu() {
 		initialize();
-		this.controleur = new ControleurTest(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau, this);
+		this.controleur = new ControleurTest(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau, this, this.btnQuitter);
 	}
 
 	/**
@@ -140,6 +141,10 @@ public class VueMenu implements Observer {
 		btnDemarrer = new JButton("Demarrer");
 		btnDemarrer.setBounds(283, 325, 89, 23);
 		frame.getContentPane().add(btnDemarrer);
+				
+		btnQuitter = new JButton("Quitter");
+		btnQuitter.setBounds(595, 438, 89, 23);
+		frame.getContentPane().add(btnQuitter);
 	}
 	
 	@Override

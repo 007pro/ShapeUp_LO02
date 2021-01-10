@@ -35,7 +35,7 @@ public class JoueurPhysique extends Joueur {
 		boolean cartePlacé = partie.getPlateau().placerCarte(position, this.carteCourante);
 
 		if (cartePlacé == true) {
-			System.out.println("Vous avez posé votre carte en " + position);
+//			System.out.println("Vous avez posé votre carte en " + position);
 			return true;
 		} else if (cartePlacé == false) {
 			System.out.println("il y a déja une carte ici");
@@ -71,7 +71,6 @@ public class JoueurPhysique extends Joueur {
 			System.out.println("Le deck est vide");
 		}
 		if (cartePlacé == true) {
-			System.out.println("Vous avez posé votre carte en " + position);
 			return true;
 		} else if (cartePlacé == false) {
 			System.out.println("il y a déja une carte ici");

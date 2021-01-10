@@ -15,7 +15,7 @@ public class Carte {
 	
 	@Override
 	public String toString() {
-		return "Carte [contenant=" + contenant + ", forme=" + forme + ", couleur=" + couleur + "]";
+		return "" + contenant + " " + forme + " " + couleur;
 	}
 	private contenu contenant;
 	private formeCarte forme;
@@ -81,7 +81,7 @@ public class Carte {
 	public void afficherCarte() {
 		System.out.print (this.couleur + " ");
 		System.out.print (this.forme + " ");
-		System.out.print (this.contenant + "       ");
+		System.out.print (this.contenant + " ");
 	}
 	
 	/**
