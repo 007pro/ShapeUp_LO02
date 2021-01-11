@@ -7,11 +7,23 @@ import javax.swing.JLabel;
 
 import fr.shapeUp.modele.partie.Carte;
 
+/**
+ * Vue des cartes
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
 public class VueCarte {
 	
+	
+	/**
+	 * Variable Carte qu'on va representer 
+	 */
 	private Carte carte;
 	private JLabel image;
 	private ImageIcon imageIcon;
+	/**
+	 * Chemin de l'img de la carte
+	 */
 	private String cheminImage;
 	
 	/**
@@ -43,6 +55,9 @@ public class VueCarte {
 		return image;
 	}
 	
+	/**
+	 * @return Le chemin de l'image
+	 */
 	public String getCheminImage() {
 		return cheminImage;
 	}

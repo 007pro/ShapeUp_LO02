@@ -16,6 +16,11 @@ import fr.shapeUp.modele.partie.Carte;
 import fr.shapeUp.modele.partie.Partie;
 import fr.shapeUp.modele.partie.plateau.Plateau;
 
+/**
+ * Vue du texte 
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
 public class VueTexte implements Observer, Runnable{
 	public static String QUITTER = "Quit";
     public static String POSER = "P";
@@ -23,10 +28,25 @@ public class VueTexte implements Observer, Runnable{
     public static String NTOUR = "N";
     public static String PROMPT = ">";
 
+    /**
+     * Variable partie 
+     */
     private Partie partie;
+    /**
+     * Controleur de la partie
+     */
     private ControleurTest controleur;
+    /**
+     * La vue de la partie
+     */
     private DialogPartie vuePartie;
 
+    /**
+     * Vue du texte 
+     * @param partie
+     * @param controleur
+     * @param vuePartie
+     */
     public VueTexte(Partie partie, ControleurTest controleur, DialogPartie vuePartie) {
 		this.partie = partie;
 		this.controleur = controleur;
@@ -39,6 +59,9 @@ public class VueTexte implements Observer, Runnable{
 		t.start();
     }
 
+    /**
+     * Lancement de la vue texte
+     */
     public void run() {
 
 	String saisie = null;

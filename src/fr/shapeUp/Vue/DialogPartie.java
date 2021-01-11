@@ -45,32 +45,23 @@ import javax.swing.JSeparator;
 import java.awt.Font;
 import javax.swing.JProgressBar;
 
+/**
+ * Vue de la partie
+ * @author Adrien Warnet, Vincent Diop
+ * @version 1.0
+ */
 public class DialogPartie extends JDialog implements Observer{
 
 
 	private final JPanel contentPanel = new JPanel();
 	private final ButtonGroup btnGrpPlateau = new ButtonGroup();
-	private VueCarte carteview;
 	private ArrayList<JPanel> panelJCVictoire = new ArrayList<JPanel>();
 	private ArrayList<JLabel> panelImageCVictoire = new ArrayList<JLabel>();
 	private LinkedHashMap<String, JToggleButton> btnPos = new LinkedHashMap<String, JToggleButton>();
 	private JButton btnNextTurn;
-	public JButton getBtnNextTurn() {
-		return btnNextTurn;
-	}
-	public JButton getBtnPlacer() {
-		return btnPlacer;
-	}
-	public JButton getBtnDeplace() {
-		return btnDeplace;
-	}
 	private JButton btnCarte1;
 	private JLabel[] labelJoueurs = new JLabel[3];
 	private JLabel[] labelScores = new JLabel[3];
-	public JLabel[] getLabelJoueurs() {
-		return labelJoueurs;
-	}
-
 	private Partie partie;
 	private ControleurTest controleur;
 	private JButton btnPlacer;
@@ -78,8 +69,44 @@ public class DialogPartie extends JDialog implements Observer{
 	private JProgressBar progressBar;
 	private JButton btnQuitter;
 
+	
 	/**
-	 * Create the dialog.
+	 * Vue de carte
+	 */
+	private VueCarte carteview;
+	
+	/**
+	 * @return Le button tour suivant
+	 */
+	public JButton getBtnNextTurn() {
+		return btnNextTurn;
+	}
+	/**
+	 * @return Le button placer carte
+	 */
+	public JButton getBtnPlacer() {
+		return btnPlacer;
+	}
+	/**
+	 * @return Le button deplacer carte
+	 */
+	public JButton getBtnDeplace() {
+		return btnDeplace;
+	}
+		
+	/**
+	 * @return Les labels de Joueurs
+	 */
+	public JLabel[] getLabelJoueurs() {
+		return labelJoueurs;
+	}
+
+	
+
+	/**
+	 * Fenetre de dialog pour jouer la partie
+	 * @param partie 
+	 * @param controleur
 	 */
 	public DialogPartie(Partie partie, ControleurTest controleur) {
 		VueTexte ConsoleText = new VueTexte(partie, controleur, this);
@@ -100,6 +127,9 @@ public class DialogPartie extends JDialog implements Observer{
 		this.controleur.PartieInit(btnNextTurn, btnPlacer, btnDeplace, btnPos, this, btnQuitter);
 	}
 
+	/**
+	 * Initialisation des composantes de la fenetre 
+	 */
 	private void init() {
 				
 		JPanel content = new JPanel();
@@ -236,23 +266,16 @@ public class DialogPartie extends JDialog implements Observer{
 		
 	}
 
+	/**
+	 * Méthode update de la partie
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		if(o instanceof Plateau) {
 			if(arg != "reset") {
 				if(partie.getPlateau().getCases().containsValue(arg)) {					
-//					if(this.controleur.getPhaseDeplacement() == 2) {
-//						carteview = new VueCarte(this.controleur.getCarteDepl());
-//						ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
-//								.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
-//						this.btnPos.get(arg).setIcon(imageIcon);
-//					} else {
-//						carteview = new VueCarte(partie.getJoueurs()[this.controleur.getCurrentPlayer()].getCarteCourante());
-//						ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
-//								.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image
-//						this.btnPos.get(arg).setIcon(imageIcon);
-//					}					
+		
 					carteview = new VueCarte((Carte)arg);
 					ImageIcon imageIcon = new ImageIcon(new ImageIcon(carteview.getCheminImage()).getImage()
 							.getScaledInstance(84, 120, Image.SCALE_SMOOTH)); // permet de redimensionner une image

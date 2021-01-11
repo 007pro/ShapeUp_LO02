@@ -18,6 +18,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Vue du menu 
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
 public class VueMenu implements Observer {
 
 	private JFrame frame;
@@ -41,7 +46,7 @@ public class VueMenu implements Observer {
 	private JButton btnQuitter;
 
 	/**
-	 * Launch the application.
+	 * Lance l'application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -57,7 +62,7 @@ public class VueMenu implements Observer {
 	}
 
 	/**
-	 * Create the application.
+	 * Créer l'application
 	 */
 	public VueMenu() {
 		initialize();
@@ -65,7 +70,7 @@ public class VueMenu implements Observer {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisation des composantes de la fenetre 
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -147,6 +152,9 @@ public class VueMenu implements Observer {
 		frame.getContentPane().add(btnQuitter);
 	}
 	
+	/**
+	 * Méthode update du menu
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if(arg0 instanceof Menu) {
