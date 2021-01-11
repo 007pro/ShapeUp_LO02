@@ -24,6 +24,12 @@ public class JoueurVirutel extends Joueur {
 	String position;
 	ArrayList<String> recupID = partie.getPlateau().getClesValides();
 
+	/**
+	 * Constructeur du Joueur Virtuel
+	 * @param partie la partie en cours
+	 * @param numJoueur le numéro du joueur
+	 * @param typePartie le type de partie 
+	 */
 	public JoueurVirutel(Partie partie, int numJoueur, int typePartie) {
 		super(partie, numJoueur, typePartie);
 	}

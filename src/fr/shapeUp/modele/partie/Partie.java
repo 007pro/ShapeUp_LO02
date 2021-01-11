@@ -16,11 +16,26 @@ import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
  */
 public class Partie {
 	
+	
+	/**
+	 * Variable deck de la partie
+	 */
 	private Deck deck;
+	/**
+	 * Variable plateau de la partie
+	 */
 	private Plateau plateau;
+	/**
+	 * Variable numéro de tour de la partie
+	 */
 	private int numTour;
-	//private int nbJoueurs = 2;
+	/**
+	 * Tableau des joueurs
+	 */
 	private Joueur[] joueurs;
+	/**
+	 * Variable type de partie 
+	 */
 	private int typePartie ;
 	
 	/**
@@ -50,29 +65,26 @@ public class Partie {
 			this.joueurs[i] = new JoueurVirutel(this,i,typePartie);
 			System.out.println("virtuel" + i);
 		}
-//		while(this.numTour != 5) {
-//			nouveauTour();
-//			int i = 0;
-//			while(this.deck.getNombreDeCartes() != 0 && !this.plateau.rempli()) {
-//				System.out.println("Le joueur " + (i+1) +" joue son tour");
-//				this.joueurs[i].jouerTour();
-//				this.plateau.afficherPlateau();
-//				i = (i + 1) % 3;
-//			}
-//			this.plateau.accept(new Comptage(this));
-//		}
-//		System.out.println("Calcul des scores totaux");
-//		System.out.println("La partie se termine");
+
 	}
 	
+	/**
+	 * @return Le paquet de la partie
+	 */
 	public Deck getDeck() {
 		return deck;
 	}
 
+	/**
+	 * @return le plateau de la partie
+	 */
 	public Plateau getPlateau() {
 		return plateau;
 	}
 
+	/**
+	 * @return le numéro de tour
+	 */
 	public int getNumTour() {
 		return numTour;
 	}
@@ -102,10 +114,4 @@ public class Partie {
 		return typePartie;
 	}
 
-//	public static Partie partie = new Partie(3,1);
-	// Exemple de partie ou les joueurs piochent et posent
-	/*public static void main (String[] args){
-		Partie partie = new Partie(3,1);
-		partie.lancerPartie();
-	}*/
 }

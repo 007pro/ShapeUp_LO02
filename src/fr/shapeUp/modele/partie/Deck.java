@@ -18,9 +18,21 @@ import java.util.Observable;
  */
 public class Deck extends Observable{
 	
+	/**
+	 * Nombre de cartes dans le paquet
+	 */
 	private int nbrCartes = 18;
+	/**
+	 * Tableau de carte
+	 */
 	private Carte[] cartes;
+	/**
+	 * Nombre de mélange
+	 */
 	private int NB_ITERATIONS = 4;
+	/**
+	 * Carte courante
+	 */
 	public Carte carteCourante;
 	
 	
@@ -121,27 +133,5 @@ public class Deck extends Observable{
 		 this.setChanged();
          this.notifyObservers();
 		 return null;
-	 }
-	      
-	 
-	 	/*public static void main (String[] args){
-			Deck deck = new Deck();
-			
-		System.out.println(deck.getNombreDeCartes());
-		Carte[] main = deck.piocher(2);
-		
-		System.out.println(deck.getNombreDeCartes());
-		
-
-		// Affichage à l'aide d'une boucle forEach
-		for(Carte elem: main)
-		{
-			elem.afficherCarte();
-		}
-		System.out.println(deck.getNombreDeCartes());
-		
-		
-	 	}*/
-
-
+	 }   
 }

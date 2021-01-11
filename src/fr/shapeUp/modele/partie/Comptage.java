@@ -17,9 +17,21 @@ import fr.shapeUp.modele.partie.plateau.Plateau;
  */
 public class Comptage extends Observable implements CVisitor{
 	
+	/**
+	 * HashMap du score de la forme
+	 */
 	private HashMap<formeCarte, Integer> scoreFormes = new HashMap<formeCarte, Integer>();
+	/**
+	 * HashMap du score du contenus
+	 */
 	private HashMap<contenu, Integer> scoreContenus = new HashMap<contenu, Integer>();
+	/**
+	 * HashMap du score de la couleur
+	 */
 	private HashMap<couleurCarte, Integer> scoreCouleurs = new HashMap<couleurCarte, Integer>();
+	/**
+	 * Variable partie du comptage
+	 */
 	private Partie partie;
 	
 	/**

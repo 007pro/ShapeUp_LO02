@@ -14,14 +14,24 @@ import fr.shapeUp.modele.partie.Partie;
  */
 public class JoueurPhysique extends Joueur {
 
+	/**
+	 * Saisi utilisateur
+	 */
 	Scanner saisiUseur = new Scanner(System.in);
+	/**
+	 * Si c'est posé ou pas 
+	 */
 	private boolean pose;
+	/**
+	 * si c'est déplacé ou pas 
+	 */
 	private boolean deplace;
 
 	/**
 	 * Constructeur de la classe
-	 * @param partie la partie encore
+	 * @param partie la partie en cours
 	 * @param numJoueur le numéro du joueur
+	 * @param typePartie le type de partie 
 	 */
 	public JoueurPhysique(Partie partie, int numJoueur, int typePartie) {
 		super(partie, numJoueur,typePartie );
@@ -46,6 +56,11 @@ public class JoueurPhysique extends Joueur {
 
 	}
 	
+	/**
+	 * Retire la carte que l'on veut déplacer
+	 * @param positionCarteADeplacer la position de la carte
+	 * @return
+	 */
 	public Carte deplacerCartePh1(String positionCarteADeplacer) {
 		System.out.println("vous allez déplacer une carte");
 		Carte carteRetiré;
@@ -57,6 +72,12 @@ public class JoueurPhysique extends Joueur {
 		return carteRetiré;	
 	}
 	
+	/**
+	 * Pose la carte que l'on à déplacé
+	 * @param carte Carte que l'on vas poser
+	 * @param newPosition nouvelle position de la carte
+	 * @return
+	 */
 	public boolean deplacerCartePh2(Carte carte, String newPosition) {
 			boolean carteHere;
 			System.out.println("Poser la carte à quelle position ? ");
@@ -64,8 +85,13 @@ public class JoueurPhysique extends Joueur {
 			return carteHere;
 	}
 	
+	/**
+	 * Poser une carte de la main du joueur
+	 * @param position position de la carte 
+	 * @param numCarte numéro de la carte que l'on veut poser
+	 */
 	public boolean poserCarteOfMain(String position,int numCarte) {
-		boolean cartePlacé = partie.getPlateau().placerCarte(position,this.mainCourante[numCarte -1]);//-1 car le joueur va dire carte 1,2 ou 3 et l'index commence en 0
+		boolean cartePlacé = partie.getPlateau().placerCarte(position,this.mainCourante[numCarte -1]);//-1 car le joueur va dire carte 1 ou 2 et l'index commence en 0
 		this.mainCourante[numCarte -1] = partie.getDeck().piocher();
 		if (mainCourante[numCarte - 1] == null) {
 			System.out.println("Le deck est vide");
@@ -80,9 +106,7 @@ public class JoueurPhysique extends Joueur {
 		return false;
 	}
 
-	/**
-	 * Tour d'un JoueurPhysique
-	 */
+	
 	@Override
 	public void jouerTour() {
 		if (getTypePartie() == 1) {
@@ -188,27 +212,45 @@ public class JoueurPhysique extends Joueur {
 	}
 
 
-	
+	/**
+	 * @return Le score
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/**
+	 * Pour modifier le score
+	 * @param score 
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
 
+	/**
+	 * @return La carte victoire
+	 */
 	public Carte getCarteVictoire() {
 		return carteVictoire;
 	}
 
+	/**
+	 * @return La carte en main
+	 */
 	public Carte getCarteCourante() {
 		return carteCourante;
 	}
 
+	/**
+	 * @return L'état de la main du joueur
+	 */
 	public boolean isCarteEnMain() {
 		return carteEnMain;
 	}
 
+	/**
+	 * @return L'état du tour 
+	 */
 	public boolean isTourFini() {
 		return tourFini;
 	}

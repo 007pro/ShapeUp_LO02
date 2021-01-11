@@ -16,15 +16,45 @@ import fr.shapeUp.modele.partie.Partie.*;
  */
 public abstract class Joueur extends Observable {
 
+	/**
+	 * Score de la partie 
+	 */
 	protected int score = 0;
+	/**
+	 * La carte victoire du joueur
+	 */
 	protected Carte carteVictoire;
+	/**
+	 * La partie 
+	 */
 	protected Partie partie;
-	protected Carte carteCourante; // la carte qu'il à dans la main et qu'il vas jouer
+	/**
+	 * La carte que le joueur à dans la main, regle classique
+	 */
+	protected Carte carteCourante; 
+	/**
+	 * Etat de la main du joueur
+	 */
 	protected boolean carteEnMain = false;
+	/**
+	 * Etat du tour
+	 */
 	protected boolean tourFini;
+	/**
+	 * Position de pose de la carte
+	 */
 	private String position;
+	/**
+	 * Main du joueur, regle avancée
+	 */
 	protected Carte [] mainCourante = new Carte[3];
+	/**
+	 * Le type de partie
+	 */
 	private int typePartie;
+	/**
+	 * Saisi utilisateur
+	 */
 	private Scanner saisiUseur = new Scanner(System.in);
 	
 	/**
@@ -78,7 +108,7 @@ public abstract class Joueur extends Observable {
 	}
 	
 	/**
-	 * Permet de constistuer la main du joueur pioche que 2 carte car il a déja la carte victoire qui est la première 
+	 * Permet de constistuer la main du joueur pioche que 2 cartes car il a déja la carte victoire qui est la première 
 	 * et comme il ne pourra pas la jouer je ne la met pas dans l'objet maincourante
 	 */
 	public void piocherMain() {

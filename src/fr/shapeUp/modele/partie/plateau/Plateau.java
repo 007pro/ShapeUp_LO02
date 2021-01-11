@@ -126,8 +126,7 @@ public class Plateau extends Observable implements VComptage{
 	}
 	
 	/**
-	 * permet de verifier 
-	 * @return true ou false
+	 * @return l'état d'une case
 	 */
 	public boolean rempli() {
 		if(this.cases.size() == this.clesValides.size()) {
@@ -136,14 +135,23 @@ public class Plateau extends Observable implements VComptage{
 		return false;
 	}
 	
+	/**
+	 * Methode accept de l'interface VComptage
+	 */
 	public void accept(CVisitor visitor) {
 		visitor.visitPlateau(this);
 	}
 	
+	/**
+	 * @return Les cles valide du plateau
+	 */
 	public ArrayList<String> getClesValides() {
 		return this.clesValides;
 	}
 
+	/**
+	 * @return Les cases du plateau
+	 */
 	public LinkedHashMap<String, Carte> getCases(){
 		return this.cases;
 	}

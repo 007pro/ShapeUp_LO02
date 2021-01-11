@@ -18,17 +18,21 @@ import fr.shapeUp.modele.partie.plateau.Plateau.formePlateau;
  */
 public class Menu extends Observable{
 
-	private int ligne = 3;
-	private int colonne = 5;
+	/**
+	 * Variable partie du menu
+	 */
 	private Partie partie;
 
 	
+	/**
+	 * @return la partie en cours
+	 */
 	public Partie getPartie() {
 		return this.partie;
 	}
 
 	/**
-	 * Construteur
+	 * Construteur du menu
 	 */
 	public Menu() {
 		System.out.println("Bonjour Bienvenue dans notre jeu Shape up!");
@@ -36,8 +40,14 @@ public class Menu extends Observable{
 		System.out.println();
 	}
 
+	
 	/**
 	 * Choix du plateau, nombre de joueur physique 
+	 * 
+	 * @param typePartie
+	 * @param typePlateau
+	 * @param nbrJoueurPhysique
+	 * @param nbrJoueurVirtuels
 	 */
 	public void nbrJoueurTypePlateau(int typePartie, int typePlateau, int nbrJoueurPhysique, int nbrJoueurVirtuels) {
 
@@ -81,21 +91,4 @@ public class Menu extends Observable{
 	}
 }
 
-	/**
-	 * main 
-	 */
-//	public static void main(String[] args) {
-//		Scanner saisiUser = new Scanner(System.in);
-//		Menu partie = new Menu();
-//		System.out.println("Vous voulez démarrer une partie ? 1 = oui / 2 = non ");
-//		int demarrage = saisiUser.nextInt();
-//		if (demarrage == 1) {
-//			partie.nbrJoueurTypePlateau();
-//		} else {
-//			System.out.println("A bientôt");
-//			System.exit(0);
-//		}
-//
-//	}
-//
-//}
+	

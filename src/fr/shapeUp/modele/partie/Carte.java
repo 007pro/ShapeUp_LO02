@@ -13,14 +13,28 @@ import java.util.Random;
  */
 public class Carte {
 	
+	
+	/**
+	 * Variable de contenu de la carte
+	 */
+	private contenu contenant;
+	/**
+	 * Variable de forme de la carte
+	 */
+	private formeCarte forme;
+	/**
+	 * Variable de couleur de la carte
+	 */
+	private couleurCarte couleur;
+	
+	
+	/**
+	 * Pour faire un affichage textuel de la carte lisible
+	 */
 	@Override
 	public String toString() {
 		return "" + contenant + " " + forme + " " + couleur;
 	}
-	private contenu contenant;
-	private formeCarte forme;
-	private couleurCarte couleur;
-	private boolean remplie;
 	
 	/**
 	 * Enum de la forme de la carte
@@ -102,28 +116,5 @@ public class Carte {
 	public couleurCarte getCouleur() {
 		return this.couleur;
 	}
-	//construteur avant les modif
-	/*public Carte(formeCarte forme, couleurCarte couleur, boolean remplie){
-		this.forme = forme;
-		this.couleur = couleur;
-		this.remplie = remplie;	
-	}*/
-
-	/*public Carte randomCarte() {
-		int pick = new Random().nextInt(couleurCarte.values().length);
-		int pick2 = new Random().nextInt(formeCarte.values().length);
-	    Carte carteRandom = new Carte(formeCarte.values()[pick2],couleurCarte.values()[pick],new Random().nextBoolean());
-	    return carteRandom;
-	}*/
-
-//	public static void main (String[] args){
-//		Carte carte1 = new Carte().randomCarte();
-//		System.out.print("Remplie :" + carte1.remplie);
-//		System.out.print(" Couleur : " + carte1.couleur);
-//		System.out.println(" Forme : " + carte1.forme);
-//		Carte carte2 = new Carte().randomCarte();
-//		System.out.print("Remplie :" + carte2.remplie);
-//		System.out.print(" Couleur : " + carte2.couleur);
-//		System.out.println(" Forme : " + carte2.forme);
-//	}
+	
 }
