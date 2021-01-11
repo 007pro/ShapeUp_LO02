@@ -10,7 +10,7 @@ import java.util.Observer;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 
-import fr.shapeUp.controleur.ControleurTest;
+import fr.shapeUp.controleur.ControleurShapeUp;
 import fr.shapeUp.modele.joueur.Joueur;
 import fr.shapeUp.modele.partie.Carte;
 import fr.shapeUp.modele.partie.Partie;
@@ -35,7 +35,7 @@ public class VueTexte implements Observer, Runnable{
     /**
      * Controleur de la partie
      */
-    private ControleurTest controleur;
+    private ControleurShapeUp controleur;
     /**
      * La vue de la partie
      */
@@ -47,7 +47,7 @@ public class VueTexte implements Observer, Runnable{
      * @param controleur
      * @param vuePartie
      */
-    public VueTexte(Partie partie, ControleurTest controleur, DialogPartie vuePartie) {
+    public VueTexte(Partie partie, ControleurShapeUp controleur, DialogPartie vuePartie) {
 		this.partie = partie;
 		this.controleur = controleur;
 		this.vuePartie = vuePartie;

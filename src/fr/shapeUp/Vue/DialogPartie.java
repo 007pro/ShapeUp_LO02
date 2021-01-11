@@ -28,7 +28,7 @@ import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
 
 import fr.shapeUp.Vue.VueTexte;
-import fr.shapeUp.controleur.ControleurTest;
+import fr.shapeUp.controleur.ControleurShapeUp;
 import fr.shapeUp.modele.joueur.Joueur;
 import fr.shapeUp.modele.partie.Carte;
 import fr.shapeUp.modele.partie.Carte.contenu;
@@ -63,7 +63,7 @@ public class DialogPartie extends JDialog implements Observer{
 	private JLabel[] labelJoueurs = new JLabel[3];
 	private JLabel[] labelScores = new JLabel[3];
 	private Partie partie;
-	private ControleurTest controleur;
+	private ControleurShapeUp controleur;
 	private JButton btnPlacer;
 	private JButton btnDeplace;
 	private JProgressBar progressBar;
@@ -108,7 +108,7 @@ public class DialogPartie extends JDialog implements Observer{
 	 * @param partie 
 	 * @param controleur
 	 */
-	public DialogPartie(Partie partie, ControleurTest controleur) {
+	public DialogPartie(Partie partie, ControleurShapeUp controleur) {
 		VueTexte ConsoleText = new VueTexte(partie, controleur, this);
 		this.partie = partie;
 		this.controleur = controleur;

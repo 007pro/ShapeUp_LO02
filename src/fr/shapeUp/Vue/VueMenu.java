@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
-import fr.shapeUp.controleur.ControleurTest;
+import fr.shapeUp.controleur.ControleurShapeUp;
 import fr.shapeUp.modele.partie.Menu;
 import fr.shapeUp.modele.partie.Partie;
 
@@ -42,7 +42,7 @@ public class VueMenu implements Observer {
 	private JRadioButton rdbtnTriangle;
 	private JRadioButton rdbtnCercle;
 	private JButton btnDemarrer;
-	private ControleurTest controleur;
+	private ControleurShapeUp controleur;
 	private JButton btnQuitter;
 
 	/**
@@ -66,7 +66,7 @@ public class VueMenu implements Observer {
 	 */
 	public VueMenu() {
 		initialize();
-		this.controleur = new ControleurTest(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau, this, this.btnQuitter);
+		this.controleur = new ControleurShapeUp(this.btnDemarrer, this.btnGrpNbJ, this.btnGrpRegles, this.btnGrpPlateau, this, this.btnQuitter);
 	}
 
 	/**

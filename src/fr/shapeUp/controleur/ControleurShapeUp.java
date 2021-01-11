@@ -21,26 +21,64 @@ import fr.shapeUp.modele.partie.Comptage;
 import fr.shapeUp.modele.partie.Menu;
 import fr.shapeUp.modele.partie.Partie;
 
-public class ControleurTest {
 
+/**
+ * Controleur du jeu 
+ * @author Adrien Warnet, Vincent Diop
+ *
+ */
+public class ControleurShapeUp {
+
+	/**
+	 * Le numéro du joueur
+	 */
 	private int currentPlayer = 0;
+	/**
+	 * La phase de déplacement
+	 */
 	private int phaseDeplacement = 1;
+	/**
+	 * Carte deplacée
+	 */
 	private Carte carteDepl;
+	
+	
+	/**
+	 * @return La phase de deplacement
+	 */
 	public int getPhaseDeplacement() {
 		return phaseDeplacement;
 	}
 
+	/**
+	 * @return La carte déplacée
+	 */
 	public Carte getCarteDepl() {
 		return carteDepl;
 	}
 
+	/**
+	 * @return Le numero du joueur
+	 */
 	public int getCurrentPlayer() {
 		return currentPlayer;
 	}
 
+	/**
+	 * La partie 
+	 */
 	private Partie partie;
 	
-	public ControleurTest(JButton btnDemarrer, ButtonGroup btnGrpNbJ, ButtonGroup btnGrpRegles, ButtonGroup btnGrpPlateau, VueMenu vueGraphique, JButton btnQuitter) {
+	/**
+	 * Constructeur du controleur
+	 * @param btnDemarrer
+	 * @param btnGrpNbJ
+	 * @param btnGrpRegles
+	 * @param btnGrpPlateau
+	 * @param vueGraphique
+	 * @param btnQuitter
+	 */
+	public ControleurShapeUp(JButton btnDemarrer, ButtonGroup btnGrpNbJ, ButtonGroup btnGrpRegles, ButtonGroup btnGrpPlateau, VueMenu vueGraphique, JButton btnQuitter) {
 		btnDemarrer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int nbJP ;
@@ -114,6 +152,15 @@ public class ControleurTest {
 		});
 	}
 	
+	/**
+	 * Initialisation de la partie
+	 * @param btnNextTurn
+	 * @param btnPlacer
+	 * @param btnDeplace
+	 * @param btnPos
+	 * @param vuePartie
+	 * @param btnQuitter
+	 */
 	public void PartieInit(JButton btnNextTurn,JButton btnPlacer, JButton btnDeplace, LinkedHashMap<String, JToggleButton> btnPos , DialogPartie vuePartie, JButton btnQuitter) {	
 		btnNextTurn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -190,6 +237,10 @@ public class ControleurTest {
 		});
 	}
 	
+	/**
+	 * @param buttonGroup
+	 * @return La valeur de la key fournit par la vue text
+	 */
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();
@@ -202,6 +253,10 @@ public class ControleurTest {
         return null;
     }
 	
+	/**
+	 * @param btnPos
+	 * @return La valeur de la key fournit par la vue partie
+	 */
 	public String getSelectedButtonPos(LinkedHashMap<String, JToggleButton> btnPos) {
 		for(Map.Entry<String, JToggleButton> entry : btnPos.entrySet()) {
 		    String key = entry.getKey();
