@@ -1,0 +1,6 @@
+module:shapeUp
+fr.shapeUp.controleur
+fr.shapeUp.modele.joueur
+fr.shapeUp.modele.partie
+fr.shapeUp.modele.partie.plateau
+fr.shapeUp.Vue
