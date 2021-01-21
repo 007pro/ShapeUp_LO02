@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"shapeUp","l":"fr.shapeUp.controleur"},{"m":"shapeUp","l":"fr.shapeUp.modele.joueur"},{"m":"shapeUp","l":"fr.shapeUp.modele.partie"},{"m":"shapeUp","l":"fr.shapeUp.modele.partie.plateau"},{"m":"shapeUp","l":"fr.shapeUp.Vue"}]
